@@ -1,0 +1,27 @@
+.carousel .carousel-indicators li {
+  background-color: black;
+}
+.carousel .carousel-indicators li.active {
+  background-color: var(--primary);
+}
+.carousel-control-prev-icon , .carousel-control-next-icon{
+  background-color: black;
+  border-radius: 60%;
+  padding: 15px;
+}
+.nav .nav-link{
+    color: darkorange;
+}
+.awssld__bullets .awssld__bullets--active,.awssld__bar{
+  background-color: orange !important;
+}
+.image-2{
+  margin-bottom: 40px;
+  padding-left: 112px;
+}
+.awssld__controls__arrow-left:before,
+.awssld__controls__arrow-left:after,
+.awssld__controls__arrow-right:before,
+.awssld__controls__arrow-right:after{
+  background-color: rgb(255, 254, 253) !important;
+}
