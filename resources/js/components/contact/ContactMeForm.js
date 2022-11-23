@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosClient from "../../utils/axiosClient";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const notify = () =>
     toast.success("Mesajınız İletildi!", {
@@ -64,95 +64,97 @@ function ContactMeForm() {
             {({ errors, touched, isSubmitting }) => (
                 <Form>
                     <div className="row">
-                    <div className="col-lg-6">
-                        <div className="form-group">
-                            <Field
-                                type="text"
-                                className={`form-control form-control-lg ${
-                                    errors.name &&
-                                    touched.name &&
-                                    "border border-danger"
-                                }`}
-                                name="name"
-                                placeholder="Ad*"
-                            />
-                            <ErrorMessage
-                                component="div"
-                                className="text-danger"
-                                name="name"
-                            />
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                                <Field
+                                    style={{ background: "#f0f6ffa6" }}
+                                    type="text"
+                                    className={`form-control form-control-lg ${
+                                        errors.name &&
+                                        touched.name &&
+                                        "border border-danger"
+                                    }`}
+                                    name="name"
+                                    placeholder="Ad Soyad"
+                                />
+                                <ErrorMessage
+                                    component="div"
+                                    className="text-danger"
+                                    name="name"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-lg-6">
-                        <div className="form-group">
-                            <Field
-                                type="email"
-                                className={`form-control form-control-lg ${
-                                    errors.mail &&
-                                    touched.mail &&
-                                    "border border-danger"
-                                }`}
-                                name="mail"
-                                placeholder="E-mail*"
-                            />
-                            <ErrorMessage
-                                component="div"
-                                className="text-danger"
-                                name="mail"
-                            />
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                                <Field
+                                    style={{ background: "#f0f6ffa6" }}
+                                    type="email"
+                                    className={`form-control form-control-lg ${
+                                        errors.mail &&
+                                        touched.mail &&
+                                        "border border-danger"
+                                    }`}
+                                    name="mail"
+                                    placeholder="E-posta"
+                                />
+                                <ErrorMessage
+                                    component="div"
+                                    className="text-danger"
+                                    name="mail"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-
-                    <div className="col-lg-12">
-                        <div className="form-group">
-                            <Field
-                                type="text"
-                                className={`form-control form-control-lg ${
-                                    errors.subject &&
-                                    touched.subject &&
-                                    "border border-danger"
-                                }`}
-                                name="subject"
-                                placeholder="Konu"
-                            />
-                            <ErrorMessage
-                                component="div"
-                                className="text-danger"
-                                name="subject"
-                            />
+                        <div className="col-lg-12">
+                            <div className="form-group">
+                                <Field
+                                    style={{ background: "#f0f6ffa6" }}
+                                    type="text"
+                                    className={`form-control form-control-lg ${
+                                        errors.subject &&
+                                        touched.subject &&
+                                        "border border-danger"
+                                    }`}
+                                    name="subject"
+                                    placeholder="Konu"
+                                />
+                                <ErrorMessage
+                                    component="div"
+                                    className="text-danger"
+                                    name="subject"
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-lg-12">
-                        <div className="form-group">
-                            <Field
-                                as="textarea"
-                                className={`form-control ${
-                                    errors.message &&
-                                    touched.message &&
-                                    "border border-danger"
-                                }`}
-                                name="message"
-                                placeholder="Mesaj"
-                            ></Field>
-                            <ErrorMessage
-                                component="div"
-                                className="text-danger"
-                                name="message"
-                            />
+                        <div className="col-lg-12">
+                            <div className="form-group">
+                                <Field
+                                    style={{ background: "#f0f6ffa6" }}
+                                    as="textarea"
+                                    className={`form-control ${
+                                        errors.message &&
+                                        touched.message &&
+                                        "border border-danger"
+                                    }`}
+                                    name="message"
+                                    placeholder="Mesajınız"
+                                ></Field>
+                                <ErrorMessage
+                                    component="div"
+                                    className="text-danger"
+                                    name="message"
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-lg-12 mx-auto text-center justify-content-center">
-                        <button
-                            className="rn-btn edu-btn"
-                            disabled={isSubmitting}
-                            type="submit"
-                        >
-                            <span>Gönder</span>
-                            <i className="icon-arrow-right-line-right"></i>
-                        </button>
-                    </div>
+                        <div className="col-lg-12 mx-auto ">
+                            <button
+                                className="rn-btn edu-btn"
+                                disabled={isSubmitting}
+                                type="submit"
+                            >
+                                <span>Gönder</span>
+                            </button>
+                        </div>
                     </div>
                     <ToastContainer
                         position="bottom-right"

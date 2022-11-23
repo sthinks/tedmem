@@ -1,0 +1,14 @@
+.contact-information {
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 2px;
+}
+.contact-information-text {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 30px;
+}

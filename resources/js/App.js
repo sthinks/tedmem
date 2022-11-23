@@ -22,7 +22,11 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<HomeOne />} />
 
-                    <Route exact path={"/kurumsal/:slug"} element={<AboutUsOne />} />
+                    <Route
+                        exact
+                        path={"/kurumsal/:slug"}
+                        element={<AboutUsOne />}
+                    />
 
                     <Route exact path={"/iletisim"} element={<ContactMe />} />
                     <Route exact path={"/arama"} element={<CourseOne />} />
@@ -53,7 +57,11 @@ function App() {
 
                     <Route exact path={"/yayinlar"} element={<EventGrid />} />
 
-                    <Route exact path={"/yayinlar/:slug"} element={<EventGrid />} />
+                    <Route
+                        exact
+                        path={"/yayinlar/:slug"}
+                        element={<EventGrid />}
+                    />
 
                     <Route
                         exact

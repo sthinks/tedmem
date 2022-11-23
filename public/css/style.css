@@ -4400,6 +4400,9 @@ fieldset:disabled .btn {
     border-bottom-right-radius: calc(0.25rem - 1px);
     border-bottom-left-radius: calc(0.25rem - 1px);
 }
+.copyright-text {
+    color: gray;
+}
 .card-group > .card {
     margin-bottom: 0.75rem;
 }
@@ -28742,6 +28745,7 @@ input[type="radio"] ~ label::after {
 .form-group input {
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius);
+    width: 500px;
     height: 50px;
     font-size: 16px;
     padding: 0 15px;
@@ -29505,7 +29509,7 @@ button.edu-btn {
     height: 50px;
     line-height: 52px;
     color: var(--color-white);
-    background: #8c8ca6;
+    background: #ff7f12;
     padding: 0 30px;
     font-size: 15px;
     font-weight: 700;
@@ -42972,7 +42976,10 @@ input[type="range"]:disabled::-moz-range-thumb {
     z-index: 1;
 }
 .footer-style-default .footer-top {
+    margin-top: 250px;
     padding: 130px 0;
+    border-bottom: 1px solid gray;
+    color: gray;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .footer-style-default .footer-top {
@@ -42991,12 +42998,12 @@ input[type="range"]:disabled::-moz-range-thumb {
     color: var(--color-white);
 }
 .footer-style-default .description {
-    color: var(--color-white);
+    color: gray;
     margin-top: 34px;
     margin-bottom: 40px;
 }
 .footer-style-default .information-list li {
-    color: var(--color-white);
+    color: gray;
     margin-top: 0;
     margin-bottom: 0;
     font-weight: 500;
@@ -43009,14 +43016,14 @@ input[type="range"]:disabled::-moz-range-thumb {
     top: 5px;
 }
 .footer-style-default .information-list li a {
-    color: var(--color-white);
+    color: gray;
     transition: 0.3s;
 }
 .footer-style-default .information-list li + li {
     margin-top: 20px;
 }
 .footer-style-default .information-list li:hover a {
-    color: var(--color-primary);
+    color: white;
 }
 .footer-style-default .edu-footer-widget .inner {
     margin-top: 34px;
@@ -43032,7 +43039,7 @@ input[type="range"]:disabled::-moz-range-thumb {
 .footer-style-default .edu-footer-widget .footer-link li a {
     font-size: 16px;
     display: block;
-    color: var(--color-white);
+    color: #808087;
     line-height: 26px;
 }
 .footer-style-default .edu-footer-widget .footer-link li a i {
@@ -43040,10 +43047,10 @@ input[type="range"]:disabled::-moz-range-thumb {
     font-size: 14px;
 }
 .footer-style-default .edu-footer-widget .footer-link li + li {
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .footer-style-default .edu-footer-widget .footer-link li:hover a {
-    color: var(--color-primary);
+    color: white;
 }
 .footer-style-default .edu-footer-widget.explore-widget {
     margin-left: 65px;
@@ -43083,7 +43090,7 @@ input[type="range"]:disabled::-moz-range-thumb {
 }
 
 .eduvibe-footer-one {
-    background: #231f40;
+    background: #2c2c2c;
 }
 .eduvibe-footer-one .shape-image {
     position: absolute;
