@@ -9,14 +9,22 @@ import footerCard from "../../assets/images/footer-card.png";
 const FooterOne = () => {
     return (
         <>
-            <footer className="eduvibe-footer-one edu-footer footer-style-default">
+            <footer className="eduvibe-footer-one edu-footer footer-style-default position-relative">
                 <div className="footer-top">
                     <div className="footer-card">
-                        <img src={footerCard} />
-                        <p className="footer-card-text">
-                            Bülten ve Yayınlarından <br /> Haberdar Olmak İçin
-                        </p>
-                        <button className="footer-card-button">Abone Ol</button>
+                        <div>
+                            <img
+                                className="footer-card-image"
+                                src={footerCard}
+                            />
+                            <span className="footer-card-text">
+                                Bülten ve Yayınlarından <br /> Haberdar Olmak
+                                İçin
+                            </span>
+                            <button className="footer-card-button">
+                                Abone Ol
+                            </button>
+                        </div>
                     </div>
                     <div
                         className="container eduvibe-animated-shape"

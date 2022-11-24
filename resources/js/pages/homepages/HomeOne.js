@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SEO from "../../common/SEO";
 import HeaderTwo from "../../common/header/HeaderTwo";
 import BannerOne from "../../components/banner/BannerOne";
+import BannerNow from "../../components/banner/BannerNow";
 import HomeOneAbout from "../../components/home-one/HomeOneAbout";
 import HomeOneCategory from "../../components/home-one/HomeOneCategory";
 import HomeOneBlog from "../../components/home-one/HomeOneBlog";
@@ -19,7 +20,9 @@ const HomeOne = () => {
     const [publics, setPublics] = React.useState([]);
 
     const getData = async () => {
-        await axiosClient.get(`/api/latest-bulten`).then((res) => setBulten(res.data));
+        await axiosClient
+            .get(`/api/latest-bulten`)
+            .then((res) => setBulten(res.data));
         await axiosClient
             .get(`/api/latest-writes`)
             .then((res) => setWrites(res.data));
@@ -32,26 +35,30 @@ const HomeOne = () => {
         getData();
     }, []);
 
-    const mixed = [...writes, ...publics].sort((a,b) => b.created_at - a.created_at)
-    console.log(mixed)
+    const mixed = [...writes, ...publics].sort(
+        (a, b) => b.created_at - a.created_at
+    );
+    console.log(mixed);
 
     return (
         <>
             <SEO title="TEDMEM | Ortak Paydamız Eğitim" />
 
-            <HeaderTop/>
+            <HeaderTop />
 
             <HeaderOne styles="header-transparent header-style-2" />
 
-            <BannerOne  data={mixed} />
+            <BannerOne data={mixed} />
+
+            <BannerNow />
 
             <HomeOneAbout data={mixed} />
 
             <HomeOneCategory data={bulten} />
 
-            <HomeOneTwitter/>
+            <HomeOneTwitter />
 
-            <NewsLetterTwo/>
+            <NewsLetterTwo />
 
             <FooterOne />
         </>

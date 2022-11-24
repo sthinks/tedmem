@@ -1,0 +1,30 @@
+.banner-one-input {
+    position: relative;
+    height: 76px !important;
+    border-radius: 5px !important;
+}
+.input-result {
+    border-radius: 5px;
+    height: 35px;
+    background-color: #fff5e859;
+    font-size: 20px;
+}
+.search-icon {
+    position: relative;
+    right: 4%;
+    color: orange;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 16px 0px 14px -23px;
+}
+.banner-one-link {
+    border: 1px solid #d3d3d363;
+    border-radius: 5px;
+}
+.banner-one-link-icon {
+    width: 25px;
+    margin-left: 15px;
+}
+.banner-one-link-text {
+    margin: 17px 13px 18px 27px;
+}

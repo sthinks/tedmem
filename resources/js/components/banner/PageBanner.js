@@ -1,6 +1,6 @@
 import React from "react";
 
-function PageBanner({ title, image }) {
+function PageBanner({ title, image, color }) {
     return (
         <div
             style={{
@@ -15,11 +15,18 @@ function PageBanner({ title, image }) {
                     position: "absolute",
                     width: "100%",
                     height: "100%",
-                    backgroundColor: "#ffffff6e",
+                    backgroundColor: [!color ? "#ffffff6e" : "#ffffff00"],
                 }}
             />
             <img src={image} style={{ width: "100%", height: "auto" }} />
-            <h1 style={{ position: "absolute", color: "white" }}>{title}</h1>
+            <h1
+                className="text-center"
+                dangerouslySetInnerHTML={{ __html: title }}
+                style={{
+                    position: "absolute",
+                    color: "white",
+                }}
+            />
         </div>
     );
 }

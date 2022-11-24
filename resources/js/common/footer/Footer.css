@@ -1,159 +1,106 @@
 .footer-card {
     position: absolute;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    bottom: 85%;
-    margin-left: 20%;
-    width: 65% !important;
+    top: -13%;
+    left: 26%;
 }
 
+.footer-card-image {
+    width: 100%;
+    height: auto;
+}
 .footer-card-text {
-    position: absolute;
-    bottom: 5%;
-    left: 13%;
-    line-height: 65px;
-    font-size: 55px;
+    line-height: 55px;
+    font-size: 40px;
     font-weight: bold;
     color: white;
+    position: absolute;
+    top: 20%;
+    left: 5%;
 }
 .footer-card-button {
-    position: absolute;
     background-color: rgb(61, 61, 61);
     width: 180px;
     height: 60px;
     border-radius: 5px;
     border: none;
-    bottom: 30%;
-    left: 70%;
     color: white;
+    position: absolute;
+    right: 10%;
+    bottom: 35%;
 }
 
-@media only screen and (min-width: 1600px) and (max-width: 1800px) {
+@media only screen and (min-width: 1380px) and (max-width: 1440px) {
     .footer-card {
-        position: absolute;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        bottom: 90%;
-        margin-left: 15%;
-        width: 75% !important;
+        top: -11%;
+        left: 12%;
     }
 
+    .footer-card-image {
+    }
     .footer-card-text {
-        position: absolute;
-        bottom: 5%;
-        left: 13%;
-        line-height: 50px;
-        font-size: 45px;
-        font-weight: bold;
-        color: white;
     }
     .footer-card-button {
-        position: absolute;
-        background-color: rgb(61, 61, 61);
-        width: 180px;
-        height: 60px;
-        border-radius: 5px;
-        border: none;
-        bottom: 30%;
-        left: 70%;
-        color: white;
+        width: 188px;
+        height: 66px;
     }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 1601px) {
+@media only screen and (min-width: 1030px) and (max-width: 1366px) {
     .footer-card {
-        position: absolute;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        bottom: 90%;
-        margin-left: 8%;
-        width: 75% !important;
+        top: -10%;
+        left: 10%;
     }
 
+    .footer-card-image {
+    }
     .footer-card-text {
-        position: absolute;
-        bottom: 2%;
-        left: 13%;
-        line-height: 40px;
-        font-size: 35px;
-        font-weight: bold;
-        color: white;
     }
     .footer-card-button {
-        position: absolute;
-        background-color: rgb(61, 61, 61);
-        width: 180px;
-        height: 60px;
-        border-radius: 5px;
-        border: none;
-        bottom: 30%;
-        left: 70%;
-        color: white;
+        width: 199px;
+        height: 64px;
     }
 }
 
-@media only screen and (min-width: 1000px) and (max-width: 1401px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     .footer-card {
-        position: absolute;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        bottom: 95%;
-        margin-left: 8%;
-        width: 85% !important;
+        top: -5%;
+        left: 10%;
     }
 
+    .footer-card-image {
+        width: 90%;
+        height: auto;
+    }
     .footer-card-text {
-        position: absolute;
-        bottom: 2%;
-        left: 15%;
-        line-height: 30px;
-        font-size: 25px;
-        font-weight: bold;
-        color: white;
+        line-height: 34px;
+        font-size: 30px;
+        top: 25%;
+        left: 5%;
     }
     .footer-card-button {
-        position: absolute;
-        background-color: rgb(61, 61, 61);
-        width: 120px;
-        height: 40px;
-        border-radius: 5px;
-        border: none;
-        bottom: 30%;
-        left: 65%;
-        color: white;
+        width: 142px;
+        height: 56px;
+        right: 18%;
+        bottom: 31%;
     }
 }
 
-@media only screen and (min-width: 76px) and (max-width: 1000px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .footer-card {
-        position: absolute;
-        display: flex !important;
-        justify-content: start !important;
-        align-items: start !important;
-        bottom: 98%;
-        width: 450px !important;
+        top: -2%;
+        left: 0%;
     }
 
     .footer-card-text {
-        position: absolute;
-        bottom: 2%;
-        line-height: 30px;
-        font-size: 25px;
-        font-weight: bold;
-        color: white;
+        line-height: 20px;
+        font-size: 16px;
+        top: 20%;
+        left: 5%;
     }
     .footer-card-button {
-        position: absolute;
-        background-color: rgb(61, 61, 61);
-        width: 120px;
-        height: 40px;
-        border-radius: 5px;
-        border: none;
-        bottom: 30%;
-        color: white;
+        width: 96px;
+        height: 33px;
+        right: 7%;
+        bottom: 23%;
     }
 }

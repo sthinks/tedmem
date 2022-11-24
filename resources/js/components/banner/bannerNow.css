@@ -1,0 +1,99 @@
+.headerImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.primary-text {
+    font-size: 95px;
+    color: black;
+    font-weight: bold;
+    margin: 0px;
+    line-height: 1.5;
+    margin-left: 35%;
+}
+.secondary-text {
+    font-size: 95px;
+    color: black;
+    font-weight: 100;
+    word-spacing: 16px;
+    line-height: 0.5;
+    margin-left: 35%;
+}
+.tertiary-text {
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+    line-height: 1.2;
+    margin-left: 35%;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+    border-radius: 8px;
+    border: 1px solid #ffffff00;
+    width: 150px;
+    height: 50px;
+    background-color: #f86f03;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+}
+
+/* For 480 Resolution */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .primary-text {
+        font-size: 65px;
+        line-height: 1.2;
+        margin-left: 20%;
+    }
+    .secondary-text {
+        font-size: 65px;
+        line-height: 0.9;
+        margin-left: 20%;
+    }
+    .tertiary-text {
+        font-size: 20px;
+        line-height: 0.9;
+        margin-left: 20%;
+    }
+    .image {
+        margin-left: 50px;
+    }
+    .button {
+        margin-left: 30%;
+    }
+}
+
+/* For 640 Resolution */
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+    .primary-text {
+        font-size: 65px;
+        line-height: 1.2;
+        margin-left: 20%;
+    }
+    .secondary-text {
+        font-size: 65px;
+        line-height: 0.9;
+        margin-left: 20%;
+    }
+    .tertiary-text {
+        font-size: 20px;
+        line-height: 0.9;
+        margin-left: 20%;
+    }
+    .image {
+        margin-left: 50px;
+    }
+}
+
+/* For 1024 Resolution */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+}

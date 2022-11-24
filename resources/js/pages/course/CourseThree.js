@@ -6,16 +6,17 @@ import CourseTypeThree from "../../components/course/CourseTypeThree";
 import axiosClient from "../../utils/axiosClient";
 import PageBanner from "../../components/banner/PageBanner";
 import banner from "../../assets/images/activity-banner.png";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import "./Course.css";
-
+import { Pagination } from "../../components/pagination/PaginationOne";
 const CourseThree = () => {
     const [content, setContent] = React.useState(null);
 
     const getEvents = async () => {
-        await axiosClient
-            .get(`/api/events`)
-            .then((res) => setContent(res.data));
-        console.log(content);
+        await axiosClient.get(`/api/events`).then((res) => {
+            setContent(res.data);
+            console.log("content", res.data);
+        });
     };
 
     useEffect(() => {
@@ -29,55 +30,21 @@ const CourseThree = () => {
                 <PageBanner title="Etkinlikler" image={banner} />
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
-                        <div className="row g-5 mt--10 justify-content-center">
+                        <div className="row g-5 mt--10">
                             {content?.map((item) => (
-                                <div
-                                    className="col-12 col-sm-6 col-lg-6"
-                                    key={item.id}
-                                >
+                                <div className="col-lg-6" key={item.id}>
                                     <CourseTypeThree data={item} />
                                 </div>
                             ))}
-                            {content?.map((item) => (
-                                <div
-                                    className="col-12 col-sm-6 col-lg-6"
-                                    key={item.id}
-                                >
-                                    <CourseTypeThree data={item} />
-                                </div>
-                            ))}
-
-                            {/*
-                            {content?.map((item) => (
-                                <div className="m-4">
-                                    <div
-                                        className="card w-100"
-                                        style={{ width: "18rem" }}
-                                    >
-                                        <img
-                                            className="card-img-top gap-2"
-                                            src=".../100px180/"
-                                            alt="Card image cap"
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                {{ item }}
-                                            </h5>
-                                            <p className="card-text">
-                                                Some quick example text to build
-                                                on the card title and make up
-                                                the bulk of the card's content.
-                                            </p>
-                                            <a
-                                                href="#"
-                                                className="btn btn-primary"
-                                            >
-                                                Go somewhere
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))} */}
+                        </div>
+                        <div className="pagination d-flex justify-content-center mt-5 pagination">
+                            <div className="">
+                                <FiArrowLeft /> Geri
+                            </div>
+                            <div></div>
+                            <div className="">
+                                İleri <FiArrowRight />
+                            </div>
                         </div>
                     </div>
                 </div>
