@@ -54,11 +54,11 @@ const HomeOne = () => {
 
             <HomeOneAbout data={mixed} />
 
-            <HomeOneCategory data={bulten} />
-
             <HomeOneTwitter />
 
-            <NewsLetterTwo />
+            <HomeOneCategory data={bulten} />
+
+            {/* <NewsLetterTwo /> */}
 
             <FooterOne />
         </>

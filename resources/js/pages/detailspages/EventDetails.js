@@ -52,7 +52,6 @@ const EventDetails = () => {
 
                 <div className="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
                     <div className="container">
-
                         <div
                             className="row g-5 border border-warning  py-3 px-2 mt--25"
                             style={{
@@ -207,7 +206,12 @@ const EventDetails = () => {
                                         backgroundColor: "orange",
                                         fontSize: "20px",
                                     }}
-                                    onClick={() => window.open(`https://twitter.com/share?ref_src=${window.location.href}`, "_blank")}
+                                    onClick={() =>
+                                        window.open(
+                                            `https://twitter.com/share?ref_src=${window.location.href}`,
+                                            "_blank"
+                                        )
+                                    }
                                     className="btn btn-lg btn-block"
                                 >
                                     {" "}

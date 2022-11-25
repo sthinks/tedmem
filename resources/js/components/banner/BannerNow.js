@@ -5,7 +5,7 @@ import headerImage from "../../assets/images/nowimage.png";
 
 function BannerNow() {
     return (
-        <div>
+        <div className="">
             <div className="col-lg-12 headerImage">
                 <img
                     style={{ width: "350px", marginTop: "150px" }}
@@ -14,7 +14,7 @@ function BannerNow() {
             </div>
 
             <div
-                className="container-fluid h-100 w-100 mt-5 "
+                className=" h-100 w-10 mt-5 "
                 style={{
                     height: "450px",
                     marginTop: "550px",

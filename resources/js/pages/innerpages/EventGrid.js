@@ -10,6 +10,7 @@ import ReactPaginate from "react-paginate";
 import PageBanner from "../../components/banner/PageBanner";
 import banner from "../../assets/images/article-banner.png";
 import "./EventGrid.css";
+import EditionCard from "../../components/card/EditionCard";
 
 const slugify = function (text) {
     var trMap = {
@@ -66,7 +67,10 @@ const EventGrid = () => {
         await axiosClient
             .get(`/api/publics?page=${currentPage}`)
             .then((res) => {
-                setContent(res.data);
+                {
+                    setContent(res.data);
+                    console.log(res.data);
+                }
             });
     };
 
@@ -88,9 +92,10 @@ const EventGrid = () => {
                                     className={`btn btn-sm`}
                                     style={{
                                         fontWeight: "bolder",
-                                        fontSize: "15px",
+                                        fontSize: "18px",
                                         backgroundColor: "#fff0e1",
                                         color: "black",
+                                        marginRight: "45px",
                                     }}
                                 >
                                     Tümünü Gör
@@ -102,15 +107,16 @@ const EventGrid = () => {
                                     className={`btn btn-lg`}
                                     style={{
                                         fontWeight: "bolder",
-                                        fontSize: "15px",
+                                        fontSize: "18px",
                                         backgroundColor: "#fff0e1",
                                         color: "black",
+                                        marginRight: "45px",
                                     }}
                                 >
                                     Analiz
                                 </button>
 
-                                <button 
+                                <button
                                     type="button"
                                     onClick={() =>
                                         handleSekme("degerlendirme-dizisi")
@@ -118,9 +124,10 @@ const EventGrid = () => {
                                     className={`btn btn-lg`}
                                     style={{
                                         fontWeight: "bolder",
-                                        fontSize: "15px",
+                                        fontSize: "18px",
                                         backgroundColor: "#fff0e1",
                                         color: "black",
+                                        marginRight: "45px",
                                     }}
                                 >
                                     Değerlendirme Dizisi
@@ -134,9 +141,10 @@ const EventGrid = () => {
                                     className="btn btn-lg"
                                     style={{
                                         fontWeight: "bolder",
-                                        fontSize: "15px",
+                                        fontSize: "18px",
                                         backgroundColor: "#fff0e1",
                                         color: "black",
+                                        marginRight: "45px",
                                     }}
                                 >
                                     Etkinlik Raporları
@@ -150,9 +158,10 @@ const EventGrid = () => {
                                     className={`btn btn-lg`}
                                     style={{
                                         fontWeight: "bolder",
-                                        fontSize: "15px",
+                                        fontSize: "18px",
                                         backgroundColor: "#fff0e1",
                                         color: "black",
+                                        marginRight: "45px",
                                     }}
                                 >
                                     Güncel
@@ -160,7 +169,7 @@ const EventGrid = () => {
                             </div>
                         )}
 
-                        <div className="row g-5">
+                        {/* <div className="row g-5">
                             {sekme?.length > 0
                                 ? sekme?.map((item) => (
                                       <div
@@ -178,7 +187,7 @@ const EventGrid = () => {
                                           <EventTwo data={item} />
                                       </div>
                                   ))}
-                        </div>
+                        </div> */}
 
                         <div className="row">
                             {sekme?.length > 0
@@ -188,22 +197,7 @@ const EventGrid = () => {
                                               className="card card-event"
                                               style={{ width: "100%" }}
                                           >
-                                              <img
-                                                  className="card-event-img"
-                                                  src={item.image}
-                                                  alt="Card image cap"
-                                              />
-                                              <div className="card-body">
-                                                  <span class="badge badge-secondary">
-                                                      Secondary
-                                                  </span>
-                                                  <h5 className="card-title">
-                                                      {item.title}
-                                                  </h5>
-                                                  <p className="card-read-more">
-                                                      Devamını Oku
-                                                  </p>
-                                              </div>
+                                              <EditionCard data={item} />
                                           </div>
                                       </div>
                                   ))
@@ -213,22 +207,7 @@ const EventGrid = () => {
                                               className="card card-event"
                                               style={{ width: "100%" }}
                                           >
-                                              <img
-                                                  className="card-event-img"
-                                                  src={item.image}
-                                                  alt="Card image cap"
-                                              />
-                                              <div className="card-body">
-                                                  <span class="badge badge-secondary">
-                                                      Secondary
-                                                  </span>
-                                                  <h5 className="card-title">
-                                                      {item.title}
-                                                  </h5>
-                                                  <p className="card-read-more">
-                                                      Devamını Oku
-                                                  </p>
-                                              </div>
+                                              <EditionCard data={item} />
                                           </div>
                                       </div>
                                   ))}
