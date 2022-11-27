@@ -2,25 +2,14 @@ import React from "react";
 import { NavItem } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./CourseActivity.css";
-
+import { AiOutlineClockCircle } from "react-icons/ai";
 const CourseTypeThree = ({ data, classes, bgWhite }) => {
     const formattedDate = new Date(data.date);
     const history = useNavigate();
     return (
-        // <div className="col-6">
-        //     <div className="activity-card">
-        //         <div className="activity-card-image">
-        //             <img className="" src={data.image} />
-        //         </div>
-        //         <div className="activity-card-content">
-        //             Lorem asdasd asdasd asdasd asdasd asdasd asdasd asdasd
-        //             asdasd asdasd asdasd asdasd
-        //         </div>
-        //     </div>
-        // </div>
-
+        
         <div>
-            <div className="inner card-content">
+            <div className="card-content">
                 <div className="thumbnail">
                     <img
                         className="activity-card-image"
@@ -28,11 +17,11 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
                         alt="Course Thumb"
                     />
                 </div>
-                <div className="content d-flex justify-content-between flex-column course-card-text">
-                    <span className="badge">Etkinlikler</span>
-                    <h6 className="title">{data.title}</h6>
-                    <div className="card-content-date">
-                        {formattedDate.toLocaleDateString("en-GB")}
+                <div className="activity-content d-flex justify-content-between flex-column course-card-text">
+                    <span className="activity-badge">Etkinlikler</span>
+                    <h6 className="activity-title">{data.title}</h6>
+                    <div className="activity-content-date">
+                    <AiOutlineClockCircle className="activity-date-icon" />  {formattedDate.toLocaleDateString("en-GB")}
                     </div>
                     <div className="card-link-text">
                         <p
@@ -46,6 +35,8 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
                 </div>
             </div>
         </div>
+        
+       
     );
 };
 

@@ -27,12 +27,12 @@ const CourseThree = () => {
         <>
             <SEO title="TEDMEM | Etkinlikler" />
             <Layout>
-                <PageBanner title="Etkinliklerr" image={banner} />
+                <PageBanner title="Etkinlikler" image={banner} />
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row g-5 mt--10">
                             {content?.map((item) => (
-                                <div className="col-lg-6" key={item.id}>
+                                <div className="col-lg-6 " key={item.id}>
                                     <CourseTypeThree data={item} />
                                 </div>
                             ))}
