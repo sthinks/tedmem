@@ -27,7 +27,7 @@ const CourseThree = () => {
         <>
             <SEO title="TEDMEM | Etkinlikler" />
             <Layout>
-                <PageBanner title="Etkinlikler" image={banner} />
+                <PageBanner title="Etkinliklerr" image={banner} />
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row g-5 mt--10">
@@ -37,6 +37,7 @@ const CourseThree = () => {
                                 </div>
                             ))}
                         </div>
+                        {/* Pagination */}
                         <div className="pagination d-flex justify-content-center mt-5 pagination">
                             <div className="">
                                 <FiArrowLeft /> Geri

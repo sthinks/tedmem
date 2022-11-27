@@ -7,13 +7,20 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
     const formattedDate = new Date(data.date);
     const history = useNavigate();
     return (
-        <div
-            className={`edu-card card-type-1 radius-small ${
-                classes ? classes : ""
-            } ${bgWhite === "enable" ? "bg-white" : ""}`}
-            style={{ width: "100%", height: "100%" }}
-        >
-            <div className="inner">
+        // <div className="col-6">
+        //     <div className="activity-card">
+        //         <div className="activity-card-image">
+        //             <img className="" src={data.image} />
+        //         </div>
+        //         <div className="activity-card-content">
+        //             Lorem asdasd asdasd asdasd asdasd asdasd asdasd asdasd
+        //             asdasd asdasd asdasd asdasd
+        //         </div>
+        //     </div>
+        // </div>
+
+        <div>
+            <div className="inner card-content">
                 <div className="thumbnail">
                     <img
                         className="activity-card-image"
@@ -21,10 +28,7 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
                         alt="Course Thumb"
                     />
                 </div>
-                <div
-                    className="content d-flex justify-content-between flex-column"
-                    style={{ height: "270px" }}
-                >
+                <div className="content d-flex justify-content-between flex-column course-card-text">
                     <span className="badge">Etkinlikler</span>
                     <h6 className="title">{data.title}</h6>
                     <div className="card-content-date">

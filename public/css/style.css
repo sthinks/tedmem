@@ -78,6 +78,7 @@
 }
 body {
     margin: 0;
+    font-family: 'Chivo', sans-serif !important;
     font-family: var(--bs-body-font-family);
     font-size: var(--bs-body-font-size);
     font-weight: var(--bs-body-font-weight);
@@ -28743,9 +28744,10 @@ input[type="radio"] ~ label::after {
     margin-bottom: 20px;
 }
 .form-group input {
+    background-color: #f3f4f8;
     border: var(--border-width) solid var(--color-border);
-    border-radius: var(--radius);
-    width: 500px;
+    border-radius: 5px;
+    width: 100%;
     height: 50px;
     font-size: 16px;
     padding: 0 15px;
@@ -28754,9 +28756,10 @@ input[type="radio"] ~ label::after {
     border-color: var(--color-primary);
 }
 .form-group textarea {
+    background-color: #f3f4f8;
     min-height: 193px;
     border: var(--border-width) solid var(--color-border);
-    border-radius: var(--radius);
+    border-radius: 5px;
     resize: none;
     padding: 15px;
     font-size: 16px;

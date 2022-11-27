@@ -64,10 +64,9 @@ function ContactMeForm() {
             {({ errors, touched, isSubmitting }) => (
                 <Form>
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-5">
                             <div className="form-group">
                                 <Field
-                                    style={{ background: "#f0f6ffa6" }}
                                     type="text"
                                     className={`form-control form-control-lg ${
                                         errors.name &&
@@ -85,10 +84,9 @@ function ContactMeForm() {
                             </div>
                         </div>
 
-                        <div className="col-lg-6">
+                        <div className="col-lg-5">
                             <div className="form-group">
                                 <Field
-                                    style={{ background: "#f0f6ffa6" }}
                                     type="email"
                                     className={`form-control form-control-lg ${
                                         errors.mail &&
@@ -96,7 +94,7 @@ function ContactMeForm() {
                                         "border border-danger"
                                     }`}
                                     name="mail"
-                                    placeholder="E-posta"
+                                    placeholder="E-Posta"
                                 />
                                 <ErrorMessage
                                     component="div"
@@ -106,10 +104,9 @@ function ContactMeForm() {
                             </div>
                         </div>
 
-                        <div className="col-lg-12">
+                        <div className="col-lg-10">
                             <div className="form-group">
                                 <Field
-                                    style={{ background: "#f0f6ffa6" }}
                                     type="text"
                                     className={`form-control form-control-lg ${
                                         errors.subject &&
@@ -126,10 +123,9 @@ function ContactMeForm() {
                                 />
                             </div>
                         </div>
-                        <div className="col-lg-12">
+                        <div className="col-lg-10">
                             <div className="form-group">
                                 <Field
-                                    style={{ background: "#f0f6ffa6" }}
                                     as="textarea"
                                     className={`form-control ${
                                         errors.message &&

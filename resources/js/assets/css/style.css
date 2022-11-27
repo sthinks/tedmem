@@ -37,4 +37,18 @@
     .container-xxl {
         max-width: 1500px;
     }
+    
 }
+*{
+    font-family: 'Chivo', sans-serif !important;
+}
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 940px;
+}
+}
+
+
+
+
+

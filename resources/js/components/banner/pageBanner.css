@@ -1,0 +1,26 @@
+.page-banner-title{
+    position: absolute;
+    color: white;
+}
+.page-banner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-banner-content-white{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff6e;
+}
+.page-banner-content-none{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff00;
+}
+.page-banner-image{
+    width: 100%;
+    height: auto;
+}
