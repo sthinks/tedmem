@@ -21,7 +21,7 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
                     <span className="activity-badge">Etkinlikler</span>
                     <h6 className="activity-title">{data.title}</h6>
                     <div className="activity-content-date">
-                    <AiOutlineClockCircle className="activity-date-icon" />  {formattedDate.toLocaleDateString("en-GB")}
+                        <AiOutlineClockCircle className="activity-date-icon" />  {formattedDate.toLocaleDateString("en-GB")}
                     </div>
                     <div className="card-link-text">
                         <p
@@ -31,8 +31,9 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
                         >
                             Devamını Oku
                         </p>
-                    </div>
                 </div>
+                </div>
+                
             </div>
         </div>
         

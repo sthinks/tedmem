@@ -9,7 +9,7 @@
 }
 .card-link-text {
     margin-top: 20px;
-    border-top: 1px solid gray;
+    border-top: 1px solid #c9c6c6;
     display: flex;
     padding: 10px;
     justify-content: end;
@@ -36,6 +36,7 @@
 }
 .activity-card-image {
     width: 100%;
+    border-radius: 5px 5px 0px 0px;
     height: 300px;
     object-fit: cover;
     object-position: 100% 5%;
@@ -161,6 +162,9 @@
 }
 
 @media only screen and (min-device-width: 991px) and (max-device-width: 1150px) {
+    .contact-information{
+        height: 83%;
+    }
     .activity-content {
         margin: 0px 0px 0px 0px !important;
         padding: 25px;
@@ -244,6 +248,7 @@
     .activity-badge{
         width: 29%!important;
     }
+    
 }
 
 @media only screen and (min-device-width: 1600px) and (max-device-width: 1920px) {

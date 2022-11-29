@@ -35,8 +35,30 @@ const EventGrid = () => {
     const [content, setContent] = React.useState([]);
     const [sekme, setSekme] = React.useState(null);
     let { slug } = useParams();
-    const slugged = slug && slugify(slug);
+    const btnValue = [
+        {
+            title: "Tümünü Gör",
+            slug:""
+        }, 
+        {
+            title:"Analiz",
+            slug:"analiz-dizisi"
+        },
+        {
+            title:"Değerlendirme",
+            slug:"degerlendirme-dizisi"
+        },
+        {
+            title:"Yayın",
+            slug:"etkinlik-raporları"
+        },
+        {
+            title:"Güncel",
+            slug:"guncel-yayinlar-dizisi"
+        }
+    ];
 
+    const slugged = slug && slugify(slug);
     const getPublics = async () => {
         await axiosClient
             .get(
@@ -46,9 +68,19 @@ const EventGrid = () => {
             )
             .then((res) => {
                 setContent(res.data);
-                console.log("a", res.data);
             });
     };
+
+   useEffect(()=> {
+    axiosClient
+    .get('/api/publics/')
+    .then((res) => {
+        console.log("data",res.data)
+    });
+   },[]) 
+      
+
+
 
     useEffect(() => {
         getPublics();
@@ -80,94 +112,27 @@ const EventGrid = () => {
             <Layout>
                 <PageBanner title="Yayınlar" image={banner} />
                 <div className="edu-elements-area edu-section-gap bg-color-white">
-                    <div className="container">
-                        {slugged == undefined && (
-                            <div
-                                className="d-"
-                                style={{ marginBottom: "70px" }}
-                            >
-                                <button
-                                    type="button"
-                                    onClick={() => setSekme([])}
-                                    className={`btn btn-sm`}
-                                    style={{
-                                        fontWeight: "bolder",
-                                        fontSize: "18px",
-                                        backgroundColor: "#fff0e1",
-                                        color: "black",
-                                        marginRight: "45px",
-                                    }}
-                                >
-                                    Tümünü Gör
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() => handleSekme("analiz-dizisi")}
-                                    className={`btn btn-lg`}
-                                    style={{
-                                        fontWeight: "bolder",
-                                        fontSize: "18px",
-                                        backgroundColor: "#fff0e1",
-                                        color: "black",
-                                        marginRight: "45px",
-                                    }}
-                                >
-                                    Analiz
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        handleSekme("degerlendirme-dizisi")
-                                    }
-                                    className={`btn btn-lg`}
-                                    style={{
-                                        fontWeight: "bolder",
-                                        fontSize: "18px",
-                                        backgroundColor: "#fff0e1",
-                                        color: "black",
-                                        marginRight: "45px",
-                                    }}
-                                >
-                                    Değerlendirme Dizisi
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        handleSekme("etkinlik-raporları")
-                                    }
-                                    className="btn btn-lg"
-                                    style={{
-                                        fontWeight: "bolder",
-                                        fontSize: "18px",
-                                        backgroundColor: "#fff0e1",
-                                        color: "black",
-                                        marginRight: "45px",
-                                    }}
-                                >
-                                    Etkinlik Raporları
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        handleSekme("guncel-yayinlar-dizisi")
-                                    }
-                                    className={`btn btn-lg`}
-                                    style={{
-                                        fontWeight: "bolder",
-                                        fontSize: "18px",
-                                        backgroundColor: "#fff0e1",
-                                        color: "black",
-                                        marginRight: "45px",
-                                    }}
-                                >
-                                    Güncel
-                                </button>
-                            </div>
-                        )}
+                <div className="container d-flex flex-wrap">
+                    
+                        { slugged == undefined &&   
+                        
+                            btnValue.map((item) => (
+                                <div className="btn-container ">
+                                    <button
+                                        type="button"
+                                        onClick={() => handleSekme(item.slug)}
+                                        className="event-button"
+                                    >
+                                        {item.title}
+                                    </button>
+                                </div>)
+                        )}  
+                   
+      
+                </div>
+                <div className="container">
+                   
+                     
 
                         {/* <div className="row g-5">
                             {sekme?.length > 0
@@ -194,8 +159,7 @@ const EventGrid = () => {
                                 ? sekme?.map((item) => (
                                       <div className="col-lg-3" key={item.id}>
                                           <div
-                                              className="card card-event"
-                                              style={{ width: "100%" }}
+                                              className="card card-event event-card-container"
                                           >
                                               <EditionCard data={item} />
                                           </div>
@@ -204,8 +168,7 @@ const EventGrid = () => {
                                 : content?.data?.map((item) => (
                                       <div className="col-lg-3" key={item.id}>
                                           <div
-                                              className="card card-event"
-                                              style={{ width: "100%" }}
+                                              className="card card-event event-card-container"
                                           >
                                               <EditionCard data={item} />
                                           </div>

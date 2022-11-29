@@ -76,7 +76,7 @@
         height: 35px;
     }
     .footer-style-default .footer-top{
-        margin-top: 60px;
+        margin-top: 120px;
     }
     .footer-card {
         position: absolute;
@@ -152,7 +152,7 @@
         height: 35px;
     }
     .footer-style-default .footer-top{
-        margin-top: 60px;
+        margin-top: 120px;
     }
     .footer-card {
         position: absolute;
@@ -232,7 +232,7 @@
         height: auto;
     }
     .footer-style-default .footer-top {
-        margin-top: 35px;
+        margin-top: 80px;
     }
     .footer-card-button {
         font-size: 12px;
@@ -332,9 +332,9 @@
     }
     
     .contact-information {
-        height: 86%;
-        padding: 15px 8px 0px 23px;
-        width: 100%;
+        width: 93% !important;
+        padding: 25px 29px 0px 25px;
+        height: 87%;
     }
     .contact-information-title {
         margin: 0px 0px 5px 0px;
@@ -378,7 +378,7 @@
         font-size: 14px;
     }
     .footer-style-default .footer-top {
-        margin-top: 35px;
+        margin-top: 120px;
         padding: 24px 0;
     }
     .footer-card {
@@ -433,9 +433,9 @@
 
 
 @media only screen and (min-device-width: 1440px) and (max-device-width: 1600px) {
-    .contact-information{
-        padding: 25px 8px 0px 35px;
-        width: 100%;
+    .contact-information {
+        width: 93% !important;
+        padding: 25px 29px 0px 31px;
         height: 87%;
     }
     .contact-information-title{
@@ -518,9 +518,9 @@
 }
 
 @media only screen and (min-device-width: 1600px) and (max-device-width: 2560px) {
-    .contact-information{
-        padding: 25px 8px 0px 35px;
-        width: 100%;
+    .contact-information {
+        width: 79% !important;
+        padding: 25px 20px 0px 30px;
         height: 87%;
     }
     .contact-information-title{
@@ -545,8 +545,8 @@
         font-size: 14px !important;
     }
     .footer-card{
-        top: -8%;
-        left: 27%;
+        top: -12%;
+        left: 30%;
     }
     .footer-card-image{
         width: 80%;

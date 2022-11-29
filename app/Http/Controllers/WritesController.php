@@ -18,7 +18,7 @@ class WritesController extends Controller
         $data->map(function($item){
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -36,14 +36,14 @@ class WritesController extends Controller
         $write->pdf_link = array_map(function ($file) {
             return url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $file->download_link)
                 )
             );
         }, $pdf_files);
         $write->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $write->image)
                 )
             );

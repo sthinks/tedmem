@@ -21,7 +21,7 @@ class HomeController extends Controller
         $data->map(function($item){
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -36,7 +36,7 @@ class HomeController extends Controller
             $item->category_info = Category::where('id',$item->category_id)->first();
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -51,7 +51,7 @@ class HomeController extends Controller
         $data->map(function($item){
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -68,14 +68,14 @@ class HomeController extends Controller
             $item->pdf_link = array_map(function ($file) {
                 return url(
                     sprintf(
-                        "storagem/%s",
+                        "storage/%s",
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -92,14 +92,14 @@ class HomeController extends Controller
             $item->pdf_link = array_map(function ($file) {
                 return url(
                     sprintf(
-                        "storagem/%s",
+                        "storage/%s",
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );

@@ -2,8 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./editionCard.css";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { NavItem } from "react-bootstrap";
+import { useEffect } from "react";
+
 
 function EditionCard({ data }) {
+
+
+
     const formattedDate = new Date(data.created_at);
     return (
         <div className="card card-event">
@@ -13,21 +19,20 @@ function EditionCard({ data }) {
                 alt="Card image cap"
             />
             <div className="card-body">
-                <span
-                    class="badge badge-secondary ml-5"
-                    style={{ backgroundColor: "#fff0e1" }}
-                >
-                    Secondary
-                </span>
-                <div className="card-date" style={{ height: "150px" }}>
+                <div className="edition-badge">
+                    <span className="edition-badge-icon">
+                        {data.category}
+                    </span>
+                </div>
+                <div className="card-date">
                     <h5 className="card-title">{data.title}</h5>
-                    <div>
-                        <AiOutlineClockCircle className="card-date-icon" />{" "}
+                    <div className="card-date-content">
+                        <AiOutlineClockCircle className="card-date-icon" />
                         {formattedDate.toLocaleDateString("en-GB")}
                     </div>
                 </div>
                 <p className="card-read-more">
-                    <Link to={`/event-details/${data.slug}`}>Devamını Oku</Link>
+                    <Link to={`/yayinlar-detay/${data.slug}`}>Devamını Oku</Link>
                 </p>
             </div>
         </div>

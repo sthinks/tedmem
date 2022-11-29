@@ -1,20 +1,31 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaFilePdf } from "react-icons/fa";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
-import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
 import axiosClient from "../../utils/axiosClient";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import { BsFillFileEarmarkFill } from "react-icons/bs";
 import { BsFillFileEarmarkPersonFill } from "react-icons/bs";
 import { BsFillShareFill } from "react-icons/bs";
 import { Helmet } from "react-helmet";
+import banner from "../../assets/images/eventdetails.png";
+import BannerEvent from "../../components/banner-event/BannerEvent";
+import  benzerYazilar  from "../../assets/images/benzer-yazilar.png";
+import  { FaFacebookF, FaTwitter, FaPinterestP }  from "react-icons/fa";
+import "./eventDetails.css";
+import EditionCard from "../../components/card/EditionCard";
 
 const EventDetails = () => {
     const { slug } = useParams();
-    const [content, setContent] = React.useState(null);
-    const [text, setText] = React.useState("");
+    const [content, setContent] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [allCategory, setAllCategory] = useState([]);
+    const [similarDatas, setSimilarDatas] = useState([]);
+    const [allData, setAllData] = useState([]);
+    const [loading,setLoading] = useState(true)
+
+    const [text, setText] = useState("");
 
     const handleClick = () => {
         console.log(content);
@@ -22,9 +33,29 @@ const EventDetails = () => {
         document.getElementById("devam").remove();
     };
 
-    const getDetails = async () => {
-        await axiosClient.get(`/api/public-details/${slug}`).then((res) => {
+    useEffect(() => {
+        axiosClient
+            .get('/api/publics/')
+            .then((res) => {
+                setAllData(res.data.data);
+                
+                setAllCategory(res.data.data.category);
+                const filitre = allCategory.filter((item, index) => {
+                    return allCategory.indexOf(item) === index;
+                });
+                
+            }).catch((err) => {
+                console.log(err)
+            }).finally(() => {
+                setLoading(false)
+                getAllCategory();
+            })
+    },[])
+
+    useEffect(() => {
+        axiosClient.get(`/api/public-details/${slug}`).then((res) => {
             setContent(res.data);
+            setCategory(res.data.category);
             setText(
                 res.data.content
                     .replace(
@@ -33,24 +64,103 @@ const EventDetails = () => {
                     )
                     .slice(0, 250)
             );
-        });
-    };
+        }).catch((err) => {
+            console.log(err)
+        }).finally(() => {
+            setLoading(false)
+        })
+    },[])
 
     useEffect(() => {
-        getDetails();
-    }, []);
+        filterHandler(category)
+        console.log("allcatet",allCategory);
+    },[category])
+
+    const filterHandler = (value) => {
+        const filteredItem = allData.filter((item) => {
+            return item.category === value;
+        })
+        setSimilarDatas(filteredItem);
+    }
+    const getAllCategory = () => {
+        const value = allData.map((item) => {
+            setAllCategory(...allCategory,item.category);
+        })
+    }
+   
+
     return (
+        !loading &&
         <>
             <SEO title={content?.title} />
             <Layout>
-                <BreadcrumbOne
-                    title={content?.title}
-                    rootUrl="/"
-                    parentUrl="Anasayfa"
-                    currentUrl="Yayın Detay"
-                />
+              <BannerEvent title={content?.title} image={banner}  date={content?.created_at} author={content?.editor}/> 
 
-                <div className="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
+                <div className="container event-detail" >
+                    <div className="d-flex event-detail-container">
+                        <div className="col-xl-9 event-detail-content">
+                            <div  dangerouslySetInnerHTML={{__html: content?.content}} />
+                            <div className="event-detail-share d-flex justify-content-between">
+                                    <div className="">
+                                    <div className="btn-container ">
+                                    <button
+                                        type="button"
+                                        className="event-detail-button"
+                                    >
+                                        {content?.category}
+                                    </button>
+                                </div>
+                                    </div>
+                                    <div className="d-flex">
+                                        <h6 style={{marginRight:"15px"}}>Paylaş</h6>
+                                        <a href="https://www.facebook.com/tedmem"  target="_blank">
+                                            <div className="social-media-icon-card  mb-3" 
+                                                            style={{backgroundColor:"#e9eef5"}}> 
+                                                <FaFacebookF style={{color:"#124d97"}} />
+                                            </div>
+                                        </a>
+                                        <a href="https://twitter.com/tedmem"  target="_blank">
+                                            <div className="social-media-icon-card ml-4 mb-3" 
+                                                            style={{backgroundColor:"#ebf6fe"}}>
+                                                <FaTwitter style={{color:"#01a4f4"}} />
+                                            </div>
+                                        </a>
+                                        <a href="https://twitter.com/tedmem"  target="_blank">
+                                            <div className="social-media-icon-card ml-4 mb-3"
+                                                            style={{backgroundColor:"#fce7ea"}}>
+                                                <FaPinterestP style={{color:"#da2347"}} />
+                                            </div>
+                                        </a>
+                                    </div>
+                            </div>
+                            <div className="event-detail-footer">
+                                <img className="event-detail-same" src={benzerYazilar} />
+                                <p> Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+                                <div className="row">
+                                    {similarDatas?.map((item) => (
+                                    <div className="col-xl-4">
+                                        <div className="event-detail-similar-posts">
+                                            <EditionCard data={item} />  
+                                        </div>
+                                    </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xl-3 event-detail-cateogry">
+                            <input type="search" />
+                            <h5 className="detail-category">Kategoriler</h5>
+                            {allData.map((item,index) => (
+                                    <div>
+                                        {item.category}
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
                     <div className="container">
                         <div
                             className="row g-5 border border-warning  py-3 px-2 mt--25"
@@ -221,8 +331,8 @@ const EventDetails = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                     class="modal fade"
                     id="yayın"
                     tabindex="-1"
@@ -260,7 +370,7 @@ const EventDetails = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </Layout>
         </>
     );

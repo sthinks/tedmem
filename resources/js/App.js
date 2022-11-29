@@ -65,7 +65,7 @@ function App() {
 
                     <Route
                         exact
-                        path={"/event-details/:slug"}
+                        path={"/yayinlar-detay/:slug"}
                         element={<EventDetails />}
                     />
                     <Route path="*" element={<Error />} />
