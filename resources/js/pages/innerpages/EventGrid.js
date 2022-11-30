@@ -131,29 +131,6 @@ const EventGrid = () => {
       
                 </div>
                 <div className="container">
-                   
-                     
-
-                        {/* <div className="row g-5">
-                            {sekme?.length > 0
-                                ? sekme?.map((item) => (
-                                      <div
-                                          className="col-lg-4 col-md-6 col-sm-6 col-12"
-                                          key={item.id}
-                                      >
-                                          <EventTwo data={item} />
-                                      </div>
-                                  ))
-                                : content?.data?.map((item) => (
-                                      <div
-                                          className="col-lg-4 col-md-6 col-sm-6 col-12"
-                                          key={item.id}
-                                      >
-                                          <EventTwo data={item} />
-                                      </div>
-                                  ))}
-                        </div> */}
-
                         <div className="row">
                             {sekme?.length > 0
                                 ? sekme?.map((item) => (
@@ -175,22 +152,6 @@ const EventGrid = () => {
                                       </div>
                                   ))}
                         </div>
-                        {/* {slugged == undefined && (
-                            <div className="row">
-                                <div className="col-lg-12 mt--60 text-center">
-                                    <ReactPaginate
-                                        onPageChange={hanndleChange}
-                                        breakLabel="..."
-                                        nextLabel=">"
-                                        previousLabel="<"
-                                        containerClassName={"edu-pagination"}
-                                        pageRangeDisplayed={5}
-                                        pageCount={content?.last_page}
-                                        activeClassName={"active"}
-                                    />
-                                </div>
-                            </div>
-                        )} */}
                     </div>
                 </div>
             </Layout>

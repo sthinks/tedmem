@@ -8,10 +8,9 @@ import { useEffect } from "react";
 
 function EditionCard({ data }) {
 
-
-
     const formattedDate = new Date(data.created_at);
     return (
+        <Link to={`/yayinlar-detay/${data.slug}`}>
         <div className="card card-event">
             <img
                 className="card-event-img"
@@ -36,6 +35,7 @@ function EditionCard({ data }) {
                 </p>
             </div>
         </div>
+        </Link>
     );
 }
 

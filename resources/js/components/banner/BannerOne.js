@@ -15,6 +15,7 @@ import PageBanner from "./PageBanner";
 import icon1 from "../../assets/images/iconss.png";
 import icon2 from "../../assets/images/iconsss.png";
 import "./bannerOne.css";
+import { useEffect } from "react";
 
 const BannerOne = ({ data }) => {
     const [writesResults, setWritesResults] = React.useState([]);
@@ -25,7 +26,9 @@ const BannerOne = ({ data }) => {
             handleQuery();
         }
     };
-
+    useEffect(() => {
+        console.log("search",data);
+    },[query])
     const handleQuery = (e) => {
         var writesResults = data?.filter((data) =>
             data.title.toLowerCase().match(query)
