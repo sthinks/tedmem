@@ -7,8 +7,7 @@ function BannerNow() {
     return (
         <div className="">
             <div className="col-lg-12 headerImage">
-                <img
-                    style={{ width: "350px", marginTop: "150px" }}
+                <img className="header-now-banner"
                     src={headerImage}
                 />
             </div>
@@ -22,7 +21,7 @@ function BannerNow() {
                 }}
             >
                 <div className="row d-flex justify-content-center background">
-                    <div className="text col-lg-6 ">
+                    <div className="text col-lg-6  col-sm-12 now-text-container">
                         <p className="primary-text">İlk Bakış</p>
                         <p className="secondary-text">YKS 2022'ye</p>
                         <p className="tertiary-text">
@@ -31,7 +30,7 @@ function BannerNow() {
                         </p>
                         <button className="button">Devamını Oku</button>
                     </div>
-                    <div className="image col-lg-6">
+                    <div className="image col-lg-6 col-sm-12 image-banner-now">
                         <img src={contentImage} />
                     </div>
                 </div>

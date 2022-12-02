@@ -44,7 +44,7 @@ const HomeOne = () => {
         <>
             <SEO title="TEDMEM | Ortak Paydamız Eğitim" />
 
-            <HeaderTop />
+            {/* <HeaderTop /> */}
 
             <HeaderOne styles="header-transparent header-style-2" />
 

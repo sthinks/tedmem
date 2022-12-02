@@ -11,7 +11,7 @@ const HomeOneAbout = ({ data }) => {
             <div className="container eduvibe-animated-shape">
                 <div className="row content">
                     {data?.map((item) => (
-                        <div className="col-lg-3" key={item.id}>
+                        <div className="col-lg-3 col-sm-12 mt-5" key={item.id}>
                             <div
                                 className="card card-event"
                                 style={{ width: "100%" }}

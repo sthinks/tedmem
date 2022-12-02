@@ -40,23 +40,18 @@ const EventDetails = () => {
             .get("/api/publics/")
             .then((res) => {
                 setAllData(res.data.data);
-                let categories = res.data.data.map((item) => {
-                    const a= [{category: item.category, slug: item.category_slug},]
-                    return a;
-                })
-                console.log(categories);
-                setAllCategory(categories);
-                console.log(categories);
-
+               
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 setLoading(false);
-                getAllCategory();
             });
     }, []);
+
+    
+
 
     useEffect(() => {
         setLoading(true);
@@ -84,6 +79,7 @@ const EventDetails = () => {
 
     useEffect(() => {
         filterHandler(category);
+        sameHandler();
     }, [category]);
 
     const filterHandler = (value) => {
@@ -92,6 +88,21 @@ const EventDetails = () => {
         });
         setSimilarDatas(filteredItem);
     };
+    const sameHandler = () => {
+        const a = allData.reduce((acc, curr) => {
+            if (!acc[curr.category]) {
+                acc[curr.category] = new Set();
+            }
+
+            acc[curr.category].add(curr.category_slug)
+
+            return acc;
+        }, {})
+
+        let result = Object.entries(a).map((el) => ({ category: el[0], slug: el[1] }))
+        console.log(result);
+        setAllCategory(result);
+    }
   
     return (
         !loading && (
@@ -202,15 +213,16 @@ const EventDetails = () => {
                                 <h5 className="detail-category">Kategoriler</h5>
                                 {allCategory.map((item) => (
                                  
-                                  item.map((data) => (
+                                  
                                     <div>
-                                        <li className="category-list-item">
-                                        <Link to={`/yayinlar/${data.slug}`}>{data.category}</Link>
+                                        <li className="category-list-item" key={item.category}>
+                                            <Link to={`/yayinlar/${item.category}`}>{item.category}</Link>
                                         </li>
                                     </div>
-                                  ))
+                                  
                                     
-                                ))}
+                                ))
+                                } 
                             </div>
                         </div>
                     </div>

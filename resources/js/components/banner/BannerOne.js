@@ -116,7 +116,7 @@ const BannerOne = ({ data }) => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="col-4  p-3">
+                                    <div className="col-xl-4 col-lg-4 col-sm-6  p-3">
                                         <Link to="/yazilar/degerlendirme">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
@@ -129,7 +129,7 @@ const BannerOne = ({ data }) => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="col-4  p-3">
+                                    <div className="col-xl-4 col-lg-4 col-sm-6  p-3">
                                         <Link to="/yazilar/soylesi">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
@@ -142,7 +142,7 @@ const BannerOne = ({ data }) => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="col-4  p-3">
+                                    <div className="col-xl-4 col-lg-4 col-sm-6  p-3">
                                         <Link to="/yazilar/gorus">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
@@ -155,7 +155,7 @@ const BannerOne = ({ data }) => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="col-4  p-3">
+                                    <div className="col-xl-4 col-lg-4 col-sm-6  p-3">
                                         <Link to="/etkinlikler">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
@@ -168,7 +168,7 @@ const BannerOne = ({ data }) => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="col-4  p-3">
+                                    <div className="col-xl-4 col-lg-4 col-sm-6  p-3">
                                         <Link to="/bulten">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img

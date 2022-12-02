@@ -1,0 +1,62 @@
+.header-background {
+  background-color: #e1e1e1b8 !important;
+}
+.logo-text {
+  height: 55%;
+  margin: 20px 10px 10px 15px;
+  width: 200px;
+  border-left: 1px solid rgb(114, 114, 114);
+}
+.logo-text > p {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.banner-one-results {
+  background-color: white;
+  border: 0;
+  margin-top: 15px;
+  position: absolute;
+  border-radius: 5px;
+  width: 250px;
+  height: 450px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.header-one-inputbar {
+  border: 0;
+  border-radius: 5px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  font-size: 13px;
+  font-weight: 400;
+  width: 250px;
+  padding: 15px 15px 15px 35px;
+  outline: none;
+}
+.header-one-search-icon {
+  position: absolute;
+  top: 11px;
+  font-size: 17px;
+  right: 235px;
+  color: black;
+}
+.header-input-result-detail {
+}
+
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
+  .edu-header.disable-transparent .logo a {
+    height: 60px;
+    line-height: 90px;
+    margin-left: 150px !important;
+  }
+  .logo-text {
+    height: 55%;
+    margin: 15px 10px 10px 15px;
+  }
+  .logo-text > p {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-left: 5px;
+  }
+}

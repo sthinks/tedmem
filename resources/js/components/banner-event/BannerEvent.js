@@ -13,7 +13,9 @@ function BannerEvent({title, image, date, author}) {
                     {title}
                 </div>
                 <div className='banner-event-date-author d-flex'>
-                    <p>{author}</p> <p><AiOutlineClockCircle className="page-banner-date-icon" /> {formattedDate.toLocaleDateString("en-GB")}</p> 
+                    <p>{author}</p> {date && 
+                        <p><AiOutlineClockCircle className="page-banner-date-icon" /> {formattedDate.toLocaleDateString("en-GB")}</p> 
+                    }
                 </div>
             </div>
         </div>

@@ -18,11 +18,21 @@ function EditionCard({ data }) {
                 alt="Card image cap"
             />
             <div className="card-body">
-                <div className="edition-badge">
-                    <span className="edition-badge-icon">
-                        {data.category}
-                    </span>
-                </div>
+                {data.category &&
+                        <div className="edition-badge">
+                            <span className="edition-badge-icon">
+                                {data.category}
+                            </span>
+                        </div>
+                }
+                {!data.category &&
+                    <div className="edition-badge">
+                            <span className="edition-badge-icon " style={{ backgroundColor: "white" }}>
+                            {data.category}
+                        </span>
+                    </div>
+                }
+                
                 <div className="card-date">
                     <h5 className="card-title">{data.title}</h5>
                     <div className="card-date-content">

@@ -15,6 +15,7 @@ import HomeOne from "./pages/homepages/HomeOne";
 import Error from "./pages/innerpages/Error";
 import BultenPage from "./pages/innerpages/BultenPage";
 
+
 function App() {
     return (
         <Router>
@@ -46,7 +47,8 @@ function App() {
                         exact
                         path={"/yazilar-detay/:slug"}
                         element={<CourseTwoo />}
-                    />
+                    />  
+                   
 
                     <Route
                         exact

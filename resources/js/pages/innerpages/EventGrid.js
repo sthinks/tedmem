@@ -34,7 +34,18 @@ const slugify = function (text) {
 const EventGrid = () => {
     const [content, setContent] = React.useState([]);
     const [sekme, setSekme] = React.useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(4);
+    
     let { slug } = useParams();
+
+    //Pagination-start
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = content.slice(firstPostIndex,lastPostIndex);
+
+
+    //Pagination-end
     const btnValue = [
         {
             title: "Tümünü Gör",

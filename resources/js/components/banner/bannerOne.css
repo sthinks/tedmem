@@ -1,30 +1,107 @@
 .banner-one-input {
-    position: relative;
-    height: 76px !important;
-    border-radius: 5px !important;
+  position: relative;
+  height: 76px !important;
+  font-size: 20px !important;
+  border-radius: 5px !important;
 }
 .input-result {
-    border-radius: 5px;
-    height: 35px;
-    background-color: #fff5e859;
-    font-size: 20px;
+  border-radius: 5px;
+  height: 35px;
+  background-color: #fff5e859;
+  font-size: 20px;
 }
 .search-icon {
-    position: relative;
-    right: 4%;
-    color: orange;
-    font-weight: bold;
-    font-size: 22px;
-    margin: 16px 0px 14px -23px;
+  position: relative;
+  right: 4%;
+  color: orange;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 16px 0px 14px -23px;
 }
 .banner-one-link {
-    border: 1px solid #d3d3d363;
-    border-radius: 5px;
+  border: 1px solid #d3d3d363;
+  border-radius: 5px;
 }
 .banner-one-link-icon {
-    width: 25px;
-    margin-left: 15px;
+  width: 25px;
+  margin-left: 15px;
 }
 .banner-one-link-text {
-    margin: 17px 13px 18px 27px;
+  margin: 17px 13px 18px 27px;
+}
+
+@media only screen and (min-device-width: 200px) and (max-device-width: 400px) {
+  .banner-one-link-text {
+    margin: 8px 0px 8px 50px;
+  }
+  .banner-one-link-icon {
+    margin-left: 35px;
+  }
+  .banner-one-input {
+    font-size: 13px !important;
+    height: 60px !important;
+  }
+  .search-icon {
+    right: 9%;
+    font-size: 21px;
+    margin: 11px 0px 14px -23px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+  .banner-one-link-text {
+    margin: 10px 0px 10px 10px;
+    font-size: 10px;
+  }
+  .banner-one-link-icon {
+    width: 15px;
+    margin-left: 18px;
+  }
+  .banner-one-input {
+    font-size: 16px !important;
+    height: 62px !important;
+  }
+  .search-icon {
+    right: 9%;
+    font-size: 21px;
+    margin: 11px 0px 14px -23px;
+  }
+}
+
+@media only screen and (min-device-width: 991px) and (max-device-width: 1440px) {
+  .banner-one-link-icon {
+    width: 20px;
+    margin-left: 12%;
+  }
+  .banner-one-link-text {
+    margin: 10px 0px 10px 10px;
+    font-size: 13px;
+  }
+  .banner-one-input {
+    font-size: 18px !important;
+    height: 66px !important;
+  }
+  .search-icon {
+    font-size: 22px !important;
+    margin: 12px 0px 14px -23px;
+  }
+}
+
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
+  .banner-one-link-text {
+    margin: 15px 0px 10px 10px;
+  }
+  .search-icon {
+    right: 5%;
+    font-size: 28px !important;
+    margin: 16px 0px 14px -23px;
+  }
+}
+
+@media only screen and (min-device-width: 1920px) and (max-device-width: 2560px) {
+  .search-icon {
+    right: 5%;
+    font-size: 28px !important;
+    margin: 16px 0px 14px -23px;
+  }
 }
