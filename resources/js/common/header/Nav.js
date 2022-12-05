@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FiChevronDown } from "react-icons/fi";
 
 const Nav = () => {
     return (
         <ul className="mainmenu">
 
             <li className='has-droupdown'>
-                <Link to="">Kurumsal</Link>
+                <Link to="">Kurumsal <FiChevronDown /></Link>
                     <ul className="submenu">
-                        <li><Link to="/kurumsal/mem-nedir">Mem Nedir ?</Link></li>
+                    <li><Link to="/kurumsal/mem-nedir">Mem Nedir ?</Link></li>
                         <li><Link to="/kurumsal/biz-kimiz">Biz Kimiz </Link></li>
                         <li><Link to="/kurumsal/amacımız">Amacımız</Link></li>
                         <li><Link to="/kurumsal/yola-cıkarken">Yola Çıkarken</Link></li>
@@ -17,7 +18,7 @@ const Nav = () => {
 
 
             <li className="has-droupdown">
-                <Link to="">Yayınlar</Link>
+                <Link to="">Yayınlar <FiChevronDown /></Link>
                 <ul className="submenu">
                     <li><Link to="/yayinlar">Tümü</Link></li>
                     <li><Link to="/yayinlar/analiz-dizisi">Analiz Dizisi</Link></li>
@@ -28,7 +29,7 @@ const Nav = () => {
             </li>
 
             <li className="has-droupdown">
-                <Link to="">Yazılar</Link>
+                <Link to="">Yazılar <FiChevronDown /></Link>
                 <ul className="submenu">
                     <li><Link to="/yazilar/covid-19">COVID-19</Link></li>
                     <li><Link to="/yazilar/degerlendirme">Değerlendirme</Link></li>

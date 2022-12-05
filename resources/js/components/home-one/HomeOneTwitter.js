@@ -4,6 +4,8 @@ import SectionTitle from "../sectionTitle/SectionTitle";
 import Imagee from "../../assets/images/bg/ted2.png";
 import socialMediaImage from "../../assets/images/twitter.png";
 import { AiOutlineTwitter } from "react-icons/ai";
+import { TwitterTweetEmbed } from 'react-twitter-embed';
+import { Timeline } from 'react-twitter-widgets'
 import "./css/homeOneTwitter.css";
 
 const HomeOneTwitter = () => {
@@ -16,12 +18,14 @@ const HomeOneTwitter = () => {
                             className="social-media-image"
                             src={socialMediaImage}
                         /> */}
-                        <div
+                        
+                       
+                        {/* <div
                             className="d-flex justify-content-center"
                             style={{ color: "black", fontSize: "35px" }}
                         >
                             Tedmem'den Tweetler
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -35,7 +39,11 @@ const HomeOneTwitter = () => {
                                 marginTop: "25px",
                             }}
                         />
-                        <div className=""></div>
+                        <div style={{height:"100%", width:"100%", overflow:"scroll"}}>
+                            <TwitterTweetEmbed
+                                tweetId={'1598302542454489088'}
+                            />
+                        </div>
                     </div>
                     <div className="col-lg-4 d-flex justify-content-start twitter-card">
                         <AiOutlineTwitter
@@ -45,7 +53,12 @@ const HomeOneTwitter = () => {
                                 marginTop: "25px",
                             }}
                         />
-                        <div className=""></div>
+                        <div className="">
+                            <TwitterTweetEmbed
+                                tweetId={'1595672451731562496'}
+                            />
+                            
+                        </div>
                     </div>
 
                     <div className="col-lg-4 d-flex justify-content-start twitter-card">
@@ -56,7 +69,11 @@ const HomeOneTwitter = () => {
                                 marginTop: "25px",
                             }}
                         />
-                        <div className=""></div>
+                        <div className="">
+                            <TwitterTweetEmbed
+                                tweetId={'1590344144903294976'}
+                            />
+                        </div>
                     </div>
 
                     {/* <div

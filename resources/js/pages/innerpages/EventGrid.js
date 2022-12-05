@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
-import PaginationOne from "../../components/pagination/PaginationOne";
+import PaginationOne from "../../components/pagination/Pagination";
 import EventTwo from "../../components/event/EventTwo";
 import { useParams } from "react-router-dom";
 import axiosClient from "../../utils/axiosClient";
@@ -32,8 +32,8 @@ const slugify = function (text) {
 };
 
 const EventGrid = () => {
-    const [content, setContent] = React.useState([]);
-    const [sekme, setSekme] = React.useState(null);
+    const [content, setContent] = useState([]);
+    const [sekme, setSekme] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(4);
     
@@ -42,8 +42,8 @@ const EventGrid = () => {
     //Pagination-start
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = content.slice(firstPostIndex,lastPostIndex);
-
+    // const currentPosts = content.slice(firstPostIndex,lastPostIndex);
+    
 
     //Pagination-end
     const btnValue = [

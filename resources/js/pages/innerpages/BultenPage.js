@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
@@ -7,15 +7,20 @@ import BultenCourse from "../../components/course/BultenCourse";
 import PageBanner from "../../components/banner/PageBanner";
 import banner from "../../assets/images/bulletin-image.png";
 import BultenCard from "../../components/bulten/BultenCard";
+import PaginationOne from "../../components/pagination/Pagination";
 
 const BultenPage = () => {
-    const [content, setContent] = React.useState(null);
-    const [sekme, setSekme] = React.useState(null);
+    const [allData, setAllData] = useState([]);
+    const [content, setContent] = useState(null);
+    const [sekme, setSekme] = useState(null);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPage] = useState(2);
 
     const getWrites = async () => {
         await axiosClient.get(`/api/bulten`).then((res) => {
-            setContent(res.data);
-            console.log(res.data);
+            setAllData(res.data);
+            console.log("bulten",res.data);
         });
     };
 
@@ -23,16 +28,23 @@ const BultenPage = () => {
         getWrites();
     }, []);
 
-    const formatted = content?.map((item) => {
-        item.year = new Date(item.date).getFullYear();
-        return item;
-    });
+    useEffect(() => {
+        paginationHandler(allData);
+    },[allData])
 
-    const handleSekme = (string) => {
-        setSekme([]);
-        const filtered = formatted?.filter((item) => item.year == string);
-        setSekme(filtered);
+    useEffect(() => {
+        paginationHandler(allData);
+    },[currentPage])
+
+    const lastPostIndex = currentPage * postPerPage;
+    const firstPostIndex = lastPostIndex - postPerPage;
+
+    const paginationHandler = (data) => {
+        const currentPosts = data?.slice(firstPostIndex, lastPostIndex);
+        setContent(currentPosts);
     };
+
+   
     return (
         <>
             <SEO title="Yazılar" />
@@ -42,6 +54,9 @@ const BultenPage = () => {
                     <div className="container">
                         <div className="row">
                             <BultenCard data={content} />
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <PaginationOne totalPosts={allData?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
                         </div>
                     </div>
                 </div>

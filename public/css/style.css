@@ -19965,7 +19965,7 @@ fieldset:disabled .btn {
 ***************************************/
 /*-- Variables --*/
 :root {
-  --color-primary: #525fe1;
+  --color-primary: black;
   --color-secondary: #f86f03;
   --color-secondary-alt: #fff6f4;
   --color-tertiary: #ffa41b;
@@ -28802,7 +28802,7 @@ input[type='submit']:hover {
 .edu-header.disable-transparent .logo a {
   height: 90px;
   line-height: 90px;
-  margin-left: 300px !important;
+  margin-left: 50px !important;
 }
 .edu-header.header-relative {
   position: relative;
@@ -28824,7 +28824,7 @@ input[type='submit']:hover {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--color-white) !important;
+  background-color: #e9e9e9 !important;
   width: 100%;
   height: 80px;
   -webkit-animation: headerSticky 0.95s ease forwards;
@@ -28939,6 +28939,7 @@ input[type='submit']:hover {
   flex-wrap: wrap;
   border-radius: 50px;
 }
+
 .mainmenu-nav .mainmenu > li > a {
   color: #231f40;
   font-size: 14px;
@@ -28949,6 +28950,7 @@ input[type='submit']:hover {
   line-height: 80px;
   transition: 0.3s;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .mainmenu-nav .mainmenu > li > a {
     padding: 0 17px;
@@ -28970,6 +28972,9 @@ input[type='submit']:hover {
 }
 .mainmenu-nav .mainmenu li.has-droupdown > a {
   position: relative;
+}
+.mainmenu-nav .mainmenu li.has-droupdown > a:hover {
+  color: black;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .mainmenu-nav .mainmenu li.has-droupdown > a::after {
@@ -28994,7 +28999,7 @@ input[type='submit']:hover {
 }
 
 .mainmenu-nav .mainmenu li.has-droupdown .submenu {
-  min-width: 210px;
+  min-width: 180px;
   height: auto;
   position: absolute;
   top: 90%;
@@ -29003,9 +29008,9 @@ input[type='submit']:hover {
   opacity: 0;
   visibility: hidden;
   text-align: left;
-  padding: 20px 0;
+  padding: 10px 0;
   transition: 0.3s;
-  background-color: var(--color-white);
+  background-color: #dbdbdb;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.04);
   border-bottom: 2px solid var(--color-primary);
 }
@@ -29013,15 +29018,18 @@ input[type='submit']:hover {
   position: relative;
 }
 .mainmenu-nav .mainmenu li.has-droupdown .submenu li a {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   padding: 3px 20px;
   display: block;
   color: var(--color-heading);
   margin: 0 10px;
 }
+.mainmenu-nav .mainmenu li.has-droupdown .submenu li:hover {
+  background-color: #898989d9;
+}
 .mainmenu-nav .mainmenu li.has-droupdown .submenu li a:hover {
-  color: var(--color-primary) !important;
+  color: #3a3a3a !important;
   background: var(--color-darker);
 }
 .mainmenu-nav .mainmenu li.has-droupdown .submenu li a.active {

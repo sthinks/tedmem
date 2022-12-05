@@ -74,16 +74,14 @@ const HeaderOne = ({ styles, disableSticky }) => {
     return (
         <>
             <header
-                className={`edu-header disable-transparent header-background ${stickyStatus} ${
-                    styles || ""
-                } ${classes || ""}`}
+                className={`edu-header disable-transparent header-background  header-sticky header-transparent header-style-2`}
             >
                 <div className="">
 
                     <div className="d-flex align-items-center">
-                        <div className="col-lg-4 col-xl-4 col-md-6 col-6">
+                        <div className="col-lg-4 col-xl-4 col-md-6 col-6 logo-container-item">
                             <div className="logo">
-                                <Link to="/" className="d-flex">
+                                <Link to="/" className="d-flex" >
                                     <img
                                         className="logo-light"
                                         src={Logo}
@@ -91,18 +89,17 @@ const HeaderOne = ({ styles, disableSticky }) => {
                                     />
                                     <div className="logo-text"><p>Ortak Paydamız Eğitim</p></div>
                                 </Link>
-
                             </div>
                         </div>
 
-                        <div className="col-lg-4 col-xl-4 d-none d-xl-block">
-                            <nav className="mainmenu-nav d-none d-lg-block">
+                        <div className="col-lg-6 col-xl-6 d-flex justify-content-end header-one-navbar">
+                            <nav className="mainmenu-nav">
                                 <Nav />
                             </nav>
                         </div>
 
-                        <div className="col-lg-4 col-xl-4 col-md-6 col-6">
-                            <div className="header-right d-flex justify-content-end">
+                        <div className="col-lg-2 col-xl-2 d-flex justify-content-end header-one-searchbar">
+                            <div className="header-right">
                                 <div className="header-quote">
                                     <div className="quote-icon quote-search">
                                         {/* <button
@@ -142,7 +139,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
                                                                             }
                                                                         >
                                                                                 {item.title}
-                                                                        </Link>        
+                                                                        </Link>    
                                                                     </li>     
                                                                 </ul>
                                                             </div>
@@ -150,15 +147,18 @@ const HeaderOne = ({ styles, disableSticky }) => {
                                             </div>
                                         
                                     </div>
-                                    <div className="hamberger quote-icon d-block d-xl-none">
-                                        <button
-                                            className="hamberger-button"
-                                            onClick={onCanvasHandler}
-                                        >
-                                            <i className="ri-menu-line"></i>
-                                        </button>
-                                    </div>
+                                  
                                 </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-1">
+                            <div className="hamberger quote-icon d-block d-xl-none">
+                                <button
+                                    className="hamberger-button"
+                                    onClick={onCanvasHandler}
+                                >
+                                    <i className="ri-menu-line"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

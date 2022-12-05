@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
@@ -6,15 +6,17 @@ import CourseTypeThree from "../../components/course/CourseTypeThree";
 import axiosClient from "../../utils/axiosClient";
 import PageBanner from "../../components/banner/PageBanner";
 import banner from "../../assets/images/activity-banner.png";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import PaginationOne from "../../components/pagination/Pagination";
 import "./Course.css";
-import { Pagination } from "../../components/pagination/PaginationOne";
 const CourseThree = () => {
-    const [content, setContent] = React.useState(null);
+    const [allData, setAllData] = useState([]);
+    const [content, setContent] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPage] = useState(2);
 
     const getEvents = async () => {
         await axiosClient.get(`/api/events`).then((res) => {
-            setContent(res.data);
+            setAllData(res.data);
             console.log("content", res.data);
         });
     };
@@ -22,6 +24,24 @@ const CourseThree = () => {
     useEffect(() => {
         getEvents();
     }, []);
+
+    useEffect(() => {
+        paginationHandler(allData);
+    }, [allData])
+
+    useEffect(() => {
+        paginationHandler(allData);
+    }, [currentPage])
+
+
+    const lastPostIndex = currentPage * postPerPage;
+    const firstPostIndex = lastPostIndex - postPerPage;
+
+    const paginationHandler = (data) => {
+        const currentPosts = data?.slice(firstPostIndex, lastPostIndex);
+        setContent(currentPosts);
+    };
+
 
     return (
         <>
@@ -39,13 +59,7 @@ const CourseThree = () => {
                         </div>
                         {/* Pagination */}
                         <div className="pagination d-flex justify-content-center mt-5 pagination">
-                            <div className="">
-                                <FiArrowLeft /> Geri
-                            </div>
-                            <div></div>
-                            <div className="">
-                                İleri <FiArrowRight />
-                            </div>
+                            <PaginationOne totalPosts={allData?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 }
 .bulten-card-image-container {
   width: 400px;
-  height: 200px;
+  height: auto;
 }
 
 .bulten-card-image {
@@ -29,4 +29,85 @@
 }
 .bulten-card-body {
   margin-bottom: 90px;
+}
+@media only screen and (min-device-width: 425px) and (max-device-width: 768px) {
+  .card-body {
+    width: 360px;
+  }
+  .bulten-card-image-container {
+    width: 350px;
+  }
+  .bulten-card-title {
+    font-size: 22px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .bulten-card-image {
+    height: 170px;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+  .card-body {
+    width: 360px;
+  }
+  .bulten-card-image-container {
+    width: 350px;
+  }
+  .bulten-card-title {
+    font-size: 22px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .bulten-card-image {
+    height: 170px;
+  }
+}
+@media only screen and (min-device-width: 991px) and (max-device-width: 1024px) {
+  .bulten-card-image-container {
+    width: 350px;
+  }
+  .bulten-card-title {
+    font-size: 22px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .bulten-card-image {
+    height: 170px;
+  }
+}
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1440px) {
+  .bulten-card-image-container {
+    width: 320px;
+  }
+  .bulten-card-title {
+    font-size: 22px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .bulten-card-image {
+    height: 170px;
+  }
+}
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1600px) {
+  .bulten-card-image-container {
+    width: 320px;
+  }
+  .bulten-card-title {
+    font-size: 22px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .bulten-card-image {
+    height: 160px;
+  }
+}
+@media only screen and (min-device-width: 1600px) and (max-device-width: 1920px) {
+  .bulten-card-image-container {
+    width: 330px;
+  }
 }
