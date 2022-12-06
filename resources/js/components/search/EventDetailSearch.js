@@ -44,7 +44,7 @@ function EventDetailSearch({data}) {
               type="text"
               placeholder="Yazılarda Arayın..."
           />
-          <i className="icon-search-line pt-3 search-icon"></i>
+          <i className="icon-search-line pt-3 search-icon-event"></i>
           {writesResults?.length > 0 &&
               writesResults
                   .slice(0, 4)

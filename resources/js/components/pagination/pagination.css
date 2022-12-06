@@ -1,3 +1,8 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .page-item-pagination {
   background-color: #ffffff00 !important;
   border: 0px !important;
@@ -27,10 +32,25 @@
 }
 
 @media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
+  .page-item-pagination {
+    display: none;
+  }
   .page-item {
     font-size: 15px;
     margin-right: 5px;
     margin-left: 5px;
+  }
+  .page-item-pagination {
+    margin-right: 0px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .page-item {
+    font-size: 14px;
+    margin-right: 5px;
+    margin-left: 0px;
   }
   .page-item-pagination {
     margin-right: 0px;

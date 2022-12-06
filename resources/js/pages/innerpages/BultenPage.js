@@ -15,8 +15,8 @@ const BultenPage = () => {
     const [sekme, setSekme] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, setPostPage] = useState(2);
-
+    const [postPerPage, setPostPage] = useState(4);
+    const pathname = window.location.pathname
     const getWrites = async () => {
         await axiosClient.get(`/api/bulten`).then((res) => {
             setAllData(res.data);
@@ -49,16 +49,16 @@ const BultenPage = () => {
         <>
             <SEO title="Yazılar" />
             <Layout>
-                <PageBanner title="Bültenler" image={banner} />
+                <PageBanner title="Bültenler" image={banner} id={pathname === "/" ? null : "etkinlikler"} />
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row">
                             <BultenCard data={content} />
                         </div>
-                        <div className="d-flex justify-content-center">
-                            <PaginationOne totalPosts={allData?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-                        </div>
                     </div>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <PaginationOne totalPosts={allData?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
                 </div>
             </Layout>
         </>

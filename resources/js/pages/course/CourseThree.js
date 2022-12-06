@@ -12,7 +12,8 @@ const CourseThree = () => {
     const [allData, setAllData] = useState([]);
     const [content, setContent] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, setPostPage] = useState(2);
+    const [postPerPage, setPostPage] = useState(4);
+    const pathname = window.location.pathname
 
     const getEvents = async () => {
         await axiosClient.get(`/api/events`).then((res) => {
@@ -47,7 +48,7 @@ const CourseThree = () => {
         <>
             <SEO title="TEDMEM | Etkinlikler" />
             <Layout>
-                <PageBanner title="Etkinlikler" image={banner} />
+                <PageBanner title="Etkinlikler" image={banner} id={pathname === "/" ? null : "etkinlikler"}/>
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row g-5 mt--10">

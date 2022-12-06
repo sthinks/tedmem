@@ -1,21 +1,41 @@
 .bulten-card {
+  position: relative;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(255, 255, 255);
+  background-clip: border-box;
+  border: 0;
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.bulten-card-image-container {
-  width: 400px;
-  height: auto;
+.bulten-card-body > p {
+  margin: 0px 0px 0px 25px;
 }
-
-.bulten-card-image {
-  width: 100%;
-  height: 200px;
+.bulten-card-img {
+  width: 500px;
+  height: 250px;
   object-fit: cover;
+  border-radius: 5px 0px 0px 5px;
+  object-position: 100% 20%;
 }
-.bulten-card-title {
-  font-size: 35px;
+.bulten-card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bulten-card-header {
+  font-size: 40px;
   font-weight: bold;
   color: black;
+  margin-left: 50px;
+}
+.bulten-card-text {
+  margin-left: 50px;
 }
 .bulten-card-download {
   border-top: 1px solid #e3e3e3;
@@ -23,91 +43,133 @@
   font-weight: bold;
   margin: 5px;
   color: black;
+  display: flex;
+  justify-content: end;
 }
 .bulten-card-download > a {
   margin-top: 10px;
 }
-.bulten-card-body {
-  margin-bottom: 90px;
+.bulten-card-download > a:hover {
+  color: rgb(86, 86, 86);
 }
-@media only screen and (min-device-width: 425px) and (max-device-width: 768px) {
-  .card-body {
-    width: 360px;
+@media only screen and (min-device-width: 300px) and (max-device-width: 425px) {
+  .bulten-card {
+    flex-direction: column;
   }
-  .bulten-card-image-container {
-    width: 350px;
+  .bulten-card-img {
+    width: auto;
+    object-position: 50% 50%;
+    border-radius: 5px 5px 0px 0px;
   }
-  .bulten-card-title {
-    font-size: 22px;
+  .bulten-card-header {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-bottom: 10px;
   }
-  .card-text {
+  .bulten-card-text {
+    margin-left: 5px;
     font-size: 12px;
   }
-  .bulten-card-image {
-    height: 170px;
+  .bulten-card-download {
+    font-size: 13px;
+  }
+}
+@media only screen and (min-device-width: 425px) and (max-device-width: 768px) {
+  .bulten-card {
+    flex-direction: column;
+  }
+  .bulten-card-img {
+    width: auto;
+    object-position: 50% 50%;
+    border-radius: 5px 5px 0px 0px;
+  }
+  .bulten-card-header {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  .bulten-card-text {
+    margin-left: 5px;
+    font-size: 13px;
+  }
+  .bulten-card-download {
+    font-size: 13px;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
-  .card-body {
-    width: 360px;
+  .bulten-card {
+    flex-direction: column;
   }
-  .bulten-card-image-container {
-    width: 350px;
+  .bulten-card-img {
+    width: auto;
+    object-position: 50% 50%;
+    border-radius: 5px 5px 0px 0px;
   }
-  .bulten-card-title {
-    font-size: 22px;
+  .bulten-card-header {
+    font-size: 25px;
+    margin-left: 5px;
+    margin-bottom: 10px;
   }
-  .card-text {
-    font-size: 12px;
+  .bulten-card-text {
+    margin-left: 5px;
+    font-size: 14px;
   }
-  .bulten-card-image {
-    height: 170px;
-  }
-}
-@media only screen and (min-device-width: 991px) and (max-device-width: 1024px) {
-  .bulten-card-image-container {
-    width: 350px;
-  }
-  .bulten-card-title {
-    font-size: 22px;
-  }
-  .card-text {
-    font-size: 12px;
-  }
-  .bulten-card-image {
-    height: 170px;
+  .bulten-card-download {
+    font-size: 13px;
   }
 }
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1440px) {
-  .bulten-card-image-container {
-    width: 320px;
+@media only screen and (min-device-width: 991px) and (max-device-width: 1150px) {
+  .bulten-card-img {
+    width: 325px;
+    object-position: 50% 50%;
   }
-  .bulten-card-title {
-    font-size: 22px;
+  .bulten-card-header {
+    font-size: 20px;
+    margin-bottom: 10px;
   }
-  .card-text {
-    font-size: 12px;
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 25px;
   }
-  .bulten-card-image {
-    height: 170px;
+  .bulten-card-text {
+    font-size: 14px;
   }
-}
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1600px) {
-  .bulten-card-image-container {
-    width: 320px;
-  }
-  .bulten-card-title {
-    font-size: 22px;
-  }
-  .card-text {
-    font-size: 12px;
-  }
-  .bulten-card-image {
-    height: 160px;
+  .bulten-card-download {
+    font-size: 13px;
   }
 }
-@media only screen and (min-device-width: 1600px) and (max-device-width: 1920px) {
-  .bulten-card-image-container {
-    width: 330px;
+
+@media only screen and (min-device-width: 1150px) and (max-device-width: 1440px) {
+  .bulten-card-img {
+    width: 425px;
+    height: 250px;
+    object-position: 50% 50%;
+  }
+  .bulten-card-header {
+    font-size: 23px;
+  }
+  .bulten-card-text {
+    font-size: 13px;
+  }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 25px;
+  }
+  .bulten-card-download {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
+  .bulten-card-img {
+    width: 425px;
+    height: 250px;
+    object-position: 50% 50%;
+  }
+  .bulten-card-header {
+    font-size: 30px;
+  }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 25px;
+  }
+  .bulten-card-download {
+    font-size: 15px;
   }
 }

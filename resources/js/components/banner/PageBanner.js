@@ -1,9 +1,10 @@
 import React from "react";
 import "./pageBanner.css";
 
-function PageBanner({ title, image, color }) {
+function PageBanner({ title, image, color,id}) {
+
     return (
-        <div className="page-banner">
+        <div className="page-banner" id={id}>
             <div className={!color ? "page-banner-content-white" : "page-banner-content-none"}
 
             />

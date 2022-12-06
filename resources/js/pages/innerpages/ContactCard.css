@@ -77,12 +77,15 @@
     height: 35px;
   }
   .footer-style-default .footer-top {
-    margin-top: 120px;
+    margin-top: 20px;
   }
   .footer-card {
     position: absolute;
     top: -2%;
     left: 0%;
+  }
+  .footer-card-image {
+    width: 100%;
   }
   .footer-card-text {
     line-height: 15px;
@@ -154,7 +157,10 @@
     height: 35px;
   }
   .footer-style-default .footer-top {
-    margin-top: 120px;
+    margin-top: 20px;
+  }
+  .footer-card-image {
+    width: 100%;
   }
   .footer-card {
     position: absolute;
@@ -162,13 +168,14 @@
     left: 0%;
   }
   .footer-card-text {
-    line-height: 22px;
-    font-size: 20px;
+    line-height: 19px;
+    font-size: 16px;
+    top: 23%;
   }
   .footer-card-button {
     width: 100px;
     height: 35px;
-    font-size: 12px;
+    font-size: 11px;
     right: 10%;
     bottom: 25%;
   }
@@ -297,8 +304,18 @@
     width: 35px;
     height: 35px;
   }
+  .footer-card-text {
+    font-size: 23px;
+  }
+  .footer-card-button {
+    width: 120px;
+    height: 45px;
+    right: 18%;
+    bottom: 28%;
+    font-size: 13px;
+  }
   .footer-style-default .footer-top {
-    margin-top: 75px;
+    margin-top: 0px;
     padding: 24px 0;
   }
   .section-title .title {
@@ -340,7 +357,6 @@
   .container-xxl {
     max-width: 778px;
   }
-
   .contact-information {
     width: 93% !important;
     padding: 25px 29px 0px 25px;
@@ -388,7 +404,7 @@
     font-size: 14px;
   }
   .footer-style-default .footer-top {
-    margin-top: 120px;
+    margin-top: 50px;
     padding: 24px 0;
   }
   .footer-card {
@@ -440,7 +456,7 @@
   }
 }
 
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1600px) {
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1601px) {
   .contact-information {
     width: 93% !important;
     padding: 25px 29px 0px 31px;
@@ -526,7 +542,7 @@
   }
 }
 
-@media only screen and (min-device-width: 1600px) and (max-device-width: 2560px) {
+@media only screen and (min-device-width: 1601px) and (max-device-width: 1920px) {
   .contact-information {
     width: 79% !important;
     padding: 25px 20px 0px 30px;
@@ -555,10 +571,10 @@
   }
   .footer-card {
     top: -12%;
-    left: 30%;
+    left: 28%;
   }
   .footer-card-image {
-    width: 80%;
+    width: 77%;
   }
   .footer-card-button {
     width: 148px;

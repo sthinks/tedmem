@@ -4,7 +4,7 @@ import SectionTitle from "../sectionTitle/SectionTitle";
 import Imagee from "../../assets/images/bg/ted2.png";
 import socialMediaImage from "../../assets/images/twitter.png";
 import { AiOutlineTwitter } from "react-icons/ai";
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import { TwitterTimelineEmbed, TwitterTweetEmbed } from 'react-twitter-embed';
 import { Timeline } from 'react-twitter-widgets'
 import "./css/homeOneTwitter.css";
 
@@ -31,49 +31,45 @@ const HomeOneTwitter = () => {
             </div>
             <div className="container">
                 <div className="d-flex justify-content-around">
-                    <div className="col-lg-4 d-flex justify-content-start twitter-card">
-                        <AiOutlineTwitter
-                            style={{
-                                color: "#61ccff",
-                                fontSize: "55px",
-                                marginTop: "25px",
+                    <div className="col-lg-4 d-flex justify-content-start">
+                        <TwitterTweetEmbed
+                            options={{
+                                cards: 'hidden',
+                                hideCard: true,
+                                hideThread: false,
+                                maxWidth: 800,
+                                width: 300
                             }}
+                            tweetId={'1598302542454489088'}
                         />
-                        <div style={{height:"100%", width:"100%", overflow:"scroll"}}>
-                            <TwitterTweetEmbed
-                                tweetId={'1598302542454489088'}
-                            />
-                        </div>
+
                     </div>
-                    <div className="col-lg-4 d-flex justify-content-start twitter-card">
-                        <AiOutlineTwitter
-                            style={{
-                                color: "#61ccff",
-                                fontSize: "55px",
-                                marginTop: "25px",
+                    <div className="col-lg-4 d-flex justify-content-start">
+                        <TwitterTweetEmbed
+                            options={{
+                                cards: 'hidden',
+                                hideCard: true,
+                                hideThread: false,
+                                maxWidth: 800,
+                                width: 300
                             }}
+                            tweetId={'1595672451731562496'}
                         />
-                        <div className="">
-                            <TwitterTweetEmbed
-                                tweetId={'1595672451731562496'}
-                            />
-                            
-                        </div>
+
                     </div>
 
-                    <div className="col-lg-4 d-flex justify-content-start twitter-card">
-                        <AiOutlineTwitter
-                            style={{
-                                color: "#61ccff",
-                                fontSize: "55px",
-                                marginTop: "25px",
+                    <div className="col-lg-4 d-flex justify-content-start">
+                        <TwitterTweetEmbed
+                            options={{
+                                cards: 'hidden',
+                                hideCard: true,
+                                hideThread: false,
+                                maxWidth: 800,
+                                width: 300
                             }}
+                            tweetId={'1590243618765565952'}
                         />
-                        <div className="">
-                            <TwitterTweetEmbed
-                                tweetId={'1590344144903294976'}
-                            />
-                        </div>
+
                     </div>
 
                     {/* <div

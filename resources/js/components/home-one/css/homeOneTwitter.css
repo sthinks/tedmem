@@ -1,15 +1,19 @@
 .social-media-image {
-    width: 400px;
-    margin-left: 35%;
+  width: 400px;
+  margin-left: 35%;
 }
 .twitter-content {
-    background-color: #40a6ff;
+  background-color: #40a6ff;
 }
 .twitter-card {
-    border-radius: 0.5px solid black;
-    margin: 52px;
-    background-color: white;
-    height: 110px;
-    border: 1px solid black;
-    border-radius: 15px;
+  border-radius: 0.5px solid black;
+  margin: 52px;
+  background-color: white;
+  height: 110px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.css-1dbjc4n .r-18u37iz .r-1t982j2 {
+  display: none !important;
 }
