@@ -2,23 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronDown } from "react-icons/fi";
 
+
 const Nav = () => {
     return (
         <ul className="mainmenu">
 
             <li className='has-droupdown'>
-                <Link to="">Kurumsal <FiChevronDown /></Link>
-                    <ul className="submenu">
+                <Link to="/kurumsal/amacımız">Kurumsal </Link>
+                    {/* <ul className="submenu">
                     <li><Link to="/kurumsal/mem-nedir">Mem Nedir ?</Link></li>
                         <li><Link to="/kurumsal/biz-kimiz">Biz Kimiz </Link></li>
                         <li><Link to="/kurumsal/amacımız">Amacımız</Link></li>
                         <li><Link to="/kurumsal/yola-cıkarken">Yola Çıkarken</Link></li>
-                    </ul>
+                    </ul> */}
             </li>
 
 
             <li className="has-droupdown">
-                <Link to="">Yayınlar <FiChevronDown /></Link>
+                <Link to="/yayinlar">Yayınlar <FiChevronDown /></Link>
                 <ul className="submenu">
                     <li><Link to="/yayinlar">Tümü</Link></li>
                     <li><Link to="/yayinlar/analiz-dizisi">Analiz Dizisi</Link></li>
@@ -29,8 +30,9 @@ const Nav = () => {
             </li>
 
             <li className="has-droupdown">
-                <Link to="">Yazılar <FiChevronDown /></Link>
+                <Link to="/yazilar/egitim">Yazılar <FiChevronDown /></Link>
                 <ul className="submenu">
+                    <li><Link to="/yazilar/egitim">Eğitim</Link></li>
                     <li><Link to="/yazilar/covid-19">COVID-19</Link></li>
                     <li><Link to="/yazilar/degerlendirme">Değerlendirme</Link></li>
                     <li><Link to="/yazilar/gorus">Görüş</Link></li>
@@ -41,6 +43,7 @@ const Nav = () => {
                 </ul>
             </li>
 
+            <li><Link to="/bulten">Bültenler</Link></li>
 
             <li><Link to="/etkinlikler">Etkinlikler</Link></li>
 

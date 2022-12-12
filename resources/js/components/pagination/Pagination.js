@@ -26,12 +26,12 @@ const PaginationOne = ({ totalPosts, postPerPage, setCurrentPage, currentPage })
     return (
         <nav aria-label="">
             <ul className="pagination mt-5">
-                <li className="page-item"><a className="page-item-pagination" href="#" onClick={() => { setCurrentPage(previousHandler) }}><FiArrowLeft /> Geri</a></li>
+                <li className="page-item"><a className="page-item-pagination" href={pathname === "/etkinlikler" ? "#etkinlikler" : "#bulten"} onClick={() => { setCurrentPage(previousHandler) }}><FiArrowLeft /> Geri</a></li>
                     {pages?.map((item, index) => (
                         <li className={item == currentPage ? 'page-item active' : 'page-item'} key={item}><a className="page-link" href={pathname === "/etkinlikler" ? "#etkinlikler" : "#bulten"} onClick={() => { setCurrentPage(item) }}>{item}</a></li>
                     ))
                 }
-                <li className="page-item"><a className="page-item-pagination" href="#" onClick={() => { setCurrentPage(nextHandler) }}>İleri <FiArrowRight /></a></li>
+                <li className="page-item"><a className="page-item-pagination" href={pathname === "/etkinlikler" ? "#etkinlikler" : "#bulten"} onClick={() => { setCurrentPage(nextHandler) }}>İleri <FiArrowRight /></a></li>
             </ul>
         </nav>
     )                    

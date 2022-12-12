@@ -12,13 +12,9 @@ const HeaderOne = ({ styles, disableSticky }) => {
     const [offcanvasShow, setOffcanvasShow] = useState(false);
     const [kadro, setKadro] = useState();
     const [writes, setWrites] = useState(null);
-    const [writesResults, setWritesResults] = useState([]);
+    const [writesResultsNav, setWritesResults] = useState([]);
     const [query, setQuery] = useState("");
     
-  
-
-  
-
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             handleQuery();
@@ -26,13 +22,11 @@ const HeaderOne = ({ styles, disableSticky }) => {
     };
 
     const handleQuery = (e) => {
-        var writesResults = writes?.filter((data) =>
+        var writesResultsNav = writes?.filter((data) =>
             data.title.toLowerCase().match(query)
         );
 
-        setWritesResults(writesResults);
-        console.log(writesResults);
-
+        setWritesResults(writesResultsNav);
         if (e === "") {
             setWritesResults([]);
         }
@@ -74,7 +68,8 @@ const HeaderOne = ({ styles, disableSticky }) => {
     return (
         <>
             <header
-                className={`edu-header disable-transparent header-background  header-sticky header-transparent header-style-2`}
+                className={`edu-header disable-transparent header-background  header-sticky header-transparent  ${styles || ""
+                    } ${classes || ""}`}
             >
                 <div className="">
 
@@ -102,12 +97,6 @@ const HeaderOne = ({ styles, disableSticky }) => {
                             <div className="header-right">
                                 <div className="header-quote">
                                     <div className="quote-icon quote-search">
-                                        {/* <button
-                                            className="search-trigger"
-                                            onClick={onSearchHandler}
-                                        >
-                                            <i className="ri-search-line"></i>
-                                        </button> */}
                                         <input  className="header-one-inputbar"
                                                 placeholder="Arama yapın.."
                                                 onKeyDown={
@@ -124,26 +113,29 @@ const HeaderOne = ({ styles, disableSticky }) => {
                                         />
                                         <FiSearch className="header-one-search-icon" />
                                             <div>
-                                                {writesResults?.length > 0 &&
-                                                    writesResults
-                                                        .slice(0, 4)
+                                                {writesResultsNav?.length > 0 &&
+                                                    <div className="banner-one-results-nav">
+                                                        <ul>
+                                                    {
+                                                    writesResultsNav
+                                                    .slice(0, 6)
                                                         .map((item) => (
-                                                            <div className="banner-one-results">
-                                                                <ul>
-                                                                    <li>
-                                                                        <Link
-                                                                            to={
-                                                                                item.category_id
-                                                                                    ? `/yayinlar-detay/${item.slug}`
-                                                                                    : `/yayinlar-detay/${item.slug}`
-                                                                            }
-                                                                        >
-                                                                                {item.title}
-                                                                        </Link>    
-                                                                    </li>     
-                                                                </ul>
-                                                            </div>
-                                                        ))}
+                                                                <li>
+                                                                    <Link
+                                                                        to={
+                                                                            item.category_id
+                                                                                ? `/yazilar-detay/${item.slug}`
+                                                                                : `/yazilar-detay/${item.slug}`
+                                                                        }
+                                                                    >
+                                                                        {item.title}
+                                                                    </Link>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                </ul>
+                                               </div>
+                                                }
                                             </div>
                                         
                                     </div>

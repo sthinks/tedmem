@@ -1,0 +1,10 @@
+.course-button-top {
+  font-weight: bolder;
+  font-size: 15px;
+  background-color: #fff0e1;
+  color: black;
+}
+.course-button-top:hover {
+  box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
+  transform: scale(1.01);
+}

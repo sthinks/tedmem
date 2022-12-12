@@ -1,0 +1,28 @@
+.home-card-pagination {
+  justify-content: start;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
+  .home-card-pagination {
+    justify-content: center !important;
+  }
+}
+.home-bulten-main-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+}
+.splash-brush-bulten {
+  width: 150px;
+  position: absolute;
+  height: 20px;
+  top: 50px;
+  left: 45%;
+}
+.bulten-header-image:hover > .splash-brush-bulten {
+  left: 47%;
+  animation: both;
+  transition: left 1s ease-out 200ms;
+}

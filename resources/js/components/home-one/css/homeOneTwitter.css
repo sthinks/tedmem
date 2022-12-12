@@ -2,8 +2,11 @@
   width: 400px;
   margin-left: 35%;
 }
-.twitter-content {
-  background-color: #40a6ff;
+
+.twitter {
+  background-image: url('../../../assets/images/twitter-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .twitter-card {
   border-radius: 0.5px solid black;
@@ -13,7 +16,55 @@
   border: 1px solid black;
   border-radius: 15px;
 }
+.home-twitter-main-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 40px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.splash-brush-twiiter {
+  width: 200px;
+  position: absolute;
+  height: 25px;
+  top: 45px;
+  left: 53%;
+}
+.twitter-text-header:hover > .splash-brush-twiiter {
+  animation: example 1s;
+  animation-duration: 0.8s;
+}
+@keyframes example {
+  0% {
+    left: 57%;
+    top: 40px;
+  }
 
-.css-1dbjc4n .r-18u37iz .r-1t982j2 {
-  display: none !important;
+  100% {
+    top: 45px;
+    left: 53%;
+  }
+}
+
+.twitter-card-home {
+  margin: 0px 10px 0px 10px;
+}
+@media only screen and (min-device-width: 850px) and (max-device-width: 991px) {
+  .twitter-card-home {
+    margin: 0px 0px 0px 0px;
+  }
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 850px) {
+  .twitter-card-home {
+    margin: 0px 0px 0px 0px;
+  }
+  .twitter-card-container {
+    flex-direction: column;
+  }
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

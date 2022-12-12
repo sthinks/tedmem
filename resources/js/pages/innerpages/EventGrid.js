@@ -82,14 +82,7 @@ const EventGrid = () => {
             });
     };
 
-   useEffect(()=> {
-    axiosClient
-    .get('/api/publics/')
-    .then((res) => {
-        console.log("data",res.data)
-    });
-   },[]) 
-      
+
 
 
 

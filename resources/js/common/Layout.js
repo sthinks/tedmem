@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <main className="main-wrapper">
-                <HeaderOne />
+                <HeaderOne styles={"header-transparent header-style-2"} />
                 {children}
                 <FooterOne />
             </main>

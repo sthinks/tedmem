@@ -1,0 +1,75 @@
+.corporate-head {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  border-bottom: 1px solid gray;
+  width: 130px;
+  margin-top: 40px;
+}
+.coprote-list ul > li {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ff8e20;
+}
+.corporate-header {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.corporate-card {
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  border-radius: 10px;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  position: relative;
+  margin: 15px;
+}
+.corporate-card-body {
+  display: flex;
+  justify-content: center;
+}
+.corporate-card-text {
+  z-index: 8877;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 0px !important;
+}
+.coprote-card-back {
+  border-radius: 10px;
+  background-color: #00000094;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.corporate-card:hover > .coprote-card-back {
+  background-color: #00000024;
+  transition: background-color 2s ease-out 20ms;
+  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+.corporate-header-title {
+  color: #ff8e20;
+  font-size: 5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.corporate-content-text {
+  color: black;
+}
+.corporate-content-text > p,
+div,
+ul,
+li {
+  color: black;
+}

@@ -9,6 +9,8 @@ import banner from "../../assets/images/bulletin-image.png";
 import BultenCard from "../../components/bulten/BultenCard";
 import PaginationOne from "../../components/pagination/Pagination";
 
+
+
 const BultenPage = () => {
     const [allData, setAllData] = useState([]);
     const [content, setContent] = useState(null);
@@ -17,6 +19,7 @@ const BultenPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPage] = useState(4);
     const pathname = window.location.pathname
+    console.log(pathname);
     const getWrites = async () => {
         await axiosClient.get(`/api/bulten`).then((res) => {
             setAllData(res.data);
@@ -49,7 +52,7 @@ const BultenPage = () => {
         <>
             <SEO title="Yazılar" />
             <Layout>
-                <PageBanner title="Bültenler" image={banner} id={pathname === "/" ? null : "etkinlikler"} />
+                <PageBanner title={"Bülten"} image={banner} id={"bulten"}/>
                 <div className="edu-course-area edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row">

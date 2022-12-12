@@ -1,19 +1,16 @@
 import React from "react";
 import "../../assets/css/style.css";
-import Imagee from "../../assets/images/bg/ted2.png";
-import Degerlendirme from "../../assets/images/bg/değerlendirme.png";
-import Soylesi from "../../assets/images/bg/söyleşi.png";
-import Gorus from "../../assets/images/bg/görüş.png";
-import Etkinlikler from "../../assets/images/bg/tümetkinlikler.png";
-import Yayın from "../../assets/images/bg/tümyayın.png";
-import Yansıma from "../../assets/images/bg/yansıma.png";
-import banner from "../../assets/images/home-banner.png";
+import banner from "../../assets/images/Logo-orjinal.png";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/fall-animation.css";
 import { Link, useNavigate } from "react-router-dom";
 import PageBanner from "./PageBanner";
-import icon1 from "../../assets/images/iconss.png";
-import icon2 from "../../assets/images/iconsss.png";
+import Chat from "../../assets/images/icon/chat.png";
+import Comment from "../../assets/images/icon/comment.png";
+import News from "../../assets/images/icon/News.png";
+import Papper from "../../assets/images/icon/Papper.png";
+import Reactİcon from "../../assets/images/icon/React.png";
+import Ticket from "../../assets/images/icon/Ticket.png";
 import "./bannerOne.css";
 import { useEffect } from "react";
 
@@ -83,13 +80,13 @@ const BannerOne = ({ data }) => {
                                                 </div>
                                                 {writesResults?.length > 0 &&
                                                     writesResults
-                                                        .slice(0, 4)
+                                                        .slice(0, 8)
                                                         .map((item) => (
                                                             <Link
                                                                 to={
                                                                     item.category_id
                                                                         ? `/yazilar-detay/${item.slug}`
-                                                                        : `/event-details/${item.slug}`
+                                                                        : `/yayinlar-detay/${item.slug}`
                                                                 }
                                                             >
                                                                 <div className="border mb-2 input-result">
@@ -107,7 +104,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/yayinlar">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon1}
+                                                    src={News}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">
@@ -120,7 +117,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/yazilar/degerlendirme">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon2}
+                                                    src={Ticket}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">
@@ -133,7 +130,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/yazilar/soylesi">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon1}
+                                                    src={Comment}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">
@@ -146,7 +143,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/yazilar/gorus">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon2}
+                                                    src={Chat}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">
@@ -159,7 +156,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/etkinlikler">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon1}
+                                                    src={Reactİcon}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">
@@ -172,7 +169,7 @@ const BannerOne = ({ data }) => {
                                         <Link to="/bulten">
                                             <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                                                 <img
-                                                    src={icon2}
+                                                    src={Papper}
                                                     className="banner-one-link-icon"
                                                 />
                                                 <h6 className="banner-one-link-text">

@@ -56,6 +56,9 @@
   .bulten-card {
     flex-direction: column;
   }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 10px;
+  }
   .bulten-card-img {
     width: auto;
     object-position: 50% 50%;
@@ -63,11 +66,9 @@
   }
   .bulten-card-header {
     font-size: 20px;
-    margin-left: 5px;
     margin-bottom: 10px;
   }
   .bulten-card-text {
-    margin-left: 5px;
     font-size: 12px;
   }
   .bulten-card-download {
@@ -78,6 +79,9 @@
   .bulten-card {
     flex-direction: column;
   }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 10px;
+  }
   .bulten-card-img {
     width: auto;
     object-position: 50% 50%;
@@ -85,11 +89,9 @@
   }
   .bulten-card-header {
     font-size: 20px;
-    margin-left: 5px;
     margin-bottom: 10px;
   }
   .bulten-card-text {
-    margin-left: 5px;
     font-size: 13px;
   }
   .bulten-card-download {
@@ -105,13 +107,14 @@
     object-position: 50% 50%;
     border-radius: 5px 5px 0px 0px;
   }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 10px;
+  }
   .bulten-card-header {
     font-size: 25px;
-    margin-left: 5px;
     margin-bottom: 10px;
   }
   .bulten-card-text {
-    margin-left: 5px;
     font-size: 14px;
   }
   .bulten-card-download {
@@ -128,7 +131,7 @@
     margin-bottom: 10px;
   }
   .bulten-card-body > p {
-    margin: 0px 0px 0px 25px;
+    margin: 0px 0px 0px 20px;
   }
   .bulten-card-text {
     font-size: 14px;

@@ -49,7 +49,6 @@ function App() {
                         element={<CourseTwoo />}
                     />  
                    
-
                     <Route
                         exact
                         path={"/course-details/:slug"}

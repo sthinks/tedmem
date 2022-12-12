@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import SEO from "../../common/SEO";
 import HeaderTwo from "../../common/header/HeaderTwo";
 import BannerOne from "../../components/banner/BannerOne";
@@ -12,17 +12,21 @@ import axiosClient from "../../utils/axiosClient";
 import NewsLetterTwo from "../../components/home-one/NewsLetterTwo";
 import HeaderTop from "../../common/header/HeaderTop";
 import HomeOneTwitter from "../../components/home-one/HomeOneTwitter";
+import { write } from "@popperjs/core";
 
 const HomeOne = () => {
-    const [bulten, setBulten] = React.useState([]);
-
-    const [writes, setWrites] = React.useState([]);
-    const [publics, setPublics] = React.useState([]);
+    const [bulten, setBulten] = useState([]);
+    const [writes, setWrites] = useState([]);
+    const [homeBanner, setHomeBanner] = useState([]);
+    const [publics, setPublics] = useState([]);
 
     const getData = async () => {
         await axiosClient
             .get(`/api/latest-bulten`)
             .then((res) => setBulten(res.data));
+        await axiosClient
+            .get(`/api/yazilar`)
+            .then((res) => setHomeBanner(res.data));
         await axiosClient
             .get(`/api/latest-writes`)
             .then((res) => setWrites(res.data));
@@ -35,10 +39,14 @@ const HomeOne = () => {
         getData();
     }, []);
 
-    const mixed = [...writes, ...publics].sort(
+    const mixed = [...publics].sort(
         (a, b) => b.created_at - a.created_at
     );
-    console.log(mixed);
+
+    const article = [...publics, ...writes].sort(
+        (a,b) => b.created_at -a.created_at
+    );
+   
 
     return (
         <>
@@ -48,9 +56,9 @@ const HomeOne = () => {
 
             <HeaderOne styles="header-transparent header-style-2" />
 
-            <BannerOne data={mixed} />
+            <BannerOne data={article} />
 
-            <BannerNow />
+            <BannerNow data={homeBanner} />
 
             <HomeOneAbout data={mixed} />
 

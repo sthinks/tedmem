@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@100&family=Hind:wght@300;400;500&display=swap');
+* {
+  font-family: 'Hind', sans-serif !important;
+}
 .carousel .carousel-indicators li {
   background-color: black;
 }
@@ -38,9 +42,7 @@
     max-width: 1500px;
   }
 }
-* {
-  font-family: 'Chivo', sans-serif !important;
-}
+
 @media (min-width: 1200px) {
   .container,
   .container-lg,
@@ -52,22 +54,6 @@
   }
 }
 
-/* 
-@media only screen and (min-device-width: 200px) and (max-device-width: 400px) {
-  
-}
-
-@media only screen and (min-device-width: 400px) and (max-device-width: 550px) {
-     
-}
-
-@media only screen and (min-device-width: 550px) and (max-device-width: 768px) {
-   
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
-    
-} */
 @media only screen and (min-device-width: 991px) and (max-device-width: 1150px) {
   .container,
   .container-lg,

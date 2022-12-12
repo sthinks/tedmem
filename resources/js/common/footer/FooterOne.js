@@ -11,17 +11,19 @@ const FooterOne = () => {
         <>
             <footer className="eduvibe-footer-one edu-footer footer-style-default position-relative">
                 <div className="footer-top">
-                    <div className="footer-card">
-                        <div>
-                            <img
-                                className="footer-card-image"
-                                src={footerCard}
-                            />
-                            <span className="footer-card-text">
+                    <div className="row footer-card-container">
+                        <div className="footer-card-content">
+                                <img
+                                    className="footer-card-picture"
+                                    src={footerCard}
+                                />
+                        </div> 
+                        <div className="aabb">
+                            <div className="footer-one-card-text">
                                 Bülten ve Yayınlarından <br /> Haberdar Olmak
                                 İçin
-                            </span>
-                            <button className="footer-card-button">
+                            </div>
+                            <button className="footer-one-card-button">
                                 Abone Ol
                             </button>
                         </div>
@@ -156,6 +158,11 @@ const FooterOne = () => {
                                             <li>
                                                 <Link to="/etkinlikler">
                                                     Etkinlikler
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/bulten">
+                                                    Bültenler
                                                 </Link>
                                             </li>
                                         </ul>

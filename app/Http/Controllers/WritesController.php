@@ -11,6 +11,14 @@ class WritesController extends Controller
     public function getAllWrites()
     {
         $data = Write::all();
+        $data->map(function ($item) {
+            $item->image = url(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+            $item->image2 = url(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image2))
+            );
+        });
 
         return response()->json($data);
     }

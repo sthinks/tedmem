@@ -1,0 +1,15 @@
+.writes-card-title {
+  color: white;
+}
+.writes-card-title > p {
+  color: white !important;
+  font-size: 20px;
+}
+.course-two-title {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-weight: bolder;
+  line-height: 17pt;
+  overflow: hidden;
+}

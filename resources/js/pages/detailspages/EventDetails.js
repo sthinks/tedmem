@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { FaFilePdf } from "react-icons/fa";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import axiosClient from "../../utils/axiosClient";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
-import { BsFillFileEarmarkFill } from "react-icons/bs";
-import { BsFillFileEarmarkPersonFill } from "react-icons/bs";
-import { BsFillShareFill } from "react-icons/bs";
-import { Helmet } from "react-helmet";
 import banner from "../../assets/images/eventdetails.png";
 import BannerEvent from "../../components/banner-event/BannerEvent";
 import benzerYazilar from "../../assets/images/benzer-yazilar.png";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 import "./eventDetails.css";
 import EditionCard from "../../components/card/EditionCard";
-import { set } from "lodash";
 import EventDetailSearch from "../../components/search/EventDetailSearch";
 
 const EventDetails = () => {
@@ -103,6 +96,10 @@ const EventDetails = () => {
         console.log(result);
         setAllCategory(result);
     }
+
+    const deneme = (value) => {
+        const result = `https://twitter.com/intent/tweet`
+    }
   
     return (
         !loading && (
@@ -119,7 +116,7 @@ const EventDetails = () => {
                     <div className="container event-detail ">
                         <div className="row d-flex event-detail-container">
                             <div className="col-lg-9 col-sm-12 event-detail-content">
-                                <div
+                                <div className="event-detail-text"
                                     dangerouslySetInnerHTML={{
                                         __html: content?.content,
                                     }}
@@ -140,7 +137,7 @@ const EventDetails = () => {
                                             Paylaş
                                         </h6>
                                         <a
-                                            href="https://www.facebook.com/tedmem"
+                                            href="https://www.facebook.com/sharer/sharer.php?u=example.org"
                                             target="_blank"
                                         >
                                             <div
@@ -152,13 +149,17 @@ const EventDetails = () => {
                                                 <FaFacebookF
                                                     style={{ color: "#124d97" }}
                                                 />
+                                              
                                             </div>
+
                                         </a>
+                                        
                                         <a
-                                            href="https://twitter.com/tedmem"
+                                            href={`https://twitter.com/intent/tweet?screen_name=${content.title}  http://192.168.1.85/yayinlar-detay/${slug}`}
+                                        
                                             target="_blank"
                                         >
-                                            <div
+                                            <div 
                                                 className="social-media-icon-card ml-4 mb-3"
                                                 style={{
                                                     backgroundColor: "#ebf6fe",
@@ -198,7 +199,8 @@ const EventDetails = () => {
                                         adipisci velit...
                                     </p>
                                     <div className="row">
-                                        {similarDatas?.map((item) => (
+                                        {/* Benzer kartlar sadece 4 adet olacak şekilde slice yapıldı. */}
+                                        {similarDatas?.slice(0,4).map((item) => (
                                             <div className="col-xl-4 mt-5">
                                                 <div className="event-detail-similar-posts">
                                                     <EditionCard data={item} />
@@ -210,7 +212,10 @@ const EventDetails = () => {
                             </div>
                             <div className="col-lg-3 event-detail-cateogry">
                                 <EventDetailSearch data={allData} />
+                                
                                 <h5 className="detail-category">Kategoriler</h5>
+                                
+                                
                                 {allCategory.map((item) => (
                                  
                                   
@@ -223,6 +228,9 @@ const EventDetails = () => {
                                     
                                 ))
                                 } 
+                                {!allCategory &&
+                                    <div>İlgili kategori bulunamadı.</div>
+                                }
                             </div>
                         </div>
                     </div>

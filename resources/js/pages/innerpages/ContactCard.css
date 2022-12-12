@@ -315,7 +315,7 @@
     font-size: 13px;
   }
   .footer-style-default .footer-top {
-    margin-top: 0px;
+    margin-top: 100px;
     padding: 24px 0;
   }
   .section-title .title {
@@ -348,7 +348,7 @@
   }
 }
 
-@media only screen and (min-device-width: 992px) and (max-device-width: 1440px) {
+@media only screen and (min-device-width: 992px) and (max-device-width: 1441px) {
   .container,
   .container-lg,
   .container-md,
@@ -404,7 +404,7 @@
     font-size: 14px;
   }
   .footer-style-default .footer-top {
-    margin-top: 50px;
+    margin-top: 120px;
     padding: 24px 0;
   }
   .footer-card {
@@ -456,7 +456,7 @@
   }
 }
 
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1601px) {
+@media only screen and (min-device-width: 1441px) and (max-device-width: 1601px) {
   .contact-information {
     width: 93% !important;
     padding: 25px 29px 0px 31px;
@@ -609,6 +609,7 @@
     font-size: 20px;
   }
   .footer-style-default .footer-top {
+    margin-top: 180px;
     padding: 50px 0;
   }
   .social-share li a {

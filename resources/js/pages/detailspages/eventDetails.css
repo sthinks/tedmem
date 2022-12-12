@@ -24,10 +24,9 @@
   width: 70% !important;
   margin-right: auto !important;
 }
-.event-detail-content > p {
+.event-detail-text > p {
   background-color: white !important;
 }
-
 .event-detail-button {
   border: 0px;
   width: auto;

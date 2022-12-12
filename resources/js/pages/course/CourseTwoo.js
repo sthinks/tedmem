@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { FaFilePdf } from 'react-icons/fa';
 import banner from "../../assets/images/eventdetails.png";
 import BannerEvent from "../../components/banner-event/BannerEvent";
+import "./courseTwoo.css";
 const CoruseTwoo = () => {
     const { slug } = useParams();
     const [content, setContent] = React.useState(null);
@@ -16,14 +17,15 @@ const CoruseTwoo = () => {
     const getWrites = async () => {
         await axiosClient
             .get(`/api/yazilar-detay/${slug}`)
-            .then((res) => {setContent(res.data)
-            console.log("yeniiii",res.data);});
+            .then((res) => {setContent(res.data)});
     };
 
     useEffect(() => {
         getWrites();
     }, []);
-    console.log(content)
+    useEffect(() => {
+      getWrites();
+    }, [slug]);
 
 
     return (
@@ -40,7 +42,7 @@ const CoruseTwoo = () => {
               <div className="row g-5">
                 <div className="col-lg-7">
                   <div className="content">
-                    <div dangerouslySetInnerHTML={{ __html: content?.content }}></div>
+                    <div className='yazilar-detay-text' dangerouslySetInnerHTML={{ __html: content?.content }}></div>
                    
                   </div>
                 </div>

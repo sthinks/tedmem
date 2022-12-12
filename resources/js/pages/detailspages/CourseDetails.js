@@ -7,6 +7,8 @@ import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
 import CourseData from "../../data/course/CourseData.json";
 import axiosClient from "../../utils/axiosClient";
 import ContactMeForm from "../../components/contact/ContactMeForm";
+import PageBanner from "../../components/banner/PageBanner";
+import banner from "../../assets/images/activity-banner.png";
 
 const CourseDetails = () => {
     const { slug } = useParams();
@@ -28,12 +30,7 @@ const CourseDetails = () => {
         <>
             <SEO title={`TEDMEM | ${content?.title}`} />
             <Layout>
-                <BreadcrumbOne
-                    title={`${content?.title}`}
-                    rootUrl="/"
-                    parentUrl="Anasayfa"
-                    currentUrl="Etkinlik Detayı"
-                />
+                <PageBanner  image={banner} />
                 <div className="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
                     <div className="container">
                         <div className="row g-5">
