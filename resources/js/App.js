@@ -15,6 +15,7 @@ import HomeOne from "./pages/homepages/HomeOne";
 import Error from "./pages/innerpages/Error";
 import BultenPage from "./pages/innerpages/BultenPage";
 
+
 function App() {
     return (
         <Router>
@@ -22,7 +23,11 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<HomeOne />} />
 
-                    <Route exact path={"/kurumsal/:slug"} element={<AboutUsOne />} />
+                    <Route
+                        exact
+                        path={"/kurumsal/:slug"}
+                        element={<AboutUsOne />}
+                    />
 
                     <Route exact path={"/iletisim"} element={<ContactMe />} />
                     <Route exact path={"/arama"} element={<CourseOne />} />
@@ -42,7 +47,8 @@ function App() {
                         exact
                         path={"/yazilar-detay/:slug"}
                         element={<CourseTwoo />}
-                    />
+                    />  
+                   
 
                     <Route
                         exact
@@ -53,11 +59,15 @@ function App() {
 
                     <Route exact path={"/yayinlar"} element={<EventGrid />} />
 
-                    <Route exact path={"/yayinlar/:slug"} element={<EventGrid />} />
+                    <Route
+                        exact
+                        path={"/yayinlar/:slug"}
+                        element={<EventGrid />}
+                    />
 
                     <Route
                         exact
-                        path={"/event-details/:slug"}
+                        path={"/yayinlar-detay/:slug"}
                         element={<EventDetails />}
                     />
                     <Route path="*" element={<Error />} />

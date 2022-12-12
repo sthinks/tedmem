@@ -17,11 +17,9 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-
-Route::get('/info', function() {
+Route::get('/info', function () {
     phpinfo();
 });
-
 
 Route::get('/{any}', function () {
     return view('welcome');

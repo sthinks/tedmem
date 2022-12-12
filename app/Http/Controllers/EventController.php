@@ -14,7 +14,7 @@ class EventController extends Controller
         $data->map(function($item){
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );
@@ -25,7 +25,7 @@ class EventController extends Controller
         $data = Event::where('slug', $slug)->first();
         $data->image = url(
             sprintf(
-                "storagem/%s",
+                "storage/%s",
                 str_replace('\\', '/', $data->image)
             )
         );
@@ -43,7 +43,7 @@ class EventController extends Controller
         $data->map(function($item){
             $item->image = url(
                 sprintf(
-                    "storagem/%s",
+                    "storage/%s",
                     str_replace('\\', '/', $item->image)
                 )
             );

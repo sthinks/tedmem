@@ -1,0 +1,106 @@
+.footer-card {
+  position: absolute;
+  top: -13%;
+  left: 30%;
+}
+
+.footer-card-image {
+  width: 80%;
+  height: auto;
+}
+.footer-card-text {
+  line-height: 50px;
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+.footer-card-button {
+  background-color: rgb(61, 61, 61);
+  width: 180px;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  position: absolute;
+  right: 27%;
+  bottom: 30%;
+}
+
+@media only screen and (min-width: 1380px) and (max-width: 1440px) {
+  .footer-card {
+    top: -11%;
+    left: 12%;
+  }
+
+  .footer-card-image {
+  }
+  .footer-card-text {
+  }
+  .footer-card-button {
+    width: 188px;
+    height: 66px;
+  }
+}
+
+@media only screen and (min-width: 1030px) and (max-width: 1366px) {
+  .footer-card {
+    top: -10%;
+    left: 10%;
+  }
+
+  .footer-card-image {
+  }
+  .footer-card-text {
+  }
+  .footer-card-button {
+    width: 199px;
+    height: 64px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .footer-card {
+    top: -5%;
+    left: 10%;
+  }
+
+  .footer-card-image {
+    width: 90%;
+    height: auto;
+  }
+  .footer-card-text {
+    line-height: 34px;
+    font-size: 30px;
+    top: 25%;
+    left: 5%;
+  }
+  .footer-card-button {
+    width: 142px;
+    height: 56px;
+    right: 18%;
+    bottom: 31%;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .footer-card {
+    top: -2%;
+    left: 0%;
+  }
+
+  .footer-card-text {
+    line-height: 20px;
+    font-size: 16px;
+    top: 20%;
+    left: 5%;
+  }
+  .footer-card-button {
+    width: 96px;
+    height: 33px;
+    right: 7%;
+    bottom: 23%;
+  }
+}

@@ -1,5 +1,5 @@
 /*---------------------------
- Card Styles  
+ Card Styles
 -----------------------------*/
 
 .course-activation-item-2 .edu-card.card-type-2 {
@@ -19,7 +19,7 @@
 .course-three-wrapper {
     position: relative;
     z-index: 1;
-    
+
     .video-section-overlayto-another {
         margin-bottom: -400px;
         @media #{$md-layout} {
@@ -30,8 +30,6 @@
         }
     }
 }
-
-
 
 .price-list {
     margin: -7.5px;
@@ -53,7 +51,7 @@
         .price {
             margin: 9px;
         }
-        
+
         .current-price {
             border-radius: 3px;
             background: var(--color-primary);
@@ -92,7 +90,6 @@
             font-size: 20px;
             color: var(--color-primary);
             font-size: 20px;
-
         }
         .old-price {
             font-weight: 500;
@@ -136,7 +133,7 @@
                         overflow: hidden;
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-top {
                         left: 15px;
                         top: 15px;
@@ -198,7 +195,7 @@
                         border-radius: 3px;
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-top {
                         left: 0;
                         top: 10px;
@@ -245,7 +242,7 @@
                         border-radius: 3px;
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-bottom {
                         left: 30px;
                         bottom: -19px;
@@ -268,7 +265,7 @@
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: 20px;
-                    
+
                     @media #{$lg-layout} {
                         flex-wrap: wrap;
                     }
@@ -295,7 +292,6 @@
                     border-top: 1px solid var(--color-border);
                     padding-top: 25px;
                     flex-wrap: wrap;
-                 
                 }
             }
         }
@@ -329,7 +325,7 @@
                 margin-bottom: 20px;
                 .top-status-bar {
                     .eduvibe-status {
-                        background: rgba(255,255,255,0.15);
+                        background: rgba(255, 255, 255, 0.15);
                         border: 0 none;
                         line-height: 33px;
                     }
@@ -337,11 +333,11 @@
 
                 .top-wishlist-bar {
                     .wishlist-btn {
-                        background: rgba(255,255,255,0.2);
+                        background: rgba(255, 255, 255, 0.2);
                         backdrop-filter: blur(10px);
                     }
                 }
-            } 
+            }
             .title {
                 font-weight: 700;
                 font-size: 20px;
@@ -352,16 +348,16 @@
                 }
             }
             .description {
-                color: rgba(255,255,255,0.8);
+                color: rgba(255, 255, 255, 0.8);
                 margin-bottom: 25px;
             }
-            
+
             .price-list {
                 margin-bottom: 25px;
                 .price {
                     color: var(--color-white);
                     &.old-price {
-                        color: rgba(255,255,255,0.8);
+                        color: rgba(255, 255, 255, 0.8);
                     }
                 }
             }
@@ -400,7 +396,7 @@
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
             .inner {
                 .thumbnail {
-                    .top-position { 
+                    .top-position {
                         &.left-bottom {
                             left: 30px;
                             bottom: -13.5px;
@@ -447,7 +443,6 @@
                         margin-bottom: 0;
                     }
                 }
-
             }
         }
     }
@@ -477,7 +472,7 @@
                         }
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-top {
                         left: 10px;
                         top: 10px;
@@ -492,7 +487,7 @@
             .content {
                 flex-basis: 61.66%;
                 padding: 30px 25px;
-                
+
                 @media #{$md-layout} {
                     padding: 30px 18px;
                 }
@@ -541,7 +536,7 @@
                         border-radius: 3px;
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-top {
                         left: 10px;
                         top: 10px;
@@ -590,7 +585,7 @@
                         border-radius: 3px;
                     }
                 }
-                .top-position { 
+                .top-position {
                     &.left-top {
                         left: 10px;
                         top: 10px;

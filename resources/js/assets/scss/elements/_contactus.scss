@@ -1,18 +1,17 @@
 /*-------------------------
-    Contact Us Area  
+    Contact Us Area
 ---------------------------*/
 
-
 .contact-address-card-1 {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
     padding: 50px 20px;
     text-align: center;
     transition: 0.4s;
-    .inner { 
+    .inner {
         .icon {
-            background: rgba(82,95,225,0.1);
+            background: rgba(82, 95, 225, 0.1);
             width: 50px;
             height: 50px;
             margin: 0 auto;
@@ -51,7 +50,7 @@
     &.phone {
         .inner {
             .icon {
-                background: rgba(251,124,86,0.1);
+                background: rgba(251, 124, 86, 0.1);
                 i {
                     color: var(--color-secondary);
                 }
@@ -62,9 +61,9 @@
     &.email {
         .inner {
             .icon {
-                background: rgba(255,164,27,0.1);
+                background: rgba(255, 164, 27, 0.1);
                 i {
-                    color: #FFA41B;
+                    color: #ffa41b;
                 }
             }
         }
@@ -95,10 +94,8 @@
     }
 }
 
-
-
 .contact-address-card-2 {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
     padding: 70px 40px;
@@ -115,7 +112,6 @@
         .icon {
             margin-bottom: 45px;
             img {
-
             }
         }
         .content {
@@ -143,7 +139,6 @@
     }
 }
 
-
 .contact-address-bottom-shape {
     position: relative;
     z-index: 1;
@@ -155,16 +150,13 @@
     }
 }
 
-
-
-
 /*------------------------------
-    Contact Form Style One 
--------------------------------*/ 
+    Contact Form Style One
+-------------------------------*/
 .rwt-dynamic-form {
     .form-group {
         input {
-            background: #F5F5F5;
+            background: #f5f5f5;
             border-radius: 5px;
             padding: 0 30px;
             border: 1px solid transparent;
@@ -180,7 +172,7 @@
             }
         }
         textarea {
-            background: #F5F5F5;
+            background: #f5f5f5;
             padding: 17px 30px;
             min-height: 180px;
             border: 0 none;
@@ -203,16 +195,19 @@
     }
 }
 
-
 /*---------------------------
-    About Me 
-----------------------------*/ 
+    About Me
+----------------------------*/
 .about-me-1 {
     .thumbnail {
         position: relative;
         border-radius: 5px;
         &::before {
-            background: linear-gradient(360deg, #2D284E 0%, rgba(45, 40, 78, 0) 70.5%);
+            background: linear-gradient(
+                360deg,
+                #2d284e 0%,
+                rgba(45, 40, 78, 0) 70.5%
+            );
             position: absolute;
             content: "";
             top: 0;

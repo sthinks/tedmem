@@ -1,0 +1,160 @@
+.page-banner-event-title {
+  position: absolute;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.page-banner-content {
+  position: absolute;
+  width: 40%;
+  height: 25%;
+  margin-left: 20%;
+}
+.banner-event-date-author {
+  position: absolute !important;
+  color: white;
+  margin-top: 10%;
+}
+.banner-event-date-author > p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 50px;
+  color: white;
+}
+.page-banner-event {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.page-banner-event-content-white {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff6e;
+}
+.page-banner-event-content-none {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff00;
+}
+.page-banner-event-image {
+  width: 100%;
+  height: auto;
+}
+.page-banner-date-icon {
+  color: white;
+  font-size: 23px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 400px) {
+  .page-banner-content {
+    width: 70%;
+    height: 40%;
+    margin-left: 2%;
+  }
+  .page-banner-event-title {
+    font-size: 12px !important;
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .banner-event-date-author {
+    margin-top: 20%;
+  }
+  .banner-event-date-author > p {
+    font-size: 10px !important;
+  }
+  .page-banner-date-icon {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-device-width: 400px) and (max-device-width: 768px) {
+  .page-banner-event-title {
+    font-size: 15px !important;
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .banner-event-date-author {
+    margin-top: 20%;
+  }
+  .page-banner-content {
+    position: absolute;
+    width: 55%;
+    height: 30%;
+    margin-left: 5%;
+  }
+  .banner-event-date-author > p {
+    font-size: 10px !important;
+  }
+  .page-banner-date-icon {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 992px) {
+  .page-banner-event-title {
+    font-size: 18px !important;
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .banner-event-date-author {
+    margin-top: 10%;
+  }
+  .page-banner-content {
+    position: absolute;
+    width: 55%;
+    height: 30%;
+    margin-left: 10%;
+  }
+  .banner-event-date-author > p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-device-width: 992px) and (max-device-width: 1440px) {
+  .page-banner-event-title {
+    font-size: 25px;
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .banner-event-date-author {
+    margin-top: 10%;
+  }
+  .page-banner-content {
+    position: absolute;
+    width: 55%;
+    height: 30%;
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
+  .page-banner-event-title {
+    font-size: 32px;
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .banner-event-date-author {
+    margin-top: 10%;
+  }
+  .page-banner-content {
+    position: absolute;
+    width: 55%;
+    height: 30%;
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (min-device-width: 1920px) and (max-device-width: 2560px) {
+  .page-banner-event-title {
+    font-size: 32px;
+  }
+}

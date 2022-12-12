@@ -67,22 +67,22 @@ const CoruseTwo = () => {
                     <div className="container">
                         <div className="row d-flex justify-content-center" style={{marginBottom:'70px'}}>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => handleSekme('2022')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>2022</button>
+                                <button onClick={() => handleSekme('2022')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>2022</button>
                             </div>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => handleSekme('2021')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>2021</button>
+                                <button onClick={() => handleSekme('2021')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>2021</button>
                             </div>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => handleSekme('2020')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>2020</button>
+                                <button onClick={() => handleSekme('2020')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>2020</button>
                             </div>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => handleSekme('2019')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>2019</button>
+                                <button onClick={() => handleSekme('2019')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>2019</button>
                             </div>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => handleSekme('2018')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>2018</button>
+                                <button onClick={() => handleSekme('2018')} className="btn btn-lg btn-block" style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>2018</button>
                             </div>
                             <div className="col-md-2 col-sm-12 mb-2">
-                                <button onClick={() => setSekme([])} className="btn btn-lg btn-block"style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#8C8CA6',color:'white'}}>Tümü</button>
+                                <button onClick={() => setSekme([])} className="btn btn-lg btn-block"style={{fontWeight:'bolder',fontSize:'15px',backgroundColor:'#fff0e1',color:'black'}}>Tümü</button>
                             </div>
 
                         </div>

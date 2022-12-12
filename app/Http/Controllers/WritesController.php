@@ -6,29 +6,36 @@ use Illuminate\Http\Request;
 use App\Models\Write;
 use TCG\Voyager\Models\Category;
 
-
 class WritesController extends Controller
 {
-    public function getWrites(String $slug){
+    public function getAllWrites()
+    {
+        $data = Write::all();
+
+        return response()->json($data);
+    }
+    public function getWrites(string $slug)
+    {
         $category = Category::where('slug', $slug)->first();
-        if(!$category) {
+        if (!$category) {
             return response()->json(['msg' => 'Kategori bulunamadı', 404]);
         }
-        $data = Write::where('category_id' , $category->id)->orderBy('year', 'DESC')->paginate(12);
-        $data->map(function($item){
+        $data = Write::where('category_id', $category->id)
+            ->orderBy('year', 'DESC')
+            ->paginate(12);
+        $data->map(function ($item) {
             $item->image = url(
-                sprintf(
-                    "storagem/%s",
-                    str_replace('\\', '/', $item->image)
-                )
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
 
         return response()->json($data);
     }
-    public function getWritesDetails(string $slug){
+
+    public function getWritesDetails(string $slug)
+    {
         $write = Write::where('slug', $slug)->first();
-        if(!$write) {
+        if (!$write) {
             return response()->json(['message' => 'not found'], 404);
         }
         $write->category = Category::where('id', $write->id)->first();
@@ -36,17 +43,14 @@ class WritesController extends Controller
         $write->pdf_link = array_map(function ($file) {
             return url(
                 sprintf(
-                    "storagem/%s",
+                    'storage/%s',
                     str_replace('\\', '/', $file->download_link)
                 )
             );
         }, $pdf_files);
         $write->image = url(
-                sprintf(
-                    "storagem/%s",
-                    str_replace('\\', '/', $write->image)
-                )
-            );
+            sprintf('storage/%s', str_replace('\\', '/', $write->image))
+        );
 
         return response()->json($write);
     }
