@@ -1,13 +1,27 @@
+.mobile-search-icon-popup {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+}
+.hamberger-menu {
+  display: none;
+}
+.mobil-search-icon {
+  display: none;
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+}
 .hamberger {
-  background-color: #e9e9e9;
+  background-color: #edeef4 !important;
   margin-top: 5px;
 }
 .hamberger-button {
   border: 0;
-  background-color: #e9e9e9 !important;
+  background-color: #edeef4 !important;
 }
 .header-background {
-  background-color: #e1e1e1b8 !important;
+  background-color: #edeef4 !important;
 }
 .logo-text {
   height: 55%;
@@ -15,9 +29,7 @@
   width: 200px;
   border-left: 1px solid rgb(114, 114, 114);
 }
-.edu-header.disable-transparent .logo a {
-  background-color: #e9e9e9 !important;
-}
+
 .logo-text > p {
   font-size: 15px;
   font-weight: bold;
@@ -52,9 +64,11 @@
   color: black;
 }
 .mainmenu-nav .mainmenu {
-  margin-left: 0% !important;
+  margin-left: -5% !important;
 }
 .header-input-result-detail {
+  position: absolute;
+  background-color: white;
 }
 
 .banner-one-results {
@@ -79,6 +93,18 @@ ul > li > a:hover {
   color: black;
 }
 @media screen and (max-width: 500px) {
+  .logo {
+    width: 270px !important;
+  }
+  .hamberger-menu {
+    display: block;
+  }
+  .mobil-search-icon {
+    display: block;
+  }
+  .page-banner-title {
+    margin-top: 15px !important;
+  }
   .header-quote {
     display: none !important;
   }
@@ -114,6 +140,12 @@ ul > li > a:hover {
 }
 
 @media screen and (max-width: 768px) {
+  .hamberger-menu {
+    display: block;
+  }
+  .mobil-search-icon {
+    display: block;
+  }
   .header-quote {
     display: none !important;
   }
@@ -132,7 +164,7 @@ ul > li > a:hover {
     line-height: 90px;
   }
   .edu-header .logo a img {
-    width: 55% !important;
+    width: 50% !important;
   }
   .logo-text {
     display: none;
@@ -152,6 +184,9 @@ ul > li > a:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .hamberger-menu {
+    display: block;
+  }
   .mainmenu-nav {
     display: none !important;
   }
@@ -183,11 +218,14 @@ ul > li > a:hover {
   }
 }
 @media screen and (max-width: 1070px) {
+  .hamberger-menu {
+    display: block;
+  }
   .mainmenu-nav {
     display: none !important;
   }
   .logo {
-    width: 350px !important;
+    width: 310px;
   }
   .header-one-navbar {
     width: 400px !important;
@@ -217,7 +255,10 @@ ul > li > a:hover {
   }
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1200px) {
+  .hamberger-menu {
+    display: block;
+  }
   .mainmenu-nav {
     display: none !important;
   }
@@ -240,7 +281,10 @@ ul > li > a:hover {
     font-size: 12px !important;
   }
   .mainmenu {
-    margin-right: 60px !important;
+    margin-right: 50px !important;
+  }
+  .mainmenu-nav .mainmenu {
+    margin-left: -5% !important;
   }
   .mainmenu-nav .mainmenu > li > a {
     font-size: 11px !important;

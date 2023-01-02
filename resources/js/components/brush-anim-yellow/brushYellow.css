@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.brush-animation-content-yellow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hidden-brush {
+  position: absolute;
+  width: 20%;
+  height: 50%;
+  top: 30%;
+  left: 52%;
+}
+.brush-animation-content-yellow:hover > .hidden-brush {
+  display: none;
+}
+
+.brush-animation-content-yellow .brush-anim-yellow {
+  background: url('../../assets//images/yellow-brush.png');
+  background-repeat: no-repeat;
+  background-position-x: 65%;
+  background-position-y: 83%;
+  position: relative;
+  width: 650px;
+  height: 75px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 900;
+}
+.brush-animation-content-yellow:hover .brush-anim-yellow {
+  background: none;
+}
+
+.brush-animation-content-yellow .brush-anim-yellow:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background: url('../../assets//images/yellow-brush.png');
+  background-size: inherit;
+  transform-orgin: left;
+  transition: 1s;
+  background-size: 150px;
+  /* color: blue; */
+  background-repeat: no-repeat;
+}
+
+.brush-animation-content-yellow .brush-anim-yellow:hover:before {
+  width: 100%;
+  color: #fff;
+}
+
+.brush-animation-content-yellow .brush-anim-yellow:hover {
+  color: #000;
+}
+
+brush-animation-content-yellow .brush-anim-yellow .brush-title-yellow {
+  position: relative;
+  z-index: 1;
+}
+.brush-title-yellow {
+  font-size: 40px;
+  z-index: 6;
+  font-weight: 900;
+}
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+  brush-animation-content-yellow .brush-anim-yellow:before {
+    transition: 0s;
+  }
+  .brush-animation-content-yellow .brush-anim-yellow {
+    background-position-x: 87%;
+    width: 300px;
+  }
+}

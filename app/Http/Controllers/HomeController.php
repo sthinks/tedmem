@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $data = Slider::all();
         $data->map(function ($item) {
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -34,7 +34,7 @@ class HomeController extends Controller
                 'id',
                 $item->category_id
             )->first();
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -48,7 +48,7 @@ class HomeController extends Controller
             ->get();
 
         $data->map(function ($item) {
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -64,14 +64,14 @@ class HomeController extends Controller
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
-                return url(
+                return asset(
                     sprintf(
                         'storage/%s',
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -85,14 +85,14 @@ class HomeController extends Controller
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
-                return url(
+                return asset(
                     sprintf(
                         'storage/%s',
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });

@@ -36,7 +36,7 @@
   color: #ff8b50;
   margin-right: 5px;
 }
-@media only screen and (min-device-width: 200px) and (max-device-width: 400px) {
+@media only screen and (min-width: 200px) and (max-width: 400px) {
   .section-title .title {
     font-size: 25px;
   }
@@ -77,7 +77,7 @@
     height: 35px;
   }
   .footer-style-default .footer-top {
-    margin-top: 20px;
+    margin-top: 99px;
   }
   .footer-card {
     position: absolute;
@@ -117,7 +117,7 @@
   }
 }
 
-@media only screen and (min-device-width: 400px) and (max-device-width: 550px) {
+@media only screen and (min-width: 400px) and (max-width: 550px) {
   .section-title .title {
     font-size: 25px;
   }
@@ -157,7 +157,7 @@
     height: 35px;
   }
   .footer-style-default .footer-top {
-    margin-top: 20px;
+    margin-top: 99px;
   }
   .footer-card-image {
     width: 100%;
@@ -197,7 +197,7 @@
   }
 }
 
-@media only screen and (min-device-width: 550px) and (max-device-width: 768px) {
+@media only screen and (min-width: 550px) and (max-width: 768px) {
   .section-title .title {
     font-size: 20px;
   }
@@ -211,7 +211,7 @@
   }
   .contact-information {
     padding: 20px 28px 0px 16px;
-    width: 65%;
+    width: 50%;
   }
   .contact-information-title {
     margin: 0px 0px 10px 0px;
@@ -275,14 +275,17 @@
   }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .container,
   .container-md,
   .container-sm {
     max-width: 367px;
   }
+  .edu-footer-widget .logo .logo-light {
+    width: 56%;
+  }
   .contact-information {
-    width: 85%;
+    width: 80%;
     padding: 17px 38px 0px 20px;
     font-size: 11px;
   }
@@ -315,7 +318,7 @@
     font-size: 13px;
   }
   .footer-style-default .footer-top {
-    margin-top: 100px;
+    margin-top: 140px;
     padding: 24px 0;
   }
   .section-title .title {
@@ -347,8 +350,7 @@
     font-size: 11px;
   }
 }
-
-@media only screen and (min-device-width: 992px) and (max-device-width: 1441px) {
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
   .container,
   .container-lg,
   .container-md,
@@ -357,8 +359,122 @@
   .container-xxl {
     max-width: 778px;
   }
+  .edu-footer-widget .logo .logo-light {
+    width: 56%;
+  }
   .contact-information {
-    width: 93% !important;
+    width: 100% !important;
+    padding: 25px 29px 0px 25px;
+    height: 90%;
+  }
+  .contact-information-title {
+    margin: 0px 0px 5px 0px;
+    font-size: 14px;
+  }
+  .contact-information-text > p {
+    font-size: 10px;
+    margin-left: 21px;
+  }
+  .contact-information-social-media {
+    font-size: 14px;
+    margin: 0px 0px 5px 20px;
+  }
+  .contact-information-icon {
+    margin: 10px 0px 0px 20px;
+  }
+  .social-media-icon-card {
+    width: 35px;
+    height: 35px;
+  }
+  .form-group input {
+    height: 35px;
+    font-size: 11px;
+    padding: 0px 17px;
+  }
+  .form-group textarea {
+    font-size: 11px;
+  }
+  .section-title .title {
+    font-size: 20px;
+  }
+  .page-banner-title {
+    font-size: 35px;
+  }
+  a.edu-btn,
+  button.edu-btn {
+    height: 45px;
+    font-weight: 500;
+    line-height: 47px;
+    padding: 0 23px;
+    font-size: 14px;
+  }
+  .footer-style-default .footer-top {
+    margin-top: 120px;
+    padding: 24px 0;
+  }
+  .footer-card {
+    top: -13%;
+    left: 24%;
+  }
+  .footer-card-image {
+    width: 70%;
+    height: auto;
+  }
+  .footer-card-text {
+    line-height: 30px;
+    font-size: 21px;
+    top: 27%;
+    left: 5%;
+  }
+  .footer-card-button {
+    width: 110px;
+    height: 45px;
+    right: 37%;
+    bottom: 28%;
+    font-size: 14px;
+  }
+  .footer-style-default .description {
+    font-size: 10px;
+  }
+  .footer-style-default .widget-title {
+    font-size: 14px;
+  }
+  .footer-style-default .edu-footer-widget .footer-link li a {
+    font-size: 10px;
+    line-height: 13px;
+  }
+  .footer-style-default .information-list li {
+    font-size: 10px;
+  }
+  .social-share li {
+    margin: 0px;
+  }
+  .social-share li a {
+    width: 30px;
+    height: 30px;
+    line-height: 33px;
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .copyright-default p {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1441px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 778px;
+  }
+  .edu-footer-widget .logo .logo-light {
+    width: 56%;
+  }
+  .contact-information {
+    width: 90% !important;
     padding: 25px 29px 0px 25px;
     height: 87%;
   }
@@ -456,9 +572,9 @@
   }
 }
 
-@media only screen and (min-device-width: 1441px) and (max-device-width: 1601px) {
+@media only screen and (min-width: 1441px) and (max-width: 1601px) {
   .contact-information {
-    width: 93% !important;
+    width: 90% !important;
     padding: 25px 29px 0px 31px;
     height: 87%;
   }
@@ -491,7 +607,7 @@
     width: 70%;
   }
   .footer-style-default .footer-top {
-    margin-top: 35px;
+    margin-top: 150px;
     padding: 24px 0;
   }
   .footer-card-button {
@@ -542,7 +658,90 @@
   }
 }
 
-@media only screen and (min-device-width: 1601px) and (max-device-width: 1920px) {
+@media only screen and (min-width: 1601px) and (max-width: 1922px) {
+  .contact-information {
+    width: 90% !important;
+    padding: 25px 20px 0px 30px;
+    height: 87%;
+  }
+  .contact-information-title {
+    font-size: 16px;
+    margin: 0px 0px 5px 0px;
+  }
+  .contact-information-text > p {
+    font-size: 14px;
+    margin-left: 20px;
+  }
+  .contact-information-icon {
+    margin: 5px 0px 0px 20px;
+  }
+  .contact-information-social-media {
+    font-size: 15px;
+    margin: 0px 0px 12px 20px;
+  }
+  .form-group input {
+    font-size: 14px !important;
+  }
+  .form-group textarea {
+    font-size: 14px !important;
+  }
+  .footer-card {
+    top: -12%;
+    left: 28%;
+  }
+  .footer-card-image {
+    width: 77%;
+  }
+  .footer-card-button {
+    width: 148px;
+    height: 55px;
+    right: 30%;
+  }
+  .footer-card-text {
+    line-height: 39px;
+    font-size: 28px;
+    top: 25%;
+  }
+  .social-media-icon-card {
+    width: 37px;
+    height: 37px;
+  }
+  .a.edu-btn,
+  button.edu-btn {
+    padding: 0px 22px;
+    font-size: 16px;
+  }
+  .description {
+    font-size: 15px !important;
+  }
+  .footer-style-default .edu-footer-widget .footer-link li a {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .footer-style-default .information-list li {
+    font-size: 15px;
+  }
+  .footer-style-default .widget-title {
+    font-size: 20px;
+  }
+  .footer-style-default .footer-top {
+    margin-top: 240px;
+    padding: 50px 0;
+  }
+  .social-share li a {
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    font-size: 15px;
+  }
+  .social-share li {
+    margin-right: 10px;
+  }
+  .copyright-default p {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1922px) and (max-width: 2560px) {
   .contact-information {
     width: 79% !important;
     padding: 25px 20px 0px 30px;
@@ -609,7 +808,7 @@
     font-size: 20px;
   }
   .footer-style-default .footer-top {
-    margin-top: 180px;
+    margin-top: 300px;
     padding: 50px 0;
   }
   .social-share li a {

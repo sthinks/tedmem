@@ -15,7 +15,7 @@
   margin: 0px 0px 0px 25px;
 }
 .bulten-card-img {
-  width: 500px;
+  width: auto;
   height: 250px;
   object-fit: cover;
   border-radius: 5px 0px 0px 5px;
@@ -52,7 +52,7 @@
 .bulten-card-download > a:hover {
   color: rgb(86, 86, 86);
 }
-@media only screen and (min-device-width: 300px) and (max-device-width: 425px) {
+@media screen and (max-width: 425px) {
   .bulten-card {
     flex-direction: column;
   }
@@ -75,7 +75,7 @@
     font-size: 13px;
   }
 }
-@media only screen and (min-device-width: 425px) and (max-device-width: 768px) {
+@media screen and (max-width: 768px) {
   .bulten-card {
     flex-direction: column;
   }
@@ -98,12 +98,12 @@
     font-size: 13px;
   }
 }
-@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+@media screen and (max-width: 991px) {
   .bulten-card {
     flex-direction: column;
   }
   .bulten-card-img {
-    width: auto;
+    width: 100% !important;
     object-position: 50% 50%;
     border-radius: 5px 5px 0px 0px;
   }
@@ -121,9 +121,12 @@
     font-size: 13px;
   }
 }
-@media only screen and (min-device-width: 991px) and (max-device-width: 1150px) {
+@media screen and (max-width: 1150px) {
+  .bulten-card {
+    flex-direction: column !important;
+  }
   .bulten-card-img {
-    width: 325px;
+    width: 100% !important;
     object-position: 50% 50%;
   }
   .bulten-card-header {
@@ -141,11 +144,12 @@
   }
 }
 
-@media only screen and (min-device-width: 1150px) and (max-device-width: 1440px) {
+@media screen and (max-width: 1440px) {
   .bulten-card-img {
-    width: 425px;
+    width: 500px;
     height: 250px;
-    object-position: 50% 50%;
+    object-fit: cover;
+    object-position: 100% 20%;
   }
   .bulten-card-header {
     font-size: 23px;
@@ -160,11 +164,32 @@
     font-size: 15px;
   }
 }
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
+@media only screen and (max-width: 1600px) {
   .bulten-card-img {
-    width: 425px;
+    width: 500px;
     height: 250px;
-    object-position: 50% 50%;
+    object-fit: cover;
+    object-position: 100% 20%;
+  }
+  .bulten-card-header {
+    font-size: 23px;
+  }
+  .bulten-card-text {
+    font-size: 13px;
+  }
+  .bulten-card-body > p {
+    margin: 0px 0px 0px 25px;
+  }
+  .bulten-card-download {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 1920px) {
+  .bulten-card-img {
+    width: 40%;
+    height: 250px;
+    object-fit: cover;
+    object-position: 100% 20%;
   }
   .bulten-card-header {
     font-size: 30px;

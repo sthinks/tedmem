@@ -32,30 +32,49 @@
   left: 53%;
 }
 .twitter-text-header:hover > .splash-brush-twiiter {
-  animation: example 1s;
-  animation-duration: 0.8s;
-}
-@keyframes example {
-  0% {
-    left: 57%;
-    top: 40px;
-  }
-
-  100% {
-    top: 45px;
-    left: 53%;
-  }
+  left: 55%;
+  transition: left 1s ease-out 200ms;
 }
 
 .twitter-card-home {
   margin: 0px 10px 0px 10px;
 }
-@media only screen and (min-device-width: 850px) and (max-device-width: 991px) {
-  .twitter-card-home {
-    margin: 0px 0px 0px 0px;
+.home-twitter-main-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 27px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.twitter-cards {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 400px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 27px !important;
+  }
+  .splash-brush-twiiter {
+    display: none;
   }
 }
-@media only screen and (min-device-width: 300px) and (max-device-width: 850px) {
+
+@media screen and (max-width: 991px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
   .twitter-card-home {
     margin: 0px 0px 0px 0px;
   }
@@ -66,5 +85,55 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
+  }
+}
+@media screen and (max-width: 1920px) {
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
   }
 }
