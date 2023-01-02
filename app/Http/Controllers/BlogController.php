@@ -17,14 +17,14 @@ class BlogController extends Controller
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
-                return url(
+                return asset(
                     sprintf(
                         'storage/%s',
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -39,14 +39,14 @@ class BlogController extends Controller
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
-                return url(
+                return asset(
                     sprintf(
                         'storage/%s',
                         str_replace('\\', '/', $file->download_link)
                     )
                 );
             }, $pdf_files);
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -59,7 +59,7 @@ class BlogController extends Controller
 
         $pdf_files = json_decode($data->file);
         $data->pdf_link = array_map(function ($file) {
-            return url(
+            return asset(
                 sprintf(
                     'storage/%s',
                     str_replace('\\', '/', $file->download_link)

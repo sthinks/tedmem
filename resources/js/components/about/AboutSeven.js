@@ -1,73 +1,118 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import Ted from "../../assets/images/bg/ted.png";
-import Tedmem from "../../assets/images/bg/tedmem.png";
+import React, { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import MemNedir from '../../assets//images/corporate/mem2.jpg'
+import BizKimiz from '../../assets/images/corporate/biz-kimiz.jpg'
+import Amac from '../../assets/images/corporate/amacımız.jpg'
+import Yola from '../../assets/images/ontheroad.png'
+import './aboutSeven.css'
 
-const AboutSeven = ( { data } ) => {
-    const { slug } = useParams();
+const AboutSeven = ({ data }) => {
+  const [filter, setFilter] = useState()
+  const [allData, setAllData] = useState([])
+
+  const corporateList = [
+    {
+      title: 'Amacımız',
+      slug: 'about_goal',
+      image: Amac,
+      content: [data.about_goal],
+    },
+    {
+      title: 'Biz Kimiz',
+      slug: 'about_who',
+      image: BizKimiz,
+      content: [data.about_who],
+    },
+    {
+      title: 'Mem Nedir ?',
+      slug: 'excerpt',
+      image: MemNedir,
+      content: [data.excerpt],
+    },
+    {
+      title: 'Yola Çıkarken',
+      slug: 'about_yol',
+      image: Yola,
+      content: [data.about_yol],
+    },
+  ]
+
+  const filterHandler = (filterItem) => {
+    // const filteredItem = corporateList.filter((item) => {
+    //   return item.slug === filterItem
+    // })
+    // setFilter(filteredItem[0])
+
+    for (let i = 0; i < corporateList.length; i++) {
+      if (corporateList[i].slug === filterItem) {
+        const item = [
+          {
+            content: corporateList[i].content,
+            title: corporateList[i].title,
+          },
+        ]
+        setFilter(item)
+      }
+    }
+  }
+
+  useEffect(() => {
+    filterHandler('about_goal')
+  }, [data])
+
   return (
-    <div className=" eduvibe-home-four-about edu-about-area about-style-2 edu-section-gap bg-color-white">
+    <div className=" eduvibe-home-four-about edu-about-area about-style-2 edu-section-gap bg-color-white mt-5">
       <div className="container eduvibe-animated-shape">
-        <div className="row row--50">
-          <div className="col-lg-6">
-            <div className="about-image-gallery">
-              <div className="eduvibe-about-1-img-wrapper">
-                <img className="image-1" src={Tedmem} alt="About Images" />
-
-              </div>
-              <div className="circle-image-wrapper">
-              </div>
+        <div className="row d-flex justify-content-between">
+          <div className="col-lg-5">
+            <div className="row" style={{ marginTop: '50px' }}>
+              {corporateList.map((item) => (
+                <div
+                  className="col-lg-6 col-sm-12"
+                  href="content"
+                  key={item.title}
+                >
+                  <a href={window.screen.width <= 991 ? '#content' : '#a'}>
+                    <div
+                      className="corporate-card"
+                      onClick={() => filterHandler(item.slug)}
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    >
+                      <div className="coprote-card-back" />
+                      <div className="corporate-card-body">
+                        <p className="corporate-card-text">{item.title}</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="col-lg-6">
+          <div
+            className="col-lg-5 coprate-right-textt"
+            style={{ height: '100%' }}
+            id="content"
+          >
             <div className="inner mt_md--40 mt_sm--40">
-              <div className="description mt--40 mt_md--20 mt_sm--20">
-                {slug == 'mem-nedir' && (
-                    <>
-                        <h3 className="title text-center" style={{color:'#525fe1'}}>Mem Nedir ?</h3>
-                        <div className="text-center" dangerouslySetInnerHTML={{ __html: data?.excerpt }}></div>
-                    </>
-                )}
-                {slug == 'biz-kimiz' && (
-                    <>
-                        <h3 className="title text-center" style={{color:'#525fe1'}}>Biz Kimiz ?</h3>
-                        <div className="text-center" dangerouslySetInnerHTML={{ __html: data?.about_who }}></div>
-                    </>
-                )}
-                {slug == 'yola-cıkarken' && (
-                    <>
-                        <h3 className="title text-center" style={{color:'#525fe1'}}>Yola Çıkarken</h3>
-                        <div className="text-center" dangerouslySetInnerHTML={{ __html: data?.about_yol }}></div>
-                    </>
-                )}
-                {slug == 'amacımız' && (
-                    <>
-                        <h3 className="title text-center" style={{color:'#525fe1'}}>Amacımız</h3>
-                        <div className="text-center" dangerouslySetInnerHTML={{ __html: data?.about_goal }}></div>
-                    </>
+              <div className="description mt--40 mt_md--20 mt_sm--20" id="biz">
+                {filter && (
+                  <>
+                    <div className="corporate-header-title">
+                      {filter[0].title}
+                    </div>
+                    <div
+                      className="corporate-content-text"
+                      dangerouslySetInnerHTML={{ __html: filter[0].content }}
+                    />
+                  </>
                 )}
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="shape-dot-wrapper shape-wrapper d-xl-block d-none">
-          <div className="shape-image shape-image-1">
-            <img src="/images/shapes/shape-11-05.png" alt="Shape Thumb" />
-          </div>
-          <div className="shape-image shape-image-2">
-            <img src="/images/shapes/shape-08-01.png" alt="Shape Thumb" />
-          </div>
-          <div className="shape-image shape-image-3">
-            <img src="/images/shapes/shape-30.png" alt="Shape Thumb" />
-          </div>
-          <div className="shape shape-1">
-            <span className="shape-dot"></span>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutSeven;
+export default AboutSeven

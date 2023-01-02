@@ -1,0 +1,31 @@
+.course-button-top {
+  font-weight: bolder;
+  font-size: 15px;
+  background-color: #fff0e1;
+  color: black;
+}
+.course-button-top:hover {
+  box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
+  transform: scale(1.01);
+}
+.writes-category-list {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1920px) {
+  .writes-category-list {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+  .writes-category-list {
+    font-size: 13px;
+  }
+}
+@media only screen and (min-width: 991px) and (max-width: 1400px) {
+  .writes-category-list {
+    font-size: 10px;
+  }
+}

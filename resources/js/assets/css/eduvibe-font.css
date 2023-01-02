@@ -1,5 +1,6 @@
 @font-face {
-  font-family: 'icomoon';
+  font-family: 'Chivo', sans-serif;
+  font-family: 'Hind', sans-serif;
   src: url('../fonts/icomoon.eot?3qm5q8');
   src: url('../fonts/icomoon.eot?3qm5q8#iefix') format('embedded-opentype'),
     url('../fonts/icomoon.ttf?3qm5q8') format('truetype'),
@@ -11,7 +12,8 @@
 }
 [class^='icon-'],
 [class*=' icon-'] {
-  font-family: 'icomoon' !important;
+  font-family: 'Chivo', sans-serif;
+  font-family: 'Hind', sans-serif;
   speak: never;
   font-style: normal;
   font-weight: normal;

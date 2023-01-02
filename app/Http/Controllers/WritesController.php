@@ -11,6 +11,14 @@ class WritesController extends Controller
     public function getAllWrites()
     {
         $data = Write::all();
+        $data->map(function ($item) {
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+            $item->image2 = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image2))
+            );
+        });
 
         return response()->json($data);
     }
@@ -24,7 +32,7 @@ class WritesController extends Controller
             ->orderBy('year', 'DESC')
             ->paginate(12);
         $data->map(function ($item) {
-            $item->image = url(
+            $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
@@ -41,14 +49,14 @@ class WritesController extends Controller
         $write->category = Category::where('id', $write->id)->first();
         $pdf_files = json_decode($write->file);
         $write->pdf_link = array_map(function ($file) {
-            return url(
+            return asset(
                 sprintf(
                     'storage/%s',
                     str_replace('\\', '/', $file->download_link)
                 )
             );
         }, $pdf_files);
-        $write->image = url(
+        $write->image = asset(
             sprintf('storage/%s', str_replace('\\', '/', $write->image))
         );
 

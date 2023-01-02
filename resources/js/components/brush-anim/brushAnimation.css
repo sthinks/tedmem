@@ -1,0 +1,100 @@
+.brush {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 30%;
+  left: 53%;
+}
+.title-brush-content {
+  position: relative;
+  font-size: 40px;
+  font-weight: 900;
+  z-index: 8;
+}
+
+.brush p {
+  background: url('../../assets/images/mavi-brush.png');
+  position: relative;
+  background-size: 170px;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 60px;
+  margin: 10px 0;
+  font-size: 18px;
+  color: #000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.brush p:hover {
+  background: none;
+}
+.brush p:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: url('../../assets/images/mavi-brush.png');
+  background-size: cover;
+  transform-orgin: left;
+  transition: 0.8s;
+  background-size: 170px;
+  background-repeat: no-repeat;
+}
+
+.brush p:hover:before {
+  width: 100%;
+  color: #fff;
+}
+
+.brush p:hover {
+  color: #000;
+}
+
+brush p span {
+  position: relative;
+  z-index: 1;
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 500px) {
+  .brush {
+    left: 55% !important;
+  }
+  .title-brush-content {
+    font-size: 28px;
+  }
+  .brush p:before {
+    transition: 0s;
+  }
+  .brush p {
+    background-size: 130px;
+    background-repeat: no-repeat;
+    width: 127px;
+    height: 29px;
+  }
+}
+@media only screen and (min-device-width: 500px) and (max-device-width: 768px) {
+  .brush {
+    left: 55% !important;
+  }
+  .title-brush-content {
+    font-size: 28px;
+  }
+  .brush p:before {
+    transition: 0s;
+  }
+  .brush p {
+    background-size: 130px;
+    background-repeat: no-repeat;
+    width: 127px;
+    height: 29px;
+  }
+}

@@ -7,7 +7,7 @@
 .input-result {
   border-radius: 5px;
   height: 35px;
-  background-color: #fff5e859;
+  background-color: #e1e1e159;
   font-size: 20px;
 }
 .search-icon {
@@ -25,6 +25,10 @@
 .banner-one-link-icon {
   width: 25px;
   margin-left: 15px;
+}
+.banner-one-link:hover {
+  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
 }
 .banner-one-link-text {
   margin: 17px 13px 18px 27px;

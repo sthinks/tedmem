@@ -2,8 +2,11 @@
   width: 400px;
   margin-left: 35%;
 }
-.twitter-content {
-  background-color: #40a6ff;
+
+.twitter {
+  background-image: url('../../../assets/images/twitter-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .twitter-card {
   border-radius: 0.5px solid black;
@@ -13,7 +16,124 @@
   border: 1px solid black;
   border-radius: 15px;
 }
+.home-twitter-main-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 40px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.splash-brush-twiiter {
+  width: 200px;
+  position: absolute;
+  height: 25px;
+  top: 45px;
+  left: 53%;
+}
+.twitter-text-header:hover > .splash-brush-twiiter {
+  left: 55%;
+  transition: left 1s ease-out 200ms;
+}
 
-.css-1dbjc4n .r-18u37iz .r-1t982j2 {
-  display: none !important;
+.twitter-card-home {
+  margin: 0px 10px 0px 10px;
+}
+.home-twitter-main-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 27px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.twitter-cards {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 400px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 27px !important;
+  }
+  .splash-brush-twiiter {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
+  .twitter-card-home {
+    margin: 0px 0px 0px 0px;
+  }
+  .twitter-card-container {
+    flex-direction: column;
+  }
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .twitter-cards {
+    display: grid !important;
+    justify-content: center;
+    flex-direction: column !important;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column !important;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
+  }
+}
+@media screen and (max-width: 1920px) {
+  .twitter-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-twitter-main-text {
+    font-size: 40px;
+  }
+  .splash-brush-twiiter {
+    width: 200px;
+    position: absolute;
+    height: 25px;
+    top: 45px;
+    left: 53%;
+  }
 }

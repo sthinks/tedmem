@@ -1,68 +1,72 @@
-import React, { useEffect,useState } from "react";
-import SEO from "../../common/SEO";
-import Layout from "../../common/Layout";
-import BreadcrumbOne from "../../common/breadcrumb/BreadcrumbOne";
-import axiosClient from "../../utils/axiosClient";
-import BultenCourse from "../../components/course/BultenCourse";
-import PageBanner from "../../components/banner/PageBanner";
-import banner from "../../assets/images/bulletin-image.png";
-import BultenCard from "../../components/bulten/BultenCard";
-import PaginationOne from "../../components/pagination/Pagination";
+import React, { useEffect, useState } from 'react'
+import SEO from '../../common/SEO'
+import Layout from '../../common/Layout'
+import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
+import axiosClient from '../../utils/axiosClient'
+import BultenCourse from '../../components/course/BultenCourse'
+import PageBanner from '../../components/banner/PageBanner'
+import banner from '../../assets/images/bulletin-image.png'
+import BultenCard from '../../components/bulten/BultenCard'
+import PaginationOne from '../../components/pagination/Pagination'
 
 const BultenPage = () => {
-    const [allData, setAllData] = useState([]);
-    const [content, setContent] = useState(null);
-    const [sekme, setSekme] = useState(null);
+  const [allData, setAllData] = useState([])
+  const [content, setContent] = useState(null)
+  const [sekme, setSekme] = useState(null)
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, setPostPage] = useState(4);
-    const pathname = window.location.pathname
-    const getWrites = async () => {
-        await axiosClient.get(`/api/bulten`).then((res) => {
-            setAllData(res.data);
-            console.log("bulten",res.data);
-        });
-    };
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPage] = useState(4)
+  const pathname = window.location.pathname
 
-    useEffect(() => {
-        getWrites();
-    }, []);
+  const getWrites = async () => {
+    await axiosClient.get(`/api/bulten`).then((res) => {
+      setAllData(res.data)
+    })
+  }
 
-    useEffect(() => {
-        paginationHandler(allData);
-    },[allData])
+  useEffect(() => {
+    getWrites()
+  }, [])
 
-    useEffect(() => {
-        paginationHandler(allData);
-    },[currentPage])
+  useEffect(() => {
+    paginationHandler(allData)
+  }, [allData])
 
-    const lastPostIndex = currentPage * postPerPage;
-    const firstPostIndex = lastPostIndex - postPerPage;
+  useEffect(() => {
+    paginationHandler(allData)
+  }, [currentPage])
 
-    const paginationHandler = (data) => {
-        const currentPosts = data?.slice(firstPostIndex, lastPostIndex);
-        setContent(currentPosts);
-    };
+  const lastPostIndex = currentPage * postPerPage
+  const firstPostIndex = lastPostIndex - postPerPage
 
-   
-    return (
-        <>
-            <SEO title="Yazılar" />
-            <Layout>
-                <PageBanner title="Bültenler" image={banner} id={pathname === "/" ? null : "etkinlikler"} />
-                <div className="edu-course-area edu-section-gap bg-color-white">
-                    <div className="container">
-                        <div className="row">
-                            <BultenCard data={content} />
-                        </div>
-                    </div>
-                </div>
-                <div className="d-flex justify-content-center">
-                    <PaginationOne totalPosts={allData?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
-                </div>
-            </Layout>
-        </>
-    );
-};
+  const paginationHandler = (data) => {
+    const currentPosts = data?.slice(firstPostIndex, lastPostIndex)
+    setContent(currentPosts)
+  }
 
-export default BultenPage;
+  return (
+    <>
+      <SEO title="Yazılar" />
+      <Layout>
+        <PageBanner title={'Bülten'} image={banner} id={'bulten'} />
+        <div className="edu-course-area edu-section-gap bg-color-white">
+          <div className="container">
+            <div className="row">
+              <BultenCard data={content} />
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center">
+          <PaginationOne
+            totalPosts={allData?.length}
+            postPerPage={postPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
+      </Layout>
+    </>
+  )
+}
+
+export default BultenPage

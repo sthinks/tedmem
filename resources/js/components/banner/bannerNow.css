@@ -1,4 +1,5 @@
 .headerImage {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +38,10 @@
   line-height: 1.2;
   margin-left: 35%;
   font-weight: 100;
+  width: 65%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .button {
   display: flex;
@@ -52,11 +57,120 @@
   color: white;
   font-size: 18px;
 }
-.image-banner-now {
+.banner-now-header-text {
+  position: relative;
+  margin-top: 15px;
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+}
+.splash-brush {
+  width: 150px;
+  position: absolute;
+  height: 30px;
+  top: 40px;
+  left: 50%;
+}
+.headerImage:hover > .splash-brush {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 0;
+  height: 48%;
+  background-size: inherit;
+  transform-orgin: left;
+  transition: 0.8s;
+  background-size: 250px;
+  /* color: blue; */
+  background-repeat: no-repeat;
+}
+
+.banner-now-right-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.banner-now-image {
+  position: relative;
+  width: 45%;
+}
+.banner-now-first-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 50px 10px 50px 10px;
+  object-fit: fill;
+  object-position: 100% 20%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.banner-now-second-image {
+  position: absolute;
+  top: 10%;
+  left: 105%;
+  width: 50%;
+  height: 250px;
+  border-radius: 10px 45px 10px 50px;
+  -o-object-fit: fill;
+  object-fit: fill;
+  -o-object-position: 100% 20%;
+  object-position: 100% 20%;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+.banner-now-button {
+  position: absolute;
+  bottom: 20%;
+  left: 52%;
+}
+.btn-hover-now-banner:hover {
+  box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
+  transform: scale(1.01);
+  color: white;
+}
+
+.banner-now-button:hover {
+  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+.banner-now-button-content {
+  border: oldlace;
+  background-color: white;
+  padding: 23px;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 
 /* For 480 Resolution */
-@media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
+@media screen and (max-width: 321px) {
+  .primary-text {
+    font-size: 65px;
+    margin-top: 15px;
+    line-height: 0.9;
+    margin-left: 10%;
+    text-align: center;
+    width: 80%;
+  }
+  .secondary-text {
+    font-size: 65px;
+    line-height: 0.9;
+    text-align: center;
+    margin-left: 10%;
+    width: 80%;
+  }
+  .tertiary-text {
+    font-size: 20px;
+    line-height: 1;
+    margin-left: 10%;
+    text-align: center;
+    width: 80%;
+  }
+  .image > img {
+    width: 90% !important;
+  }
+  .button {
+    text-align: center;
+    margin-left: 30% !important;
+  }
+}
+@media screen and (max-width: 480px) {
   .primary-text {
     font-size: 65px;
     margin-top: 15px;
@@ -89,7 +203,7 @@
 }
 
 /* For 640 Resolution */
-@media only screen and (min-device-width: 480px) and (max-device-width: 700px) {
+@media screen and (max-width: 700px) {
   .primary-text {
     font-size: 50px;
     margin-top: 15px !important;
@@ -114,7 +228,7 @@
     width: 80%;
   }
   .button {
-    margin-left: 38%;
+    margin-left: 35% !important;
   }
   .image > img {
     width: 100% !important;
@@ -122,10 +236,27 @@
   .image-banner-now {
     width: 50%;
   }
+  .image-banner-now {
+    width: 50%;
+  }
+  .banner-now-image {
+    width: 60% !important;
+  }
+  .banner-now-first-image {
+    height: 300px !important;
+  }
+  .banner-now-second-image {
+    width: 75% !important;
+    height: 150px !important;
+  }
+  .banner-now-button {
+    left: 55% !important;
+    bottom: 20% !important;
+  }
 }
 
 /* For 1024 Resolution */
-@media only screen and (min-device-width: 700px) and (max-device-width: 991px) {
+@media screen and (max-width: 991px) {
   .primary-text {
     font-size: 50px;
     margin-top: 15px !important;
@@ -156,11 +287,21 @@
     width: 100% !important;
   }
   .image-banner-now {
-    width: 50%;
+    width: 80%;
+  }
+  .banner-now-image {
+    width: 50% !important;
+  }
+  .banner-now-second-image {
+    width: 75% !important;
+    margin-left: 35px !important;
+  }
+  .banner-now-button {
+    left: 60% !important;
   }
 }
 
-@media only screen and (min-device-width: 991px) and (max-device-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .primary-text {
     font-size: 65px;
     line-height: 1;
@@ -176,9 +317,12 @@
   .now-text-container > p {
     margin-bottom: 10px;
   }
+  .banner-now-second-image {
+    width: 65%;
+  }
 }
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1440px) {
+@media screen and (max-width: 1440px) {
   .primary-text {
     font-size: 65px;
     line-height: 1;
@@ -194,9 +338,25 @@
   .now-text-container > p {
     margin-bottom: 10px;
   }
+  .banner-now-first-image {
+    height: 350px !important;
+    border-radius: 10px 45px 10px 45px;
+  }
+  .banner-now-second-image {
+    width: 55%;
+    height: 200px;
+    border-radius: 10px 45px 10px 45px;
+  }
+  .banner-now-button-content {
+    padding: 15px;
+  }
+  .banner-now-button {
+    bottom: 16%;
+    left: 48%;
+  }
 }
 
-@media only screen and (min-device-width: 1440px) and (max-device-width: 17000px) {
+@media screen and (max-width: 1700px) {
   .primary-text {
     font-size: 65px;
     line-height: 1;

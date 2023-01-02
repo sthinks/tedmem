@@ -1,16 +1,10 @@
-import React from "react";
-import HeaderOne from "./header/HeaderOne";
-import FooterOne from "./footer/FooterOne";
+import React from 'react'
 
 const Layout = ({ children }) => {
-    return (
-        <>
-            <main className="main-wrapper">
-                <HeaderOne />
-                {children}
-                <FooterOne />
-            </main>
-        </>
-    );
-};
-export default Layout;
+  return (
+    <>
+      <main className="main-wrapper">{children}</main>
+    </>
+  )
+}
+export default Layout
