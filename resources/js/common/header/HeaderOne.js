@@ -20,6 +20,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
   const [bulten, setBulten] = useState([])
   const [writesResultsNav, setWritesResults] = useState([])
   const [query, setQuery] = useState('')
+  const [searchPopup, setSearchPopup] = useState(false)
 
   const MobilSearchFunction = () => {
     setMobileSearch(!mobilSearchActive)
@@ -62,7 +63,6 @@ const HeaderOne = ({ styles, disableSticky }) => {
     setSearchData(allData)
   }, [kadro])
 
-  const [searchPopup, setSearchPopup] = useState(false)
   const onCanvasHandler = () => {
     setOffcanvasShow((prevState) => !prevState)
   }

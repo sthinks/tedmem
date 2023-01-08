@@ -1,15 +1,49 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiChevronDown } from 'react-icons/fi'
 
-const Nav = () => {
+const Nav = ({ close }) => {
+  const mobilNav1 = useRef()
+  const mobilNav2 = useRef()
+  const mobilNav3 = useRef()
+  const mobilNav4 = useRef()
+  const mobilNav5 = useRef()
+  const mobilNav6 = useRef()
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      console.log('ref2', mobilNav2)
+      console.log('ref3', mobilNav3.current.children[1].children[1])
+
+      console.log(e.path[1])
+      if (
+        e.path[1] === mobilNav1.current ||
+        e.path[1] === mobilNav4.current ||
+        e.path[1] === mobilNav5.current ||
+        e.path[1] === mobilNav6.current
+      ) {
+        close()
+      }
+      for (let i = 0; i <= 5; i++) {
+        if (e.path[1] === mobilNav2.current.children[1].children[i]) {
+          close()
+        }
+      }
+      for (let i = 0; i <= 8; i++) {
+        if (e.path[1] === mobilNav3.current.children[1].children[i]) {
+          close()
+        }
+      }
+    }
+    document.body.addEventListener('click', closeDropdown)
+    return () => document.body.removeEventListener('click', closeDropdown)
+  }, [])
   return (
     <ul className="mainmenu">
-      <li>
+      <li ref={mobilNav1}>
         <Link to="/kurumsal/amacımız">Kurumsal </Link>
       </li>
 
-      <li className="has-droupdown">
+      <li ref={mobilNav2} className="has-droupdown">
         <Link to="/yayinlar">
           Yayınlar <FiChevronDown />
         </Link>
@@ -36,7 +70,7 @@ const Nav = () => {
         </ul>
       </li>
 
-      <li className="has-droupdown">
+      <li ref={mobilNav3} className="has-droupdown">
         <Link to="/yazilar/egitim">
           Yazılar <FiChevronDown />
         </Link>
@@ -68,15 +102,15 @@ const Nav = () => {
         </ul>
       </li>
 
-      <li>
+      <li ref={mobilNav4}>
         <Link to="/bulten">Bültenler</Link>
       </li>
 
-      <li>
+      <li ref={mobilNav5}>
         <Link to="/etkinlikler">Etkinlikler</Link>
       </li>
 
-      <li>
+      <li ref={mobilNav6}>
         <Link to="/iletisim">İletişim</Link>
       </li>
     </ul>
