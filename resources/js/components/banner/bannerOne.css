@@ -4,6 +4,13 @@
   font-size: 20px !important;
   border-radius: 5px !important;
 }
+.search-box-icon {
+  position: absolute;
+  right: 5%;
+  top: 35%;
+  color: #ff7700;
+  font-size: 22px;
+}
 .input-result {
   border-radius: 5px;
   height: 35px;
@@ -36,10 +43,10 @@
 
 @media only screen and (min-device-width: 200px) and (max-device-width: 400px) {
   .banner-one-link-text {
-    margin: 8px 0px 8px 50px;
+    margin: 8px 0px 8px 15px;
   }
   .banner-one-link-icon {
-    margin-left: 35px;
+    margin-left: 20px;
   }
   .banner-one-input {
     font-size: 13px !important;

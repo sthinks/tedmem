@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Logo from '../../assets/images/bg/tedmem.png'
-
+import { IoIosClose } from 'react-icons/io'
 const ResponsiveMenu = ({
   show,
   onClose,
@@ -18,8 +18,8 @@ const ResponsiveMenu = ({
   useEffect(() => {
     const closeDropdown = (e) => {
       if (
-        e.path[0] === mobilNavContent.current &&
-        e.path[0] != mobilNavbar.current
+        e.target === mobilNavContent.current &&
+        e.target != mobilNavbar.current
       ) {
         onClose()
       }
@@ -70,7 +70,7 @@ const ResponsiveMenu = ({
             </div>
             <div className="close-menu">
               <button className="close-button" onClick={onClose}>
-                <i className="ri-close-line"></i>
+                <IoIosClose style={{ fontSize: '30px' }} />
               </button>
             </div>
           </div>

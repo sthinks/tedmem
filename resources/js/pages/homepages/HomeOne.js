@@ -37,7 +37,9 @@ const HomeOne = () => {
     getData()
   }, [])
 
-  const mixed = [...publics].sort((a, b) => b.created_at - a.created_at)
+  const mixed = [...publics, ...writes].sort(
+    (a, b) => b.created_at - a.created_at,
+  )
 
   const article = [...publics, ...writes].sort(
     (a, b) => b.created_at - a.created_at,

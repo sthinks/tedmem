@@ -634,8 +634,6 @@ progress {
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
@@ -28774,12 +28772,12 @@ input[type='submit']:hover {
 }
 @media only screen and (max-width: 768px) {
   .edu-header .logo a img {
-    width: 90%;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 1024px) {
   .edu-header .logo a img {
-    width: 40%;
+    width: 100%;
   }
 }
 
@@ -29203,7 +29201,7 @@ input[type='submit']:hover {
 .popup-mobile-menu .mainmenu .has-droupdown .submenu li a {
   font-size: 15px;
 }
-.popup-mobile-menu .mainmenu .has-droupdown .submenu li a.active {
+.submenu li a.active {
   color: var(--color-primary) !important;
 }
 .popup-mobile-menu .mainmenu .has-droupdown .submenu.active {
@@ -29214,18 +29212,7 @@ input[type='submit']:hover {
 .popup-mobile-menu .mainmenu .has-droupdown > a {
   position: relative;
 }
-.popup-mobile-menu .mainmenu .has-droupdown > a::after {
-  position: absolute;
-  content: '\e935';
-  font-family: 'icomoon' !important;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: 0.4s;
-}
-.popup-mobile-menu .mainmenu .has-droupdown > a.open::after {
-  content: '\e934';
-}
+
 .popup-mobile-menu .mainmenu .rn-megamenu {
   padding: 0;
   max-width: 100%;

@@ -11,26 +11,26 @@ const Nav = ({ close }) => {
   const mobilNav6 = useRef()
   useEffect(() => {
     const closeDropdown = (e) => {
-      console.log('ref2', mobilNav2)
-      console.log('ref3', mobilNav3.current.children[1].children[1])
-
-      console.log(e.path[1])
+      console.log(e.target)
+      console.log('aa', mobilNav2.current.children[1])
       if (
-        e.path[1] === mobilNav1.current ||
-        e.path[1] === mobilNav4.current ||
-        e.path[1] === mobilNav5.current ||
-        e.path[1] === mobilNav6.current
+        e.target === mobilNav1.current.children[0] ||
+        e.target === mobilNav4.current.children[0] ||
+        e.target === mobilNav5.current.children[0] ||
+        e.target === mobilNav6.current.children[0]
       ) {
         close()
-      }
-      for (let i = 0; i <= 5; i++) {
-        if (e.path[1] === mobilNav2.current.children[1].children[i]) {
-          close()
-        }
-      }
-      for (let i = 0; i <= 8; i++) {
-        if (e.path[1] === mobilNav3.current.children[1].children[i]) {
-          close()
+      } else {
+        for (let i = 0; i <= 8; i++) {
+          if (
+            e.target === mobilNav2.current.children[1].children[i].children[0]
+          ) {
+            close()
+          } else if (
+            e.target === mobilNav3.current.children[1].children[i].children[0]
+          ) {
+            close()
+          }
         }
       }
     }
@@ -44,7 +44,7 @@ const Nav = ({ close }) => {
       </li>
 
       <li ref={mobilNav2} className="has-droupdown">
-        <Link to="/yayinlar">
+        <Link to="#">
           Yayınlar <FiChevronDown />
         </Link>
         <ul className="submenu">
@@ -71,10 +71,10 @@ const Nav = ({ close }) => {
       </li>
 
       <li ref={mobilNav3} className="has-droupdown">
-        <Link to="/yazilar/egitim">
+        <Link to="#">
           Yazılar <FiChevronDown />
         </Link>
-        <ul className="submenu">
+        <ul ref={mobilNav3} className="submenu">
           <li>
             <Link to="/yazilar/egitim">Eğitim</Link>
           </li>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosClient = axios.create({
-  baseURL: `https://tedmem.loca.lt/`,
+  baseURL: `http://192.168.1.14:80/`,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

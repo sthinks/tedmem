@@ -4,11 +4,11 @@ import Layout from '../../common/Layout'
 import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
 import PaginationOne from '../../components/pagination/Pagination'
 import EventTwo from '../../components/event/EventTwo'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axiosClient from '../../utils/axiosClient'
 import ReactPaginate from 'react-paginate'
 import PageBanner from '../../components/banner/PageBanner'
-import banner from '../../assets/images/article-banner.png'
+import banner from '../../assets/images/writes-page-banner.jpg'
 import { FaSortAmountDown } from 'react-icons/fa'
 import './EventGrid.css'
 import EditionCard from '../../components/card/EditionCard'
@@ -35,8 +35,27 @@ const slugify = function (text) {
 const EventGrid = () => {
   const [content, setContent] = useState([])
   const [sekme, setSekme] = useState(null)
+  const [button, setButton] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(4)
+
+  const yearButton = [
+    {
+      year: new Date().getFullYear(),
+    },
+    {
+      year: new Date().getFullYear() - 1,
+    },
+    {
+      year: new Date().getFullYear() - 2,
+    },
+    {
+      year: new Date().getFullYear() - 3,
+    },
+    {
+      year: new Date().getFullYear() - 4,
+    },
+  ]
 
   let { slug } = useParams()
 
@@ -68,7 +87,16 @@ const EventGrid = () => {
       slug: 'guncel-yayinlar-dizisi',
     },
   ]
-
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index
+  }
+  const btnValueHandler = () => {
+    const result = content?.map((item) => {
+      return item.category.toLowerCase()
+    })
+    var uniqArray = result.filter(onlyUnique)
+    setButton(uniqArray)
+  }
   const slugged = slug && slugify(slug)
   const getPublics = async () => {
     await axiosClient
@@ -85,6 +113,10 @@ const EventGrid = () => {
   useEffect(() => {
     getPublics()
   }, [slug])
+
+  useEffect(() => {
+    btnValueHandler()
+  }, [content])
 
   const handleSekme = (string) => {
     setSekme([])
@@ -120,7 +152,38 @@ const EventGrid = () => {
         <PageBanner title="Yayınlar" image={banner} />
         <div className="edu-elements-area edu-section-gap bg-color-white">
           <div className="container ">
-            <div className="row">
+            <div
+              className="row d-flex justify-content-center"
+              style={{ marginBottom: '70px' }}
+            >
+              {yearButton.map((item, i) => (
+                <>
+                  <div key={i} className="col-md-2 col-sm-6 mb-2">
+                    <a
+                      href={window.screen.width <= 991 ? '#card-content' : '#a'}
+                    >
+                      <button
+                        onClick={() => handleSekme(item.year)}
+                        className="btn btn-lg btn-block course-button-top"
+                      >
+                        {item.year}
+                      </button>
+                    </a>
+                  </div>
+                </>
+              ))}
+              <div className="col-md-2 col-sm-6 mb-2">
+                <a href={window.screen.width <= 991 ? '#card-content' : '#a'}>
+                  <button
+                    onClick={() => setSekme([])}
+                    className="btn btn-lg btn-block course-button-top"
+                  >
+                    Tümü
+                  </button>
+                </a>
+              </div>
+            </div>
+            {/* <div className="row">
               <div className="btn-container">
                 {slugged == undefined &&
                   btnValue.map((item) => (
@@ -137,28 +200,46 @@ const EventGrid = () => {
                   className="event-button-right col-sm-1 col-lg-1 float-right"
                   onClick={() => sortFunction()}
                 >
-                  <FaSortAmountDown className="btn-container-right-sort" />
+                  <FaSortAmountDown
+                    className="btn-container-right-sort"
+                    style={{ color: 'black' }}
+                  />
                 </button>
               </div>
-            </div>
-          </div>
-          <div className="container">
-            <div className="row">
-              {sekme?.length > 0
-                ? sekme?.map((item) => (
-                    <div className="col-lg-3" key={item.id}>
-                      <div className="card card-event event-card-container">
-                        <EditionCard data={item} />
-                      </div>
+            </div> */}
+
+            <div className="row justify-content-between">
+              <div className="col-lg-2 mt-5">
+                {button?.map((item, i) => (
+                  <Link to={item}>
+                    <div
+                      key={i}
+                      className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
+                    >
+                      <div className="writes-category-list">{item}</div>
                     </div>
-                  ))
-                : content?.map((item) => (
-                    <div className="col-lg-3" key={item.id}>
-                      <div className="card card-event event-card-container">
-                        <EditionCard data={item} />
-                      </div>
-                    </div>
-                  ))}
+                  </Link>
+                ))}
+              </div>
+              <div className="col-lg-9">
+                <div className="row">
+                  {sekme?.length > 0
+                    ? sekme?.map((item) => (
+                        <div className="col-lg-4" key={item.id}>
+                          <div className="card card-event event-card-container">
+                            <EditionCard data={item} />
+                          </div>
+                        </div>
+                      ))
+                    : content?.map((item) => (
+                        <div className="col-lg-4" key={item.id}>
+                          <div className="card card-event event-card-container">
+                            <EditionCard data={item} />
+                          </div>
+                        </div>
+                      ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

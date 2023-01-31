@@ -57,19 +57,20 @@ function MobilSearch({ isActive, setIsActive }) {
   // Empty screen click close search bar.
   useEffect(() => {
     const closeDropdown = (e) => {
-      if (e.path[1] === inputRef.current) {
+      console.log(e.target.className)
+      if (e.target.className === inputRef.current) {
         setIsActive(true)
       }
       if (e.target === 'svg.header-one-search-icon') {
         setIsActive(true)
       }
-      if (e.target.classList.contains('mobil-search-container')) {
+      if (e.target.className === 'mobil-search-container') {
         setIsActive(false)
       }
-      if (e.target.classList.contains('mobile-search-content')) {
+      if (e.target.className === 'mobile-search-content') {
         setIsActive(false)
       }
-      if (e.target.classList.contains('mobil-search-container-result')) {
+      if (e.target.className === 'mobil-search-container-result') {
         setIsActive(false)
       }
     }

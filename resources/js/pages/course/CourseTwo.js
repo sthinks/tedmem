@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import SEO from '../../common/SEO'
 import Layout from '../../common/Layout'
-import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
 import CourseTypeTwo from '../../components/course/CourseTypeTwo'
 import axiosClient from '../../utils/axiosClient'
 import { useParams, Link } from 'react-router-dom'
-import ReactPaginate from 'react-paginate'
 import banner from '../../assets/images/writes-page-banner.jpg'
 import PageBanner from '../../components/banner/PageBanner'
 import PaginationOne from '../../components/pagination/Pagination'
@@ -91,36 +89,37 @@ const CoruseTwo = () => {
 
   const yearButton = [
     {
-      year: '2023',
+      year: new Date().getFullYear(),
     },
     {
-      year: '2022',
+      year: new Date().getFullYear() - 1,
     },
     {
-      year: '2021',
+      year: new Date().getFullYear() - 2,
     },
     {
-      year: '2020',
+      year: new Date().getFullYear() - 3,
     },
     {
-      year: '2019',
+      year: new Date().getFullYear() - 4,
     },
   ]
 
   let { slug } = useParams()
-  const slugged = slugify(slug)
 
   const getWrites = async () => {
-    await axiosClient
-      .get(`/api/yazilar/${slugged}?page=1`)
-      .then((res) => setAllData(res.data.data))
+    const result = await axiosClient
+      .get(`/api/yazilar/${slug}?page=1`)
+      .then((res) => res.data.data)
+
+    setAllData(result)
     setCurrentPage(1)
     setPostPage(9)
   }
 
   useEffect(() => {
     getWrites()
-  }, [slugged])
+  }, [slug])
 
   useEffect(() => {
     paginationHandler(allData)
@@ -130,14 +129,14 @@ const CoruseTwo = () => {
     paginationHandler(allData)
   }, [allData])
 
-  const handleChange = async (data) => {
-    let currentPage = data.selected + 1
-    await axiosClient
-      .get(`/api/yazilar/${slugged}?page=${currentPage}`)
-      .then((res) => {
-        setContent(res.data)
-      })
-  }
+  // const handleChange = async (data) => {
+  //   let currentPage = data.selected + 1
+  //   await axiosClient
+  //     .get(`/api/yazilar/${slugged}?page=${currentPage}`)
+  //     .then((res) => {
+  //       setContent(res.data)
+  //     })
+  // }
 
   const handleSekme = (string) => {
     setContent([])
@@ -166,9 +165,9 @@ const CoruseTwo = () => {
               className="row d-flex justify-content-center"
               style={{ marginBottom: '70px' }}
             >
-              {yearButton.map((item) => (
+              {yearButton.map((item, i) => (
                 <>
-                  <div className="col-md-2 col-sm-6 mb-2">
+                  <div key={i} className="col-md-2 col-sm-6 mb-2">
                     <a
                       href={window.screen.width <= 991 ? '#card-content' : '#a'}
                     >
@@ -195,9 +194,12 @@ const CoruseTwo = () => {
             </div>
             <div className="row g-5 mt--10">
               <div className="col-lg-2">
-                {categoryList.map((item) => (
+                {categoryList.map((item, i) => (
                   <Link to={item.slug}>
-                    <div className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2">
+                    <div
+                      key={i}
+                      className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
+                    >
                       <div className="writes-category-list">
                         {item.icon} {item.name}
                       </div>
@@ -210,20 +212,20 @@ const CoruseTwo = () => {
                 <div className="row">
                   {sekme?.length > 0 ? (
                     <>
-                      {sekme?.map((item) => {
+                      {sekme?.map((item, i) => {
                         return (
                           <>
-                            <CourseTypeTwo item={item} />
+                            <CourseTypeTwo key={i} item={item} />
                           </>
                         )
                       })}
                     </>
                   ) : (
                     <>
-                      {content?.map((item) => {
+                      {content?.map((item, i) => {
                         return (
                           <>
-                            <CourseTypeTwo item={item} />
+                            <CourseTypeTwo key={i} item={item} />
                           </>
                         )
                       })}

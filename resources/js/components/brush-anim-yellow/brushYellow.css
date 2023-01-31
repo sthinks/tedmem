@@ -17,9 +17,6 @@
   top: 30%;
   left: 52%;
 }
-.brush-animation-content-yellow:hover > .hidden-brush {
-  display: none;
-}
 
 .brush-animation-content-yellow .brush-anim-yellow {
   background: url('../../assets//images/yellow-brush.png');
@@ -27,32 +24,13 @@
   background-position-x: 65%;
   background-position-y: 83%;
   position: relative;
-  width: 650px;
+  width: 500px;
   height: 75px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   font-weight: 900;
-}
-.brush-animation-content-yellow:hover .brush-anim-yellow {
-  background: none;
-}
-
-.brush-animation-content-yellow .brush-anim-yellow:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 100%;
-  background: url('../../assets//images/yellow-brush.png');
-  background-size: inherit;
-  transform-orgin: left;
-  transition: 1s;
-  background-size: 150px;
-  /* color: blue; */
-  background-repeat: no-repeat;
 }
 
 .brush-animation-content-yellow .brush-anim-yellow:hover:before {

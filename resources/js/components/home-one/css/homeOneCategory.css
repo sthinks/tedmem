@@ -17,9 +17,6 @@
   top: 30%;
   left: 52%;
 }
-.brush-animation-content-yellow-bülten:hover > .hidden-brush {
-  display: none;
-}
 
 .brush-animation-content-yellow-bülten .brush-anim-bülten {
   background: url('../../../assets/images/yellow-brush.png');
@@ -35,35 +32,8 @@
   text-decoration: none;
   font-weight: 900;
 }
-.brush-animation-content-yellow-bülten:hover .brush-anim-bülten {
-  background: none;
-}
 
-.brush-animation-content-yellow-bülten .brush-anim-bülten:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 27%;
-  width: 0;
-  height: 100%;
-  background: url('../../../assets/images/yellow-brush.png');
-  background-size: inherit;
-  transform-orgin: left;
-  transition: 0.9s;
-  background-size: 150px;
-  background-repeat: no-repeat;
-}
-
-.brush-animation-content-yellow-bülten .brush-anim-bülten:hover:before {
-  width: 100%;
-  color: #fff;
-}
-
-.brush-animation-content-yellow-bülten .brush-anim-bülten:hover {
-  color: #000;
-}
-
-brush-animation-content-yellow-bülten .brush-anim-bülten .brush-title-bülten {
+.brush-animation-content-yellow-bülten .brush-anim-bülten .brush-title-bülten {
   position: relative;
   z-index: 1;
 }

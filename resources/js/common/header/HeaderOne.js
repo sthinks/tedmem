@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import HeaderSticky from './HeaderSticky'
 import ResponsiveMenu from './ResponsiveMenu'
-import Logo from '../../assets/images/bg/logo.png'
+import Logo from '../../assets/images/temem-logoo.png'
 import axiosClient from '../../utils/axiosClient'
 import { FiSearch } from 'react-icons/fi'
 import MobilSearch from '../../components/mobil-search/MobilSearch'
+import { AiOutlineMenu } from 'react-icons/ai'
 import './headerOne.css'
 
 const HeaderOne = ({ styles, disableSticky }) => {
@@ -92,7 +93,9 @@ const HeaderOne = ({ styles, disableSticky }) => {
             <div className="col-lg-4 col-xl-4 col-md-4 col-4 logo-container-item">
               <div className="logo">
                 <Link to="/" className="d-flex">
-                  <img className="logo-light" src={Logo} alt="Main Logo" />
+                  <div className="logo-container-header d-flex align-items-center ">
+                    <img className="logo-light" src={Logo} alt="Main Logo" />
+                  </div>
                   <div className="logo-text">
                     <p>Ortak Paydamız Eğitim</p>{' '}
                   </div>
@@ -123,7 +126,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
                     <div className="header-input-result-detail">
                       {writesResultsNav?.length > 0 &&
                         writesResultsNav.slice(0, 12).map((item) => (
-                          <div className="banner-one-results">
+                          <div key={item} className="banner-one-results">
                             <ul>
                               <li>
                                 <Link
@@ -158,7 +161,10 @@ const HeaderOne = ({ styles, disableSticky }) => {
                   className="hamberger-button"
                   onClick={() => onCanvasHandler()}
                 >
-                  <i className="ri-menu-line"></i>
+                  <AiOutlineMenu
+                    className="position-absolute"
+                    style={{ top: '6px', color: 'black' }}
+                  />
                 </button>
               </div>
             </div>

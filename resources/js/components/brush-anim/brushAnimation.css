@@ -33,33 +33,6 @@
   font-weight: 900;
 }
 
-.brush p:hover {
-  background: none;
-}
-.brush p:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: url('../../assets/images/mavi-brush.png');
-  background-size: cover;
-  transform-orgin: left;
-  transition: 0.8s;
-  background-size: 170px;
-  background-repeat: no-repeat;
-}
-
-.brush p:hover:before {
-  width: 100%;
-  color: #fff;
-}
-
-.brush p:hover {
-  color: #000;
-}
-
 brush p span {
   position: relative;
   z-index: 1;
