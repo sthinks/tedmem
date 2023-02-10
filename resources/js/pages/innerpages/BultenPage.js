@@ -17,7 +17,7 @@ const BultenPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPage] = useState(4)
   const pathname = window.location.pathname
-
+s
   const getWrites = async () => {
     await axiosClient.get(`/api/bulten`).then((res) => {
       setAllData(res.data)

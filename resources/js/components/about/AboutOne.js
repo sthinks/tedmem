@@ -1,37 +1,37 @@
-import React from "react";
-import CountUp from "react-countup";
-import ScrollAnimation from "react-animate-on-scroll";
-import TrackVisibility from "react-on-screen";
-import SectionTitle from "../sectionTitle/SectionTitle";
+import React from 'react'
+import CountUp from 'react-countup'
+import ScrollAnimation from 'react-animate-on-scroll'
+import TrackVisibility from 'react-on-screen'
+import SectionTitle from '../sectionTitle/SectionTitle'
 
 const FeatureItems = [
   {
-    title: "Learners & counting",
+    title: 'Learners & counting',
     number: 449,
-    image: "about-image-01.png",
+    image: 'about-image-01.png',
   },
   {
-    title: "Courses & Video",
+    title: 'Courses & Video',
     number: 330,
-    image: "about-image-02.png",
+    image: 'about-image-02.png',
   },
   {
-    title: "Certified Students",
+    title: 'Certified Students',
     number: 275,
-    image: "about-image-03.png",
+    image: 'about-image-03.png',
   },
   {
-    title: "Winning Award",
+    title: 'Winning Award',
     number: 378,
-    image: "about-image-04.png",
+    image: 'about-image-04.png',
   },
-];
+]
 
 const AboutOne = ({ wrapperClass }) => {
   return (
     <div
       className={`eduvibe-home-two-counter bg-color-white ${
-        wrapperClass || "edu-section-gap"
+        wrapperClass || 'edu-section-gap'
       }`}
     >
       <div className="container eduvibe-animated-shape">
@@ -66,7 +66,7 @@ const AboutOne = ({ wrapperClass }) => {
                                 start={0}
                               />
                             ) : (
-                              ""
+                              ''
                             )
                           }
                         </TrackVisibility>
@@ -150,7 +150,7 @@ const AboutOne = ({ wrapperClass }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutOne;
+export default AboutOne

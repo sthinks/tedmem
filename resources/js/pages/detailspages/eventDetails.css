@@ -36,34 +36,6 @@
   text-decoration: none;
   font-weight: 900;
 }
-.brush-animation-content-detail:hover .brush-anim-detail {
-  background: none;
-}
-
-.brush-animation-content-detail .brush-anim-detail:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 18%;
-  width: 0;
-  height: 100%;
-  background: url('../../assets//images/yellow-brush.png');
-  background-size: inherit;
-  transform-orgin: left;
-  transition: 1s;
-  background-size: 150px;
-  /* color: blue; */
-  background-repeat: no-repeat;
-}
-
-.brush-animation-content-detail .brush-anim-detail:hover:before {
-  width: 100%;
-  color: #fff;
-}
-
-.brush-animation-content-detail .brush-anim-detail:hover {
-  color: #000;
-}
 
 brush-animation-content-detail .brush-anim-detail .brush-title-detail {
   position: relative;

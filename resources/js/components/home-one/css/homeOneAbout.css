@@ -1,3 +1,10 @@
 .content {
-    margin: 80px 0px 100px 0px;
+  margin: 80px 0px 100px 0px;
+}
+.slick-next:before,
+.slick-prev:before {
+  font-size: 20px !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+  color: #ff7300 !important;
 }

@@ -67,13 +67,6 @@ function BannerNow({ data }) {
                   <img className="banner-now-first-image" src={item.image} />
                   <img className="banner-now-second-image" src={item.image2} />
                 </div>
-                <div className="banner-now-button">
-                  <Link to="/yazilar/egitim">
-                    <button className="banner-now-button-content">
-                      Tüm Yazıları <br /> <b>Görüntüle</b>
-                    </button>
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

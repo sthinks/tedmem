@@ -17,39 +17,37 @@ const HomeOneTwitter = () => {
         </div>
       </div>
       <div className="twitter">
-        <div className="container">
+        <div className="container-for-twitter">
           <div className="row">
-            <div className="twitter-cards">
-              <div className="col-lg-4">
-                <TwitterTweetEmbed
-                  options={{
-                    cards: 'hidden',
-                    hideCard: true,
-                    hideThread: false,
-                  }}
-                  tweetId={'1598302542454489088'}
-                />
-              </div>
-              <div className="col-lg-4">
-                <TwitterTweetEmbed
-                  options={{
-                    cards: 'hidden',
-                    hideCard: true,
-                    hideThread: false,
-                  }}
-                  tweetId={'1598302542454489088'}
-                />
-              </div>
-              <div className="col-lg-4">
-                <TwitterTweetEmbed
-                  options={{
-                    cards: 'hidden',
-                    hideCard: true,
-                    hideThread: false,
-                  }}
-                  tweetId={'1598302542454489088'}
-                />
-              </div>
+            <div className="col-lg-4 p-2">
+              <TwitterTweetEmbed
+                options={{
+                  cards: 'hidden',
+                  hideCard: true,
+                  hideThread: false,
+                }}
+                tweetId={'1598302542454489088'}
+              />
+            </div>
+            <div className="col-lg-4 p-2">
+              <TwitterTweetEmbed
+                options={{
+                  cards: 'hidden',
+                  hideCard: true,
+                  hideThread: false,
+                }}
+                tweetId={'1598302542454489088'}
+              />
+            </div>
+            <div className="col-lg-4 p-2">
+              <TwitterTweetEmbed
+                options={{
+                  cards: 'hidden',
+                  hideCard: true,
+                  hideThread: false,
+                }}
+                tweetId={'1598302542454489088'}
+              />
             </div>
           </div>
         </div>

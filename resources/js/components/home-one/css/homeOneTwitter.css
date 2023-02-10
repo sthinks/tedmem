@@ -2,11 +2,15 @@
   width: 400px;
   margin-left: 35%;
 }
-
+.container-for-twitter {
+  max-width: 1250px;
+}
 .twitter {
   background-image: url('../../../assets/images/twitter-background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  justify-content: center;
 }
 .twitter-card {
   border-radius: 0.5px solid black;
@@ -53,6 +57,12 @@
 }
 
 @media screen and (max-width: 400px) {
+  .container-for-twitter {
+    max-width: auto;
+  }
+  .twitter-card {
+    margin: 0px !important;
+  }
   .twitter-cards {
     display: grid !important;
     justify-content: center;
@@ -67,6 +77,12 @@
 }
 
 @media screen and (max-width: 991px) {
+  .container-for-twitter {
+    max-width: 500px;
+  }
+  .twitter-card {
+    margin: 0px !important;
+  }
   .twitter-cards {
     display: grid !important;
     justify-content: center;

@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Logo from '../../assets/images/bg/tedmem.png'
-
+import { IoIosClose } from 'react-icons/io'
 const ResponsiveMenu = ({
   show,
   onClose,
@@ -13,33 +13,27 @@ const ResponsiveMenu = ({
 }) => {
   const mobilNavbar = useRef()
   const mobilNavContent = useRef()
+
+  // Empty screen click close search bar.
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (
+        e.target === mobilNavContent.current &&
+        e.target != mobilNavbar.current
+      ) {
+        onClose()
+      }
+    }
+    document.body.addEventListener('click', closeDropdown)
+    return () => document.body.removeEventListener('click', closeDropdown)
+  }, [])
+
   var elements = document.querySelectorAll(
     '.popup-mobile-menu .has-droupdown > a',
   )
   var elementsTwo = document.querySelectorAll(
     '.popup-mobile-menu .with-megamenu > a',
   )
-
-  const [writesResults, setWritesResults] = React.useState(null)
-  const [query, setQuery] = React.useState('')
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleQuery()
-    }
-  }
-
-  const handleQuery = (e) => {
-    var writesResults = writes?.filter((data) =>
-      data.title.toLowerCase().match(query),
-    )
-
-    setWritesResults(writesResults)
-
-    if (e === '') {
-      setWritesResults([])
-    }
-  }
 
   for (var i in elements) {
     if (elements.hasOwnProperty(i)) {
@@ -76,15 +70,15 @@ const ResponsiveMenu = ({
             </div>
             <div className="close-menu">
               <button className="close-button" onClick={onClose}>
-                <i className="ri-close-line"></i>
+                <IoIosClose style={{ fontSize: '30px' }} />
               </button>
             </div>
           </div>
-          <Nav />
+          <Nav close={onClose} />
         </div>
       </div>
 
-      <div className={`edu-search-popup ${showSearch ? 'open' : ''}`}>
+      {/* <div className={`edu-search-popup ${showSearch ? 'open' : ''}`}>
         <div className="close-button">
           <button className="close-trigger" onClick={onSearch}>
             <i className="ri-close-line"></i>
@@ -127,7 +121,7 @@ const ResponsiveMenu = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

@@ -114,16 +114,14 @@ ul > li > a:hover {
   .header-one-navbar {
     width: 400px !important;
   }
-  .edu-header .logo a img {
-    width: 110% !important;
-  }
+
   .edu-header.disable-transparent .logo a {
     margin-left: 15px !important;
     height: 50px;
     line-height: 90px;
   }
   .edu-header .logo a img {
-    width: 85% !important;
+    width: 100% !important;
   }
   .logo-text {
     display: none;
@@ -164,7 +162,7 @@ ul > li > a:hover {
     line-height: 90px;
   }
   .edu-header .logo a img {
-    width: 50% !important;
+    width: 100% !important;
   }
   .logo-text {
     display: none;

@@ -11,6 +11,7 @@ import News from '../../assets/images/icon/News.png'
 import Papper from '../../assets/images/icon/Papper.png'
 import Reactİcon from '../../assets/images/icon/React.png'
 import Ticket from '../../assets/images/icon/Ticket.png'
+import { BsSearch } from 'react-icons/bs'
 import './bannerOne.css'
 import { useEffect } from 'react'
 
@@ -57,7 +58,7 @@ const BannerOne = ({ data }) => {
                   <div>
                     <div className="row d-flex justify-content-center mt-5">
                       <div className="col-md-12 mt-5">
-                        <div className="d-flex">
+                        <div className="d-flex position-relative">
                           <input
                             className="bg-white mb-2 py-2 banner-one-input"
                             onKeyDown={handleKeyDown}
@@ -66,9 +67,9 @@ const BannerOne = ({ data }) => {
                               handleQuery(e.target.value)
                             }}
                             type="text"
-                            placeholder="Yazılarda Arayın..."
+                            placeholder="Arayın..."
                           />
-                          <i className="icon-search-line pt-3 search-icon"></i>
+                          <BsSearch className="search-box-icon" />
                         </div>
                         {writesResults?.length > 0 &&
                           writesResults.slice(0, 8).map((item) => (
@@ -102,7 +103,9 @@ const BannerOne = ({ data }) => {
                     <Link to="/yazilar/degerlendirme">
                       <div className="d-flex justify-content-start align-items-center my-auto banner-one-link">
                         <img src={Ticket} className="banner-one-link-icon" />
-                        <h6 className="banner-one-link-text">Değerlendirme</h6>
+                        <h6 className="banner-one-link-text">
+                          Değerlendirme Yazıları
+                        </h6>
                       </div>
                     </Link>
                   </div>

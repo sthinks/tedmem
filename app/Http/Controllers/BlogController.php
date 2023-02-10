@@ -13,7 +13,7 @@ class BlogController extends Controller
     //Yayınlar
     public function getPublics()
     {
-        $data = Publication::paginate(9);
+        $data = Publication::all();
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
@@ -30,11 +30,12 @@ class BlogController extends Controller
         });
         return response()->json($data);
     }
+
     public function getPublicsSlugged(string $slug)
     {
-        $data = Publication::where('category_slug', $slug)
+        $data = Publication::where('category_id', $slug)
             ->orderBy('publish_year', 'DESC')
-            ->paginate(9);
+            ->get();
 
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);
