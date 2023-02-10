@@ -102,6 +102,16 @@ Route::get('/bulten', [
     \App\Http\Controllers\HomeController::class,
     'getBultens',
 ]);
+//Categories
+
+Route::get('/public-category', [
+    \App\Http\Controllers\CategoryController::class,
+    'getPublicCategory',
+]);
+Route::get('/event-category', [
+    \App\Http\Controllers\CategoryController::class,
+    'getEventCategory',
+]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -1,7 +1,5 @@
 .card-event {
-  min-height: 400px;
-  max-height: 400px;
-  width: 100%;
+  width: 99%;
 }
 .card-about-text {
   overflow: hidden;
@@ -16,7 +14,7 @@
 .card-event-img {
   border-radius: 4px 4px 0px 0px;
   width: auto;
-  height: 150px;
+  height: 250px;
   object-fit: cover;
   object-position: 100% 20%;
 }
@@ -94,11 +92,11 @@
     min-height: 310px;
   }
   .card-title {
-    font-size: 11px;
+    font-size: 13px;
     margin: 0px 15px 0px 15px;
   }
   .card-read-more {
-    font-size: 12px;
+    font-size: 13px;
     padding: 7px 10px 0px 10px;
   }
   .card-date {
@@ -106,10 +104,10 @@
     height: 100px;
   }
   .edition-badge-icon {
-    font-size: 9px;
+    font-size: 11px;
   }
   .card-event-img {
-    height: 120px;
+    height: 190px;
   }
   .event-button {
     font-size: 11px;
@@ -120,12 +118,8 @@
 }
 
 @media only screen and (min-device-width: 1051px) and (max-device-width: 1440px) {
-  .card-event {
-    min-height: 350px;
-    max-height: 390px;
-  }
   .card-title {
-    font-size: 11px;
+    font-size: 15px;
   }
   .card-date-content {
     font-size: 12px;
@@ -137,10 +131,10 @@
     height: 120px;
   }
   .card-read-more {
-    font-size: 12px;
+    font-size: 14px;
   }
   .edition-badge-icon {
-    font-size: 11px;
+    font-size: 13px;
     margin: 0px;
   }
   .btn-container {
@@ -152,13 +146,6 @@
 }
 
 @media only screen and (min-device-width: 1440px) and (max-device-width: 1920px) {
-  .card-event {
-    min-height: 350px;
-    max-height: 390px;
-  }
-  .card-title {
-    font-size: 11px;
-  }
   .card-date-content {
     font-size: 12px;
   }
@@ -169,13 +156,13 @@
     height: 120px;
   }
   .card-read-more {
-    font-size: 12px;
+    font-size: 14px;
   }
   .edition-badge-icon {
-    font-size: 11px;
+    font-size: 13px;
   }
   .card-title {
-    font-size: 12px;
+    font-size: 16px;
     padding: 10px 10px 10px 10px;
   }
 }

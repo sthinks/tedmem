@@ -29,9 +29,9 @@ const EventDetails = () => {
 
   useEffect(() => {
     axiosClient
-      .get('/api/publics/')
+      .get('/api/publics')
       .then((res) => {
-        setAllData(res.data.data)
+        setAllData(res.data)
       })
       .catch((err) => {
         console.log(err)
@@ -96,10 +96,6 @@ const EventDetails = () => {
 
   const deneme = (value) => {
     const result = `https://twitter.com/intent/tweet`
-  }
-
-  const textAreaHandler = (event) => {
-    console.log(event)
   }
 
   return (

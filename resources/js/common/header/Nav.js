@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiChevronDown } from 'react-icons/fi'
-
+import axiosClient from '../../utils/axiosClient'
 const Nav = ({ close }) => {
   const mobilNav1 = useRef()
   const mobilNav2 = useRef()
@@ -9,10 +9,14 @@ const Nav = ({ close }) => {
   const mobilNav4 = useRef()
   const mobilNav5 = useRef()
   const mobilNav6 = useRef()
+  const getPublicCategory = async () => {
+    await axiosClient
+      .get('/api/public-category')
+      .then((res) => setPublicCategory(res.data))
+  }
   useEffect(() => {
+    getPublicCategory()
     const closeDropdown = (e) => {
-      console.log(e.target)
-      console.log('aa', mobilNav2.current.children[1])
       if (
         e.target === mobilNav1.current.children[0] ||
         e.target === mobilNav4.current.children[0] ||
@@ -52,18 +56,16 @@ const Nav = ({ close }) => {
             <Link to="/yayinlar">Tümü</Link>
           </li>
           <li>
-            <Link to="/yayinlar/analiz-dizisi">Analiz Dizisi</Link>
+            <Link to="/yayinlar/analiz">Analiz Dizisi</Link>
           </li>
           <li>
-            <Link to="/yayinlar/degerlendirme-dizisi">
-              Değerlendirme Dizisi
-            </Link>
+            <Link to="/yayinlar/degerlendirme">Değerlendirme Dizisi</Link>
           </li>
           <li>
-            <Link to="/yayinlar/etkinlik-raporları">Etkinlik Raporları</Link>
+            <Link to="/yayinlar/etkinlik-raporlari">Etkinlik Raporları</Link>
           </li>
           <li>
-            <Link to="/yayinlar/guncel-yayinlar-dizisi">
+            <Link to="/yayinlar/guncel-yayinlarimiz">
               Güncel Yayınlar Dizisi
             </Link>
           </li>

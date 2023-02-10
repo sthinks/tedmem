@@ -71,3 +71,20 @@ brush p span {
     height: 29px;
   }
 }
+@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+  .brush {
+    left: 55% !important;
+  }
+  .title-brush-content {
+    font-size: 28px;
+  }
+  .brush p:before {
+    transition: 0s;
+  }
+  .brush p {
+    background-size: 130px;
+    background-repeat: no-repeat;
+    width: 127px;
+    height: 29px;
+  }
+}

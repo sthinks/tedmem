@@ -44,6 +44,7 @@ const CoruseTwo = () => {
   const [sekme, setSekme] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPage] = useState(9)
+
   const categoryList = [
     {
       name: 'Eğitim',
@@ -106,7 +107,6 @@ const CoruseTwo = () => {
   ]
 
   let { slug } = useParams()
-
   const getWrites = async () => {
     const result = await axiosClient
       .get(`/api/yazilar/${slug}?page=1`)
@@ -121,14 +121,6 @@ const CoruseTwo = () => {
     getWrites()
   }, [slug])
 
-  useEffect(() => {
-    paginationHandler(allData)
-  }, [content])
-
-  useEffect(() => {
-    paginationHandler(allData)
-  }, [allData])
-
   // const handleChange = async (data) => {
   //   let currentPage = data.selected + 1
   //   await axiosClient
@@ -140,18 +132,14 @@ const CoruseTwo = () => {
 
   const handleSekme = (string) => {
     setContent([])
-    const filtered = content?.filter((item) => item.year == string)
+    const currentPosts = allData?.slice(firstPostIndex, lastPostIndex)
+    const filtered = currentPosts?.filter((item) => item.year == string)
 
     setSekme(filtered)
   }
 
   const lastPostIndex = currentPage * postPerPage
   const firstPostIndex = lastPostIndex - postPerPage
-
-  const paginationHandler = (data) => {
-    const currentPosts = data?.slice(firstPostIndex, lastPostIndex)
-    setContent(currentPosts)
-  }
 
   return (
     <>
@@ -222,13 +210,15 @@ const CoruseTwo = () => {
                     </>
                   ) : (
                     <>
-                      {content?.map((item, i) => {
-                        return (
-                          <>
-                            <CourseTypeTwo key={i} item={item} />
-                          </>
-                        )
-                      })}
+                      {allData
+                        ?.slice(firstPostIndex, lastPostIndex)
+                        .map((item, i) => {
+                          return (
+                            <>
+                              <CourseTypeTwo key={i} item={item} />
+                            </>
+                          )
+                        })}
                     </>
                   )}
                 </div>

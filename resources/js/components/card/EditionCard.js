@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './editionCard.css'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { NavItem } from 'react-bootstrap'
-import { useEffect } from 'react'
 
-function EditionCard({ data }) {
+function EditionCard({ data, publicCategory }) {
   const formattedDate = new Date(data.created_at)
+
+  const catergoryHandler = (cat_id) => {
+    if (publicCategory) {
+      const result = publicCategory.filter((item) => item.id == cat_id)
+      return result[0].name
+    }
+  }
+
   return (
     <Link to={`/yayinlar-detay/${data.slug}`}>
       <div className="card card-event">
         <img className="card-event-img" src={data.image} alt="Card image cap" />
         <div className="card-body">
-          {data.category && (
+          {data.category_info ? (
             <div className="edition-badge">
-              <span className="edition-badge-icon">{data.category}</span>
+              <span className="edition-badge-icon">
+                {data?.category_info.name}
+              </span>
             </div>
-          )}
-          {!data.category && (
+          ) : (
             <div className="edition-badge">
-              <span
-                className="edition-badge-icon "
-                style={{ backgroundColor: 'white' }}
-              >
-                {data.category}
+              <span className="edition-badge-icon">
+                {catergoryHandler(data.category_id)}
               </span>
             </div>
           )}

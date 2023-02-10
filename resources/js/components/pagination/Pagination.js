@@ -39,7 +39,7 @@ const PaginationOne = ({
             className="page-item-pagination"
             href={pathname === '/etkinlikler' ? '#etkinlikler' : '#bulten'}
             onClick={() => {
-              setCurrentPage(previousHandler), scrollToTop()
+              setCurrentPage(previousHandler), scrollToTop
             }}
           >
             <FiArrowLeft /> Geri
@@ -50,13 +50,7 @@ const PaginationOne = ({
             className={item == currentPage ? 'page-item active' : 'page-item'}
             key={item}
           >
-            <a
-              className="page-link"
-              href={pathname === '/etkinlikler' ? '#etkinlikler' : '#bulten'}
-              onClick={() => {
-                setCurrentPage(item), scrollToTop()
-              }}
-            >
+            <a className="page-link" onClick={() => setCurrentPage(item)}>
               {item}
             </a>
           </li>
@@ -66,7 +60,7 @@ const PaginationOne = ({
             className="page-item-pagination"
             href={pathname === '/etkinlikler' ? '#etkinlikler' : '#bulten'}
             onClick={() => {
-              setCurrentPage(nextHandler), scrollToTop()
+              setCurrentPage(nextHandler)
             }}
           >
             İleri <FiArrowRight />

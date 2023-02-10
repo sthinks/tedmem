@@ -17,6 +17,7 @@ import { write } from '@popperjs/core'
 const HomeOne = () => {
   const [bulten, setBulten] = useState([])
   const [writes, setWrites] = useState([])
+
   const [homeBanner, setHomeBanner] = useState([])
   const [publics, setPublics] = useState([])
 

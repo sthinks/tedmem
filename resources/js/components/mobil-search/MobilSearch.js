@@ -57,7 +57,6 @@ function MobilSearch({ isActive, setIsActive }) {
   // Empty screen click close search bar.
   useEffect(() => {
     const closeDropdown = (e) => {
-      console.log(e.target.className)
       if (e.target.className === inputRef.current) {
         setIsActive(true)
       }
