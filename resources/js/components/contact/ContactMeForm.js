@@ -26,7 +26,7 @@ const notify_error = () =>
     progress: undefined,
   })
 
-function ContactMeForm() {
+function ContactMeForm({ value }) {
   const validate = Yup.object({
     name: Yup.string()
       .max(15, 'Fazla karakter girdiniz.')
@@ -47,8 +47,12 @@ function ContactMeForm() {
         mail: '',
         subject: '',
         message: '',
+        form_type: 'İletişim formu',
       }}
       onSubmit={async (values, { resetForm }) => {
+        if (value) {
+          values.form_type = value
+        }
         await axiosClient
           .post('/api/contact', values)
           .then(() => {
@@ -63,7 +67,7 @@ function ContactMeForm() {
     >
       {({ errors, touched, isSubmitting }) => (
         <Form>
-          <div className="row">
+          <div className="row justify-content-center">
             <div className="col-lg-5">
               <div className="form-group">
                 <Field
@@ -134,7 +138,7 @@ function ContactMeForm() {
                 />
               </div>
             </div>
-            <div className="col-lg-12 mx-auto ">
+            <div className="col-lg-10 mx-auto ">
               <button
                 className="rn-btn edu-btn"
                 disabled={isSubmitting}

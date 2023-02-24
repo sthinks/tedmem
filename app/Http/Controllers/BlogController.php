@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\User;
 use App\Models\Publication;
+use App\Models\PublicCategory;
 use App\Models\Person;
 
 class BlogController extends Controller
@@ -33,7 +34,12 @@ class BlogController extends Controller
 
     public function getPublicsSlugged(string $slug)
     {
-        $data = Publication::where('category_id', $slug)
+        $category = PublicCategory::where('slug', $slug)->first();
+        if (!$category) {
+            return response()->json(['msg' => 'Kategori bulunamadı', 404]);
+        }
+
+        $data = Publication::where('category_id', $category->id)
             ->orderBy('publish_year', 'DESC')
             ->get();
 
@@ -60,13 +66,18 @@ class BlogController extends Controller
 
         $pdf_files = json_decode($data->file);
         $data->pdf_link = array_map(function ($file) {
-            return asset(
+            $a = asset(
                 sprintf(
                     'storage/%s',
                     str_replace('\\', '/', $file->download_link)
                 )
             );
+            $b = str_replace('\\', '/', $file->original_name);
+            $all = [$a, $b];
+
+            return $all;
         }, $pdf_files);
+
         $data->image = url(
             sprintf('storage/%s', str_replace('\\', '/', $data->image))
         );

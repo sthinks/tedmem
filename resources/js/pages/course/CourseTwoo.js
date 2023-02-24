@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { FaFilePdf } from 'react-icons/fa'
 import banner from '../../assets/images/eventdetails.png'
 import BannerEvent from '../../components/banner-event/BannerEvent'
+import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './courseTwoo.css'
 const CoruseTwoo = () => {
   const { slug } = useParams()
@@ -30,7 +31,12 @@ const CoruseTwoo = () => {
     <>
       <SEO title={content?.title} />
       <Layout>
-        <BannerEvent title={content?.title} image={banner} />
+        <BannerEvent
+          author={content?.author}
+          title={content?.title}
+          image={banner}
+          date={content?.created_at}
+        />
         <div className="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
           <div className="container">
             <div className="row g-5">
@@ -62,15 +68,15 @@ const CoruseTwoo = () => {
                         {content?.created_at && (
                           <li>
                             <span>
-                              <i
-                                className="icon-calendar-2-line"
+                              <BsFillCalendarDateFill
+                                className="m-2"
                                 style={{ color: '#fba200' }}
-                              ></i>{' '}
+                              />
                               Tarih
                             </span>
                             <span>
-                              {' '}
-                              {formattedDate.toLocaleDateString('en-GB')}
+                              {/* {formattedDate.toLocaleDateString('en-GB')} */}
+                              {content?.year}
                             </span>
                           </li>
                         )}
@@ -87,6 +93,15 @@ const CoruseTwoo = () => {
                               {content?.category?.name.charAt(0).toUpperCase() +
                                 content?.category?.name.slice(1)}
                             </span>
+                          </li>
+                        )}
+                        {content?.pdf_link.length > 0 && (
+                          <li>
+                            <a href={content?.pdf_link[0][0]} target="_blank">
+                              <div className="event-detail-button-pdf">
+                                PDF'i indir ({content?.pdf_link[0][1]})
+                              </div>
+                            </a>
                           </li>
                         )}
                       </ul>

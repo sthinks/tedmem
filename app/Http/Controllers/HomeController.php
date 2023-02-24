@@ -57,7 +57,7 @@ class HomeController extends Controller
     }
     public function getLatestBulten()
     {
-        $data = Bulten::orderBy('date', 'DESC')
+        $data = Bulten::orderBy('year', 'DESC')
             ->take(4)
             ->get();
 
@@ -80,7 +80,7 @@ class HomeController extends Controller
     }
     public function getBultens()
     {
-        $data = Bulten::orderBy('date', 'DESC')->get();
+        $data = Bulten::orderBy('year', 'DESC')->get();
 
         $data->map(function ($item) {
             $pdf_files = json_decode($item->file);

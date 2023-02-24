@@ -40,7 +40,12 @@ const HomeOneCategory = ({ data }) => {
             </div>
           </div>
         </div>
-        <BultenCard data={content} />
+        {content?.map((item, i) => (
+          <div className="col-md-12" key={i}>
+            <BultenCard data={item} />
+          </div>
+        ))}
+
         <div className="d-flex mb-5 home-card-pagination">
           <PaginationOne
             totalPosts={data?.length}

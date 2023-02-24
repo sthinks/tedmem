@@ -4,7 +4,18 @@
   background-color: #fff0e1;
   color: black;
 }
+.course-button-top-active {
+  font-weight: bolder;
+  font-size: 15px;
+  background-color: #f8d3af;
+  box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
+  color: black;
+}
 .course-button-top:hover {
+  box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
+  transform: scale(1.01);
+}
+.course-button-top-active:hover {
   box-shadow: 1px 6px 15px rgb(0 0 0 / 40%);
   transform: scale(1.01);
 }
@@ -14,7 +25,10 @@
   font-size: 18px;
   text-transform: capitalize;
 }
-
+.custom-select {
+  display: none;
+  text-align: center;
+}
 @media only screen and (min-width: 1600px) and (max-width: 1920px) {
   .writes-category-list {
     font-size: 16px;
@@ -28,5 +42,13 @@
 @media only screen and (min-width: 991px) and (max-width: 1400px) {
   .writes-category-list {
     font-size: 10px;
+  }
+}
+@media only screen and (min-width: 300px) and (max-width: 576px) {
+  .year-container {
+    display: none;
+  }
+  .custom-select {
+    display: block;
   }
 }

@@ -88,7 +88,17 @@ brush-animation-content-detail .brush-anim-detail .brush-title-detail {
   text-transform: capitalize;
   background-color: #efefef;
 }
-
+.event-detail-button-pdf {
+  border: 0px;
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #6a6a6a;
+  font-weight: bold;
+  padding: 5px 19px 5px 20px;
+  background-color: #efefef;
+}
 .category-list-item {
   margin-top: 15px;
   text-transform: capitalize;

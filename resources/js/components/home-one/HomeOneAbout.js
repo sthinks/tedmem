@@ -9,10 +9,13 @@ import Slider from 'react-slick'
 
 const HomeOneAbout = ({ data }) => {
   const [publicCategory, setPublicCategory] = useState()
+  useEffect(() => {
+    console.log(window.screen.width)
+  }, [window.screen.width])
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: window.screen.width > 768 ? 4 : 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -27,13 +30,13 @@ const HomeOneAbout = ({ data }) => {
     getPublicCategory()
   }, [])
   return (
-    <div className="">
+    <div className={window.screen.width < 768 ? 'px-3' : ''}>
       <div className="container eduvibe-animated-shape">
         <div className="row content">
           <Slider {...settings}>
             {data?.map((item) => (
               <div className="mt-5" key={item.id}>
-                <div className="card card-event" style={{ width: '100%' }}>
+                <div className="card" style={{ width: '100%' }}>
                   <EditionCard data={item} publicCategory={publicCategory} />
                 </div>
               </div>

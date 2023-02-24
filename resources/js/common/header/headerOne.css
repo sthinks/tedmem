@@ -68,8 +68,11 @@
 }
 .header-input-result-detail {
   position: absolute;
+  width: 250px;
   background-color: white;
 }
+
+
 
 .banner-one-results {
   margin-top: 5px;

@@ -29,6 +29,10 @@
   border: 1px solid #d3d3d363;
   border-radius: 5px;
 }
+.banner-one-link-active {
+  border: 2px solid #12121263;
+  border-radius: 5px;
+}
 .banner-one-link-icon {
   width: 25px;
   margin-left: 15px;

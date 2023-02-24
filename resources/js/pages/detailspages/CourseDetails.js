@@ -125,7 +125,10 @@ const CourseDetails = () => {
                   </h5>
                 </div>
                 <div className="modal-body">
-                  <ContactMeForm formStyle="rnt-contact-form rwt-dynamic-form row" />
+                  <ContactMeForm
+                    value={content?.title}
+                    formStyle="rnt-contact-form rwt-dynamic-form row"
+                  />
                 </div>
               </div>
             </div>

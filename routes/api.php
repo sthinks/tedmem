@@ -54,6 +54,10 @@ Route::get('/events', [
     \App\Http\Controllers\EventController::class,
     'getEvents',
 ]);
+Route::get('/events/{slug}', [
+    \App\Http\Controllers\EventController::class,
+    'getEventsSlugged',
+]);
 Route::get('/event-details/{slug}', [
     \App\Http\Controllers\EventController::class,
     'getEventDetails',
@@ -67,6 +71,10 @@ Route::get('/kurumsal', [
 Route::get('/kadromuz', [
     \App\Http\Controllers\EventController::class,
     'getKadro',
+]);
+Route::get('/kadromuz/{slug}', [
+    \App\Http\Controllers\EventController::class,
+    'getKadroSlug',
 ]);
 
 //Yazilar
@@ -111,6 +119,10 @@ Route::get('/public-category', [
 Route::get('/event-category', [
     \App\Http\Controllers\CategoryController::class,
     'getEventCategory',
+]);
+Route::get('/write-category', [
+    \App\Http\Controllers\CategoryController::class,
+    'getWriteCategory',
 ]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

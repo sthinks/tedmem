@@ -6,9 +6,12 @@ import { BsInstagram } from 'react-icons/bs'
 import './Footer.css'
 import footerCard from '../../assets/images/footer-card.png'
 import { RiFacebookFill, RiTwitterFill, RiLinkedinFill } from 'react-icons/ri'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const FooterOne = () => {
   const navigate = useNavigate()
+
   return (
     <>
       <footer className="eduvibe-footer-one edu-footer footer-style-default position-relative">

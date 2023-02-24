@@ -13,6 +13,7 @@ import { FaSortAmountDown } from 'react-icons/fa'
 import './EventGrid.css'
 import EditionCard from '../../components/card/EditionCard'
 import { result } from 'lodash'
+import Loading from '../../components/loading/Loading'
 
 const slugify = function (text) {
   var trMap = {
@@ -37,13 +38,15 @@ const EventGrid = () => {
   const [content, setContent] = useState([])
   const [sekme, setSekme] = useState([])
   const [total, setTotal] = useState()
+  const [selectCat, setSelectCat] = useState('Tümü')
+  const [allSekme, setAllSekme] = useState([])
+  const [selectYear, setSelectYear] = useState(0)
   const [publicCategory, setPublicCategory] = useState()
-  const [navigateBtn, setNavigateBtn] = useState()
-  const [button, setButton] = useState()
   const [allData, setAllData] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(6)
-  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState()
+
   const scrollToTop = () => {
     document.body.scroll({
       top: 0,
@@ -78,6 +81,7 @@ const EventGrid = () => {
       .then((res) => {
         setContent(res.data)
       })
+      .then(() => setIsLoading(false))
   }
   const getPublicCategory = async () => {
     await axiosClient
@@ -86,6 +90,7 @@ const EventGrid = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     getPublicCategory()
   }, [])
 
@@ -96,27 +101,43 @@ const EventGrid = () => {
   }, [slugged])
   useEffect(() => {
     setCurrentPage(1)
+    paginationHandlerData()
+    console.log(sekme)
   }, [sekme])
 
   useEffect(() => {
     paginationHandlerData()
     let count = 0
     if (sekme.length > 0) {
-      sekme?.map((item) => (count = count + 1))
-      setTotal(count)
+      if (sekme[0].null) {
+        setTotal(0)
+      } else {
+        sekme?.map((item) => (count = count + 1))
+        setTotal(count)
+      }
     } else {
       content?.map((item) => (count = count + 1))
       setTotal(count)
     }
   }, [currentPage, content, sekme])
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [currentPage])
   const paginationHandlerData = () => {
     const lastPostIndex = currentPage * postsPerPage
     const firstPostIndex = lastPostIndex - postsPerPage
+    if (sekme.length > 0) {
+      const currentPosts = sekme?.slice(firstPostIndex, lastPostIndex)
+      setAllSekme(currentPosts)
+    }
     const currentPosts = content?.slice(firstPostIndex, lastPostIndex)
     setAllData(currentPosts)
   }
   const filteredByYear = (year) => {
+    setSelectYear(year)
     if (year === 0) {
       setSekme([])
     } else {
@@ -133,6 +154,7 @@ const EventGrid = () => {
       }
     }
   }
+
   return (
     <>
       <SEO title="Event Grid" />
@@ -142,29 +164,52 @@ const EventGrid = () => {
           <div className="container">
             <div
               className="row d-flex justify-content-center"
-              style={{ marginBottom: '70px' }}
+              style={{ marginBottom: '35px' }}
             >
+              <select
+                className="custom-select"
+                id="inputGroupSelect01"
+                style={{ height: '45px', padding: '10px' }}
+                onChange={(e) => filteredByYear(e.target.value)}
+              >
+                <option disabled selected>
+                  Yıla göre filtrele.
+                </option>
+                <option value={0}>Tümü</option>
+                {yearButton.map((item, i) => (
+                  <option value={item.year} key={i}>
+                    {item.year}
+                  </option>
+                ))}
+              </select>
               {yearButton.map((item, i) => (
                 <>
-                  <div key={i} className="col-md-2 col-sm-6 mb-2">
-                    <a
-                      href={window.screen.width <= 991 ? '#card-content' : '#a'}
+                  <div
+                    key={i}
+                    className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                  >
+                    <button
+                      onClick={() => filteredByYear(item.year)}
+                      className={
+                        selectYear === item.year
+                          ? 'btn-lg btn-block course-button-top-active'
+                          : 'btn btn-lg btn-block course-button-top'
+                      }
                     >
-                      <button
-                        onClick={() => filteredByYear(item.year)}
-                        className="btn btn-lg btn-block course-button-top"
-                      >
-                        {item.year}
-                      </button>
-                    </a>
+                      {item.year}
+                    </button>
                   </div>
                 </>
               ))}
-              <div className="col-md-2 col-sm-6 mb-2">
+              <div className="col-lg-2 col-sm-6 mb-2 year-container">
                 <a href={window.screen.width <= 991 ? '#card-content' : '#a'}>
                   <button
                     onClick={() => filteredByYear(0)}
-                    className="btn btn-lg btn-block course-button-top"
+                    className={
+                      selectYear === 0
+                        ? 'btn-lg btn-block course-button-top-active'
+                        : 'btn btn-lg btn-block course-button-top'
+                    }
                   >
                     Tümü
                   </button>
@@ -175,15 +220,26 @@ const EventGrid = () => {
             <div className="row justify-content-between">
               <div className="col-lg-2 mt-5">
                 <Link to={`/yayinlar`}>
-                  <div className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2">
+                  <div
+                    className={
+                      selectCat === 'Tümü'
+                        ? 'd-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2'
+                        : 'd-flex justify-content-start align-items-center my-auto banner-one-link mb-2'
+                    }
+                  >
                     <div className="writes-category-list">Tümü</div>
                   </div>
                 </Link>
                 {publicCategory?.map((item, i) => (
-                  <Link to={`/yayinlar/${item.id}`}>
+                  <Link to={`/yayinlar/${item.slug}`}>
                     <div
                       key={i}
-                      className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
+                      className={
+                        selectCat === item.name
+                          ? 'd-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2'
+                          : 'd-flex justify-content-start align-items-center my-auto banner-one-link mb-2'
+                      }
+                      onClick={() => setSelectCat(item.name)}
                     >
                       <div className="writes-category-list">{item.name}</div>
                     </div>
@@ -192,25 +248,14 @@ const EventGrid = () => {
               </div>
               <div className="col-lg-9">
                 <div className="row">
-                  {sekme.length > 0
-                    ? sekme?.map((item, i) =>
-                        item.null ? (
-                          <div className="col-lg-4" key={i}>
-                            {item.null}
-                          </div>
-                        ) : (
-                          <div className="col-lg-4" key={i}>
-                            <div className="event-card-container">
-                              <EditionCard
-                                data={item}
-                                publicCategory={publicCategory}
-                              />
-                            </div>
-                          </div>
-                        ),
-                      )
-                    : allData?.map((item, i) => (
-                        <div className="col-lg-4" key={i}>
+                  {sekme.length > 0 ? (
+                    allSekme?.map((item, i) =>
+                      item.null ? (
+                        <div className="col-lg-4 p-2" key={i}>
+                          {item.null}
+                        </div>
+                      ) : (
+                        <div className="col-lg-4 p-2" key={i}>
                           <div className="event-card-container">
                             <EditionCard
                               data={item}
@@ -218,16 +263,35 @@ const EventGrid = () => {
                             />
                           </div>
                         </div>
-                      ))}
+                      ),
+                    )
+                  ) : allData?.length > 0 ? (
+                    allData?.map((item, i) => (
+                      <div className="col-lg-4 p-2" key={i}>
+                        <div className="event-card-container">
+                          <EditionCard
+                            data={item}
+                            publicCategory={publicCategory}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div>Aradığınız kategoride içerik bulunamadı.</div>
+                  )}
                 </div>
-                <div className="d-flex justify-content-center">
-                  <PaginationOne
-                    totalPosts={total}
-                    postPerPage={postsPerPage}
-                    setCurrentPage={setCurrentPage}
-                    currentPage={currentPage}
-                  />
-                </div>
+                {total > 0 ? (
+                  <div className="d-flex justify-content-center">
+                    <PaginationOne
+                      totalPosts={total}
+                      postPerPage={postsPerPage}
+                      setCurrentPage={setCurrentPage}
+                      currentPage={currentPage}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>

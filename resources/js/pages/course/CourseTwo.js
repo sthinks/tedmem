@@ -39,54 +39,16 @@ const slugify = function (text) {
 }
 
 const CoruseTwo = () => {
-  const [allData, setAllData] = useState(null)
-  const [content, setContent] = useState(null)
-  const [sekme, setSekme] = useState(null)
+  const [allData, setAllData] = useState([])
+  const [content, setContent] = useState([])
+  const [sekme, setSekme] = useState([])
+  const [selectYear, setSelectYear] = useState(0)
+  const [allSekme, setAllSekme] = useState([])
+  const [selectCat, setSelectCat] = useState()
+  const [total, setTotal] = useState()
+  const [category, setCategory] = useState()
   const [currentPage, setCurrentPage] = useState(1)
-  const [postPerPage, setPostPage] = useState(9)
-
-  const categoryList = [
-    {
-      name: 'Eğitim',
-      slug: '/yazilar/egitim',
-      icon: <FaSchool />,
-    },
-    {
-      name: 'COVID-19',
-      slug: '/yazilar/covid-19',
-      icon: <FaVirus />,
-    },
-    {
-      name: 'Değerlendirme',
-      slug: '/yazilar/degerlendirme',
-      icon: <FaGlasses />,
-    },
-    {
-      name: 'Görüş',
-      slug: '/yazilar/gorus',
-      icon: <FaScroll />,
-    },
-    {
-      name: 'Söyleşi',
-      slug: '/yazilar/soylesi',
-      icon: <FaMicrophone />,
-    },
-    {
-      name: 'Vuruş',
-      slug: '/yazilar/vurus',
-      icon: <FaHandRock />,
-    },
-    {
-      name: 'Yansıma',
-      slug: '/yazilar/yansima',
-      icon: <FaHandsHelping />,
-    },
-    {
-      name: 'Yuvarlak Masa',
-      slug: '/yazilar/yuvarlak-masa',
-      icon: <BsNewspaper />,
-    },
-  ]
+  const [postsPerPage, setPostsPerPage] = useState(6)
 
   const yearButton = [
     {
@@ -104,43 +66,108 @@ const CoruseTwo = () => {
     {
       year: new Date().getFullYear() - 4,
     },
+    {
+      year: new Date().getFullYear() - 5,
+    },
+    {
+      year: new Date().getFullYear() - 6,
+    },
+    {
+      year: new Date().getFullYear() - 7,
+    },
+    {
+      year: new Date().getFullYear() - 8,
+    },
+    {
+      year: new Date().getFullYear() - 9,
+    },
+    {
+      year: new Date().getFullYear() - 10,
+    },
+    {
+      year: new Date().getFullYear() - 11,
+    },
   ]
 
   let { slug } = useParams()
-  const getWrites = async () => {
+  const getCategories = async () => {
     const result = await axiosClient
-      .get(`/api/yazilar/${slug}?page=1`)
-      .then((res) => res.data.data)
-
-    setAllData(result)
-    setCurrentPage(1)
-    setPostPage(9)
+      .get('/api/write-category')
+      .then((res) => res.data)
+    setCategory(result)
   }
+  const getWrites = async () => {
+    await axiosClient
+      .get(`/api/yazilar/${slug}`)
+      .then((res) => setContent(res.data))
+  }
+  useEffect(() => {
+    setSelectCat(slug)
+  }, [content])
+  useEffect(() => {
+    getCategories()
+  }, [])
 
   useEffect(() => {
     getWrites()
+    setCurrentPage(1)
+    setSekme([])
   }, [slug])
+  useEffect(() => {
+    setCurrentPage(1)
+    paginationHandlerData()
+  }, [sekme])
 
-  // const handleChange = async (data) => {
-  //   let currentPage = data.selected + 1
-  //   await axiosClient
-  //     .get(`/api/yazilar/${slugged}?page=${currentPage}`)
-  //     .then((res) => {
-  //       setContent(res.data)
-  //     })
-  // }
-
-  const handleSekme = (string) => {
-    setContent([])
-    const currentPosts = allData?.slice(firstPostIndex, lastPostIndex)
-    const filtered = currentPosts?.filter((item) => item.year == string)
-
-    setSekme(filtered)
+  useEffect(() => {
+    paginationHandlerData()
+    let count = 0
+    if (sekme.length > 0) {
+      if (sekme[0].null) {
+        setTotal(0)
+      } else {
+        sekme?.map((item) => (count = count + 1))
+        setTotal(count)
+      }
+    } else {
+      content?.map((item) => (count = count + 1))
+      setTotal(count)
+    }
+  }, [currentPage, content, sekme])
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [currentPage])
+  const paginationHandlerData = () => {
+    const lastPostIndex = currentPage * postsPerPage
+    const firstPostIndex = lastPostIndex - postsPerPage
+    if (sekme.length > 0) {
+      const currentPosts = sekme?.slice(firstPostIndex, lastPostIndex)
+      setAllSekme(currentPosts)
+    }
+    const currentPosts = content?.slice(firstPostIndex, lastPostIndex)
+    setAllData(currentPosts)
   }
 
-  const lastPostIndex = currentPage * postPerPage
-  const firstPostIndex = lastPostIndex - postPerPage
-
+  const filteredByYear = (year) => {
+    setSelectYear(year)
+    if (year === 0) {
+      setSekme([])
+    } else {
+      const result = content.filter((item) => item.year == year)
+      if (result.length === 0) {
+        const nullData = [
+          {
+            null: 'Aradığınız tarihte içerik bulunamadı.',
+          },
+        ]
+        setSekme(nullData)
+      } else {
+        setSekme(result)
+      }
+    }
+  }
   return (
     <>
       <SEO title="Yazılar" />
@@ -151,29 +178,52 @@ const CoruseTwo = () => {
           <div className="container">
             <div
               className="row d-flex justify-content-center"
-              style={{ marginBottom: '70px' }}
+              style={{ marginBottom: '35px' }}
             >
+              <select
+                className="custom-select"
+                id="inputGroupSelect01"
+                style={{ height: '45px', padding: '10px' }}
+                onChange={(e) => filteredByYear(e.target.value)}
+              >
+                <option disabled selected>
+                  Yıla göre filtrele.
+                </option>
+                <option value={0}>Tümü</option>
+                {yearButton.map((item, i) => (
+                  <option value={item.year} key={i}>
+                    {item.year}
+                  </option>
+                ))}
+              </select>
               {yearButton.map((item, i) => (
                 <>
-                  <div key={i} className="col-md-2 col-sm-6 mb-2">
-                    <a
-                      href={window.screen.width <= 991 ? '#card-content' : '#a'}
+                  <div
+                    key={i}
+                    className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                  >
+                    <button
+                      onClick={() => filteredByYear(item.year)}
+                      className={
+                        selectYear === item.year
+                          ? 'btn-lg btn-block course-button-top-active'
+                          : 'btn btn-lg btn-block course-button-top'
+                      }
                     >
-                      <button
-                        onClick={() => handleSekme(item.year)}
-                        className="btn btn-lg btn-block course-button-top"
-                      >
-                        {item.year}
-                      </button>
-                    </a>
+                      {item.year}
+                    </button>
                   </div>
                 </>
               ))}
-              <div className="col-md-2 col-sm-6 mb-2">
+              <div className="col-lg-2 col-sm-6 mb-2 year-container">
                 <a href={window.screen.width <= 991 ? '#card-content' : '#a'}>
                   <button
-                    onClick={() => setSekme([])}
-                    className="btn btn-lg btn-block course-button-top"
+                    onClick={() => filteredByYear(0)}
+                    className={
+                      selectYear === 0
+                        ? 'btn-lg btn-block course-button-top-active'
+                        : 'btn btn-lg btn-block course-button-top'
+                    }
                   >
                     Tümü
                   </button>
@@ -182,15 +232,18 @@ const CoruseTwo = () => {
             </div>
             <div className="row g-5 mt--10">
               <div className="col-lg-2">
-                {categoryList.map((item, i) => (
-                  <Link to={item.slug}>
+                {category?.map((item, i) => (
+                  <Link to={`/yazilar/${item.slug}`}>
                     <div
                       key={i}
-                      className="d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
+                      className={
+                        selectCat === item.slug
+                          ? 'd-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2'
+                          : 'd-flex justify-content-start align-items-center my-auto banner-one-link mb-2'
+                      }
+                      onClick={() => setSelectCat(item.name)}
                     >
-                      <div className="writes-category-list">
-                        {item.icon} {item.name}
-                      </div>
+                      <div className="writes-category-list">{item.name}</div>
                     </div>
                   </Link>
                 ))}
@@ -198,51 +251,50 @@ const CoruseTwo = () => {
 
               <div className="col-lg-10" id="card-content">
                 <div className="row">
-                  {sekme?.length > 0 ? (
-                    <>
-                      {sekme?.map((item, i) => {
-                        return (
-                          <>
-                            <CourseTypeTwo key={i} item={item} />
-                          </>
-                        )
-                      })}
-                    </>
+                  {sekme.length > 0 ? (
+                    allSekme?.map((item, i) =>
+                      item.null ? (
+                        <div className="col-lg-4" key={i}>
+                          {item.null}
+                        </div>
+                      ) : (
+                        <div className="col-lg-4">
+                          <CourseTypeTwo
+                            key={i}
+                            data={item}
+                            category={category}
+                          />
+                        </div>
+                      ),
+                    )
+                  ) : allData?.length > 0 ? (
+                    allData?.map((item, i) => (
+                      <div className="col-lg-4">
+                        <CourseTypeTwo
+                          key={i}
+                          data={item}
+                          category={category}
+                        />
+                      </div>
+                    ))
                   ) : (
-                    <>
-                      {allData
-                        ?.slice(firstPostIndex, lastPostIndex)
-                        .map((item, i) => {
-                          return (
-                            <>
-                              <CourseTypeTwo key={i} item={item} />
-                            </>
-                          )
-                        })}
-                    </>
+                    <div>Aradığınız kategoride içerik bulunamadı.</div>
                   )}
                 </div>
+                {total > 0 ? (
+                  <div className="d-flex justify-content-center">
+                    <PaginationOne
+                      totalPosts={total}
+                      postPerPage={postsPerPage}
+                      setCurrentPage={setCurrentPage}
+                      currentPage={currentPage}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
-            {sekme?.length > 0 ? (
-              <div className="d-flex justify-content-center">
-                <PaginationOne
-                  totalPosts={sekme?.length}
-                  postPerPage={postPerPage}
-                  setCurrentPage={setCurrentPage}
-                  currentPage={currentPage}
-                />
-              </div>
-            ) : (
-              <div className="d-flex justify-content-center">
-                <PaginationOne
-                  totalPosts={allData?.length}
-                  postPerPage={postPerPage}
-                  setCurrentPage={setCurrentPage}
-                  currentPage={currentPage}
-                />
-              </div>
-            )}
           </div>
         </div>
       </Layout>

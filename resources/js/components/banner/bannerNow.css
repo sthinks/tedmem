@@ -98,8 +98,8 @@
   width: 100%;
   height: 500px;
   border-radius: 50px 10px 50px 10px;
-  object-fit: fill;
-  object-position: 100% 20%;
+  object-fit: cover;
+  object-position: 50% 50%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .banner-now-second-image {
@@ -290,11 +290,10 @@
     width: 80%;
   }
   .banner-now-image {
-    width: 50% !important;
+    width: 60% !important;
   }
   .banner-now-second-image {
     width: 75% !important;
-    margin-left: 35px !important;
   }
   .banner-now-button {
     left: 60% !important;

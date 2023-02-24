@@ -1,0 +1,29 @@
+.personel-card-info {
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.personel-card-info img {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+.personel-card-info p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 1.5rem;
+}
+.personal-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.cv-info p {
+  font-size: 2rem;
+}

@@ -16,30 +16,41 @@ import BrushAnim from '../../components/brush-anim-yellow/BrushYellow'
 const EventDetails = () => {
   const { slug } = useParams()
   const [content, setContent] = useState([])
-  const [category, setCategory] = useState([])
-  const [allCategory, setAllCategory] = useState([])
-  const [similarDatas, setSimilarDatas] = useState([])
+  const [allCategory, setAllCategory] = useState()
+  const [similarData, setSimilarData] = useState()
   const [allData, setAllData] = useState([])
+  const [text, setText] = useState()
   const [loading, setLoading] = useState(true)
 
-  const handleClick = () => {
-    setText(content.content)
-    document.getElementById('devam').remove()
+  const similarDataFetch = async () => {
+    const result = await axiosClient
+      .get(`/api/publics/${filterCategoryDetailSlug(content?.category_id)}`)
+      .then((res) => res.data)
+    setSimilarData(result.slice(0, 3))
   }
-
+  const getAllPublic = async () => {
+    await axiosClient.get('/api/publics').then((res) => setAllData(res.data))
+  }
+  const getPublicCategory = async () => {
+    await axiosClient
+      .get('/api/public-category')
+      .then((res) => setAllCategory(res.data))
+  }
+  const filterCategoryDetail = (cat_id) => {
+    const cat = allCategory?.filter((item) => item.id === cat_id)
+    return cat[0]?.name
+  }
+  const filterCategoryDetailSlug = (cat_id) => {
+    const cat = allCategory?.filter((item) => item.id === cat_id)
+    return cat[0]?.slug
+  }
   useEffect(() => {
-    axiosClient
-      .get('/api/publics')
-      .then((res) => {
-        setAllData(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+    getPublicCategory()
+    getAllPublic()
   }, [])
+  useEffect(() => {
+    similarDataFetch()
+  }, [content])
 
   useEffect(() => {
     setLoading(true)
@@ -47,7 +58,7 @@ const EventDetails = () => {
       .get(`/api/public-details/${slug}`)
       .then((res) => {
         setContent(res.data)
-        setCategory(res.data.category)
+
         setText(
           res.data.content
             .replace(/<br>(?=(?:\s*<[^>]*>)*$)|(<br>)|<[^>]*>/gi, (x, y) =>
@@ -64,40 +75,6 @@ const EventDetails = () => {
       })
   }, [slug])
 
-  useEffect(() => {
-    filterHandler(category)
-    sameHandler()
-  }, [category])
-
-  const filterHandler = (value) => {
-    const filteredItem = allData.filter((item) => {
-      return item.category === value
-    })
-    setSimilarDatas(filteredItem)
-  }
-  const sameHandler = () => {
-    const a = allData.reduce((acc, curr) => {
-      if (!acc[curr.category]) {
-        acc[curr.category] = new Set()
-      }
-
-      acc[curr.category].add(curr.category_slug)
-
-      return acc
-    }, {})
-
-    let result = Object.entries(a).map((el) => ({
-      category: el[0],
-      slug: el[1],
-    }))
-
-    setAllCategory(result)
-  }
-
-  const deneme = (value) => {
-    const result = `https://twitter.com/intent/tweet`
-  }
-
   return (
     !loading && (
       <>
@@ -108,6 +85,7 @@ const EventDetails = () => {
             image={banner}
             date={content?.created_at}
             author={content?.editor}
+            publish_house={content?.publish_house}
           />
 
           <div className="container event-detail ">
@@ -119,11 +97,17 @@ const EventDetails = () => {
                     __html: content?.content,
                   }}
                 />
+                <a href={content?.pdf_link[0][0]} target="_blank">
+                  <div className="event-detail-button-pdf mb-2">
+                    PDF'i indir ({content?.pdf_link[0][1]})
+                  </div>
+                </a>
                 <div className="row event-detail-share d-flex justify-content-between">
                   <div className="col-xl-6 col-lg-6 col-sm-12">
                     <div className="btn-container ">
                       <button type="button" className="event-detail-button">
-                        {content?.category}
+                        {allCategory &&
+                          filterCategoryDetail(content?.category_id)}
                       </button>
                     </div>
                   </div>
@@ -179,16 +163,16 @@ const EventDetails = () => {
                       <div className="brush-title-detail">Benzer Yazılar</div>
                     </div>
                   </div>
-                  <p>
-                    Neque porro quisquam est qui dolorem ipsum quia dolor sit
-                    amet, consectetur, adipisci velit...
-                  </p>
+
                   <div className="row">
                     {/* Benzer kartlar sadece 4 adet olacak şekilde slice yapıldı. */}
-                    {similarDatas?.slice(0, 4).map((item) => (
-                      <div className="col-xl-4 mt-5">
+                    {similarData?.map((item) => (
+                      <div className="col-xl-4 mt-5 p-2">
                         <div className="event-detail-similar-posts">
-                          <EditionCard data={item} />
+                          <EditionCard
+                            data={item}
+                            publicCategory={allCategory}
+                          />
                         </div>
                       </div>
                     ))}
@@ -200,12 +184,10 @@ const EventDetails = () => {
 
                 <h5 className="detail-category">Kategoriler</h5>
 
-                {allCategory.map((item) => (
-                  <div>
-                    <li className="category-list-item" key={item.category}>
-                      <Link to={`/yayinlar/${item.category}`}>
-                        {item.category}
-                      </Link>
+                {allCategory?.map((item, i) => (
+                  <div key={i}>
+                    <li className="category-list-item">
+                      <Link to={`/yayinlar/${item.slug}`}>{item.name}</Link>
                     </li>
                   </div>
                 ))}

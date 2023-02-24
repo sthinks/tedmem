@@ -72,7 +72,7 @@ const BannerOne = ({ data }) => {
                           <BsSearch className="search-box-icon" />
                         </div>
                         {writesResults?.length > 0 &&
-                          writesResults.slice(0, 8).map((item) => (
+                          writesResults.slice(0, 4).map((item) => (
                             <Link
                               to={
                                 item.category_id

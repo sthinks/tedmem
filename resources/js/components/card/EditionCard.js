@@ -5,7 +5,7 @@ import { AiOutlineClockCircle } from 'react-icons/ai'
 import { NavItem } from 'react-bootstrap'
 
 function EditionCard({ data, publicCategory }) {
-  const formattedDate = new Date(data.created_at)
+  const formattedDate = new Date(data?.created_at)
 
   const catergoryHandler = (cat_id) => {
     if (publicCategory) {
@@ -15,9 +15,19 @@ function EditionCard({ data, publicCategory }) {
   }
 
   return (
-    <Link to={`/yayinlar-detay/${data.slug}`}>
-      <div className="card card-event">
-        <img className="card-event-img" src={data.image} alt="Card image cap" />
+    <Link
+      to={
+        data?.publish_house
+          ? `/yayinlar-detay/${data.slug}`
+          : `/yazilar-detay/${data.slug}`
+      }
+    >
+      <div className="card">
+        <img
+          className="card-event-img"
+          src={data?.image}
+          alt="Card image cap"
+        />
         <div className="card-body">
           {data.category_info ? (
             <div className="edition-badge">
@@ -28,7 +38,7 @@ function EditionCard({ data, publicCategory }) {
           ) : (
             <div className="edition-badge">
               <span className="edition-badge-icon">
-                {catergoryHandler(data.category_id)}
+                {catergoryHandler(data?.category_id)}
               </span>
             </div>
           )}
@@ -41,10 +51,10 @@ function EditionCard({ data, publicCategory }) {
             </div>
           </div>
           <p className="card-read-more">
-            {data?.category_id ? (
-              <Link to={`/yazilar-detay/${data.slug}`}>Devamını Oku</Link>
-            ) : (
+            {data?.publish_house ? (
               <Link to={`/yayinlar-detay/${data.slug}`}>Devamını Oku</Link>
+            ) : (
+              <Link to={`/yazilar-detay/${data.slug}`}>Devamını Oku</Link>
             )}
           </p>
         </div>

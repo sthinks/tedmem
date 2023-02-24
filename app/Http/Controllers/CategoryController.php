@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PublicCategory;
 use App\Models\EventsCategory;
+use App\Models\Categories;
 
 class CategoryController extends Controller
 {
@@ -18,6 +19,11 @@ class CategoryController extends Controller
     public function getEventCategory()
     {
         $data = EventsCategory::all();
+        return response()->json($data);
+    }
+    public function getWriteCategory()
+    {
+        $data = Categories::all();
         return response()->json($data);
     }
 }
