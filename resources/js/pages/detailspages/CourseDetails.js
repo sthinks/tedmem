@@ -44,7 +44,22 @@ const CourseDetails = () => {
                     dangerouslySetInnerHTML={{
                       __html: content?.content,
                     }}
-                  ></div>
+                  />
+                  {content?.tag && (
+                    <div>
+                      <b>Etiketler</b> :{' '}
+                      {content?.tag.map((item) => (
+                        <>
+                          <a
+                            className="write-tag"
+                            href={`/etiketler/${item.slug}`}
+                          >
+                            {item.name},
+                          </a>{' '}
+                        </>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="col-lg-5">

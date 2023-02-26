@@ -4,15 +4,8 @@ import './editionCard.css'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { NavItem } from 'react-bootstrap'
 
-function EditionCard({ data, publicCategory }) {
+function EditionCard({ data }) {
   const formattedDate = new Date(data?.created_at)
-
-  const catergoryHandler = (cat_id) => {
-    if (publicCategory) {
-      const result = publicCategory.filter((item) => item.id == cat_id)
-      return result[0].name
-    }
-  }
 
   return (
     <Link
@@ -29,19 +22,11 @@ function EditionCard({ data, publicCategory }) {
           alt="Card image cap"
         />
         <div className="card-body">
-          {data.category_info ? (
-            <div className="edition-badge">
-              <span className="edition-badge-icon">
-                {data?.category_info.name}
-              </span>
-            </div>
-          ) : (
-            <div className="edition-badge">
-              <span className="edition-badge-icon">
-                {catergoryHandler(data?.category_id)}
-              </span>
-            </div>
-          )}
+          <div className="edition-badge">
+            <span className="edition-badge-icon">
+              {data?.category_info.name}
+            </span>
+          </div>
 
           <div className="card-date">
             <h5 className="card-title">{data.title}</h5>

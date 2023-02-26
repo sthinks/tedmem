@@ -7,7 +7,8 @@ use TCG\Voyager\Models\Page;
 use App\Models\Event;
 use App\Models\EventsCategory;
 use App\Models\Personnel;
-
+use App\Models\WriteTag;
+use App\Models\Tag;
 class EventController extends Controller
 {
     public function getEvents()
@@ -42,6 +43,18 @@ class EventController extends Controller
         $data->image = asset(
             sprintf('storage/%s', str_replace('\\', '/', $data->image))
         );
+        $tagWrite = WriteTag::where('event_id', $data->id)->get();
+        $tagData = [];
+        $tagAll = Tag::all();
+        for ($i = 0; $i < $tagWrite->count(); $i++) {
+            for ($j = 0; $j < $tagAll->count(); $j++) {
+                $new = $tagAll[$j]->id;
+                if ($new == $tagWrite[$i]->tag_id) {
+                    array_push($tagData, $tagAll[$j]);
+                }
+            }
+        }
+        $data->tag = $tagData;
 
         return response()->json($data);
     }

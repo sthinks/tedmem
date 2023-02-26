@@ -22,12 +22,13 @@ const EventDetails = () => {
   const [text, setText] = useState()
   const [loading, setLoading] = useState(true)
 
-  const similarDataFetch = async () => {
-    const result = await axiosClient
-      .get(`/api/publics/${filterCategoryDetailSlug(content?.category_id)}`)
-      .then((res) => res.data)
-    setSimilarData(result.slice(0, 3))
-  }
+  // const similarDataFetch = async () => {
+  //   const result = await axiosClient
+  //     .get(`/api/publics/${content?.category_id}`)
+  //     .then((res) => res.data)
+  //   console.log('ebenzer', result)
+  //   setSimilarData(result.slice(0, 3))
+  // }
   const getAllPublic = async () => {
     await axiosClient.get('/api/publics').then((res) => setAllData(res.data))
   }
@@ -40,17 +41,14 @@ const EventDetails = () => {
     const cat = allCategory?.filter((item) => item.id === cat_id)
     return cat[0]?.name
   }
-  const filterCategoryDetailSlug = (cat_id) => {
-    const cat = allCategory?.filter((item) => item.id === cat_id)
-    return cat[0]?.slug
-  }
+
   useEffect(() => {
     getPublicCategory()
     getAllPublic()
   }, [])
-  useEffect(() => {
-    similarDataFetch()
-  }, [content])
+  // useEffect(() => {
+  //   similarDataFetch()
+  // }, [content])
 
   useEffect(() => {
     setLoading(true)
@@ -166,16 +164,13 @@ const EventDetails = () => {
 
                   <div className="row">
                     {/* Benzer kartlar sadece 4 adet olacak şekilde slice yapıldı. */}
-                    {similarData?.map((item) => (
+                    {/* {similarData?.map((item) => (
                       <div className="col-xl-4 mt-5 p-2">
                         <div className="event-detail-similar-posts">
-                          <EditionCard
-                            data={item}
-                            publicCategory={allCategory}
-                          />
+                          <EditionCard data={item} />
                         </div>
                       </div>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
               </div>

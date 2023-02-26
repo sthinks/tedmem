@@ -24,6 +24,17 @@ class WritesController extends Controller
 
         return response()->json($data);
     }
+    public function getHomeWrite()
+    {
+        $data = Write::where('homepage', 1)->first();
+        $data->image = asset(
+            sprintf('storage/%s', str_replace('\\', '/', $data->image))
+        );
+        $data->image2 = asset(
+            sprintf('storage/%s', str_replace('\\', '/', $data->image2))
+        );
+        return response()->json($data);
+    }
     public function getWrites(string $slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -72,10 +83,10 @@ class WritesController extends Controller
         $tagData = [];
         $tagAll = Tag::all();
         for ($i = 0; $i < $tagWrite->count(); $i++) {
-            for ($j = 0; $j < $tagWrite->count(); $j++) {
+            for ($j = 0; $j < $tagAll->count(); $j++) {
                 $new = $tagAll[$j]->id;
                 if ($new == $tagWrite[$i]->tag_id) {
-                    array_push($tagData, $tagAll[$new]);
+                    array_push($tagData, $tagAll[$j]);
                 }
             }
         }

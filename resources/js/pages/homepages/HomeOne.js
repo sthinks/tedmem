@@ -17,15 +17,12 @@ import { write } from '@popperjs/core'
 const HomeOne = () => {
   const [bulten, setBulten] = useState([])
   const [writes, setWrites] = useState([])
-
-  const [homeBanner, setHomeBanner] = useState([])
   const [publics, setPublics] = useState([])
 
   const getData = async () => {
     await axiosClient
       .get(`/api/latest-bulten`)
       .then((res) => setBulten(res.data))
-    await axiosClient.get(`/api/yazilar`).then((res) => setHomeBanner(res.data))
     await axiosClient
       .get(`/api/latest-writes`)
       .then((res) => setWrites(res.data))
@@ -42,19 +39,15 @@ const HomeOne = () => {
     (a, b) => b.created_at - a.created_at,
   )
 
-  const article = [...publics, ...writes].sort(
-    (a, b) => b.created_at - a.created_at,
-  )
-
   return (
     <>
       <SEO title="TEDMEM | Ortak Paydamız Eğitim" />
 
       {/* <HeaderTop /> */}
 
-      <BannerOne data={article} />
+      <BannerOne />
 
-      <BannerNow data={homeBanner} />
+      <BannerNow />
 
       <HomeOneAbout data={mixed} />
 

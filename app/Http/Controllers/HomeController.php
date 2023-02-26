@@ -26,7 +26,7 @@ class HomeController extends Controller
     }
     public function getLatestWrites()
     {
-        $data = Write::latest()
+        $data = Write::orderBy('created_at', 'DESC')
             ->take(4)
             ->get();
         $data->map(function ($item) {
@@ -51,6 +51,10 @@ class HomeController extends Controller
             $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
+            $item->category_info = Category::where(
+                'id',
+                $item->category_id
+            )->first();
         });
 
         return response()->json($data);
@@ -92,6 +96,37 @@ class HomeController extends Controller
                     )
                 );
             }, $pdf_files);
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+        });
+
+        return response()->json($data);
+    }
+    public function getSearchPublicData()
+    {
+        $data = Publication::orderBy('publish_year', 'DESC')
+            ->take(20)
+            ->get();
+
+        $data->map(function ($item) {
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+        });
+
+        return response()->json($data);
+    }
+    public function getSearchWriteData()
+    {
+        $data = Write::latest()
+            ->take(20)
+            ->get();
+        $data->map(function ($item) {
+            $item->category_info = Category::where(
+                'id',
+                $item->category_id
+            )->first();
             $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );

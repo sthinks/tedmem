@@ -90,6 +90,10 @@ Route::get('/yazilar-detay/{slug}', [
     \App\Http\Controllers\WritesController::class,
     'getWritesDetails',
 ]);
+Route::get('/home-write', [
+    \App\Http\Controllers\WritesController::class,
+    'getHomeWrite',
+]);
 
 //Anasayfa<<<<
 Route::get('/latest-bulten', [
@@ -124,7 +128,31 @@ Route::get('/write-category', [
     \App\Http\Controllers\CategoryController::class,
     'getWriteCategory',
 ]);
-
+Route::get('/merhaba', [
+    \App\Http\Controllers\TagWriteController::class,
+    'getAllTagPivot',
+]);
+Route::get('/alltag', [
+    \App\Http\Controllers\TagWriteController::class,
+    'getAllTag',
+]);
+Route::get('/write-tag/{slug}', [
+    \App\Http\Controllers\TagWriteController::class,
+    'getAllTagWriteSlug',
+]);
+Route::get('/event-tag/{slug}', [
+    \App\Http\Controllers\TagWriteController::class,
+    'getAllTagEventSlug',
+]);
+//For search data
+Route::get('/searchWrite', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchWriteData',
+]);
+Route::get('/searchPublic', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchPublicData',
+]);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

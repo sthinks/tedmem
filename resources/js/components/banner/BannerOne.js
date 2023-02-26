@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import '../../assets/css/style.css'
 import banner from '../../assets/images/Logo-orjinal.png'
 import 'react-awesome-slider/dist/styles.css'
@@ -11,31 +11,46 @@ import News from '../../assets/images/icon/News.png'
 import Papper from '../../assets/images/icon/Papper.png'
 import Reactİcon from '../../assets/images/icon/React.png'
 import Ticket from '../../assets/images/icon/Ticket.png'
+import axiosClient from '../../utils/axiosClient'
 import { BsSearch } from 'react-icons/bs'
 import './bannerOne.css'
-import { useEffect } from 'react'
 
-const BannerOne = ({ data }) => {
-  const [writesResults, setWritesResults] = React.useState([])
-  const [query, setQuery] = React.useState('')
-
+const BannerOne = () => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [data, setData] = useState()
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleQuery()
     }
   }
+  const handlerData = async () => {
+    const publicData = await axiosClient
+      .get('/api/searchPublic')
+      .then((res) => res.data)
+    const writeData = await axiosClient
+      .get('/api/searchWrite')
+      .then((res) => res.data)
 
-  const handleQuery = (e) => {
-    var writesResults = data?.filter((data) =>
-      data.title.toLowerCase().includes(query.toLowerCase()),
-    )
-
-    setWritesResults(writesResults)
-
-    if (e === '') {
-      setWritesResults([])
+    if (publicData && writeData) {
+      const article = [...publicData, ...writeData].sort(
+        (a, b) => b.created_at - a.created_at,
+      )
+      setData(article)
     }
   }
+  useEffect(() => {
+    handlerData()
+  }, [])
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value)
+  }
+
+  const filteredData = data?.filter((item) => {
+    return item.title
+      .toLocaleUpperCase('tr-TR')
+      .includes(searchTerm.toLocaleUpperCase('tr-TR'))
+  })
 
   return (
     <div className="">
@@ -62,29 +77,32 @@ const BannerOne = ({ data }) => {
                           <input
                             className="bg-white mb-2 py-2 banner-one-input"
                             onKeyDown={handleKeyDown}
-                            onChange={(e) => {
-                              setQuery(e.target.value)
-                              handleQuery(e.target.value)
-                            }}
+                            value={searchTerm}
+                            onChange={handleSearch}
                             type="text"
                             placeholder="Arayın..."
                           />
                           <BsSearch className="search-box-icon" />
                         </div>
-                        {writesResults?.length > 0 &&
-                          writesResults.slice(0, 4).map((item) => (
-                            <Link
-                              to={
-                                item.category_id
-                                  ? `/yazilar-detay/${item.slug}`
-                                  : `/yayinlar-detay/${item.slug}`
-                              }
-                            >
-                              <div className="border mb-2 input-result">
-                                {item.title}
-                              </div>
-                            </Link>
-                          ))}
+                        <div
+                          className="position-absolute bg-white"
+                          style={{ zIndex: '1555', width: '100%' }}
+                        >
+                          {searchTerm &&
+                            filteredData?.slice(0, 10).map((item) => (
+                              <Link
+                                to={
+                                  !item.category_slug
+                                    ? `/yazilar-detay/${item.slug}`
+                                    : `/yayinlar-detay/${item.slug}`
+                                }
+                              >
+                                <div className="border mb-2 input-result">
+                                  {item.title}
+                                </div>
+                              </Link>
+                            ))}
+                        </div>
                       </div>
                     </div>
                   </div>

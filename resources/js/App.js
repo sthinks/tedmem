@@ -7,7 +7,6 @@ import CourseOne from './pages/course/CourseOne'
 import CourseTwo from './pages/course/CourseTwo'
 import CourseTwoo from './pages/course/CourseTwoo'
 import CourseThree from './pages/course/CourseThree'
-import CourseCategoryArchive from './pages/archive/CourseCategoryArchive'
 import CourseDetails from './pages/detailspages/CourseDetails'
 import EventGrid from './pages/innerpages/EventGrid'
 import EventDetails from './pages/detailspages/EventDetails'
@@ -17,6 +16,7 @@ import BultenPage from './pages/innerpages/BultenPage'
 import HeaderOne from './common/header/HeaderOne'
 import FooterOne from './common/footer/FooterOne'
 import Personnel from './components/personnels/Personnel'
+import Tagpage from './components/tagPage/Tagpage'
 
 function App() {
   return (
@@ -54,6 +54,7 @@ function App() {
             path={'/yayinlar-detay/:slug'}
             element={<EventDetails />}
           />
+          <Route exact path={'/etiketler/:slug'} element={<Tagpage />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <FooterOne />

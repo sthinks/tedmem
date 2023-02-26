@@ -4,7 +4,6 @@ import Nav from './Nav'
 import HeaderSticky from './HeaderSticky'
 import ResponsiveMenu from './ResponsiveMenu'
 import Logo from '../../assets/images/temem-logoo.png'
-import axiosClient from '../../utils/axiosClient'
 import { FiSearch } from 'react-icons/fi'
 import MobilSearch from '../../components/mobil-search/MobilSearch'
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -14,7 +13,6 @@ const HeaderOne = ({ styles, disableSticky }) => {
   const [mobilSearchActive, setMobileSearch] = useState(false)
   const [offcanvasShow, setOffcanvasShow] = useState(false)
   const [mobilNavActive, setmobilNavActive] = useState(false)
-  const [kadro, setKadro] = useState()
   const [allSearchData, setSearchData] = useState()
   const [writes, setWrites] = useState([])
   const [publics, setPublics] = useState([])
@@ -41,28 +39,6 @@ const HeaderOne = ({ styles, disableSticky }) => {
       setWritesResults([])
     }
   }
-
-  const getData = async () => {
-    await axiosClient
-      .get(`/api/latest-bulten`)
-      .then((res) => setBulten(res.data))
-    await axiosClient
-      .get(`/api/latest-writes`)
-      .then((res) => setWrites(res.data))
-    await axiosClient
-      .get(`/api/latest-publics`)
-      .then((res) => setPublics(res.data))
-    await axiosClient.get(`/api/kadromuz`).then((res) => setKadro(res.data))
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  useEffect(() => {
-    const allData = [...publics, ...writes, ...bulten].sort()
-    setSearchData(allData)
-  }, [kadro])
 
   const onCanvasHandler = () => {
     setOffcanvasShow((prevState) => !prevState)

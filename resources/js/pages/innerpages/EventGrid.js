@@ -257,10 +257,7 @@ const EventGrid = () => {
                       ) : (
                         <div className="col-lg-4 p-2" key={i}>
                           <div className="event-card-container">
-                            <EditionCard
-                              data={item}
-                              publicCategory={publicCategory}
-                            />
+                            <EditionCard data={item} />
                           </div>
                         </div>
                       ),
@@ -269,10 +266,7 @@ const EventGrid = () => {
                     allData?.map((item, i) => (
                       <div className="col-lg-4 p-2" key={i}>
                         <div className="event-card-container">
-                          <EditionCard
-                            data={item}
-                            publicCategory={publicCategory}
-                          />
+                          <EditionCard data={item} />
                         </div>
                       </div>
                     ))

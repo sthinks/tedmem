@@ -16,6 +16,10 @@ class BlogController extends Controller
     {
         $data = Publication::all();
         $data->map(function ($item) {
+            $item->category_info = PublicCategory::where(
+                'id',
+                $item->category_id
+            )->first();
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
                 return asset(
@@ -29,6 +33,7 @@ class BlogController extends Controller
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
+
         return response()->json($data);
     }
 
@@ -44,6 +49,10 @@ class BlogController extends Controller
             ->get();
 
         $data->map(function ($item) {
+            $item->category_info = PublicCategory::where(
+                'id',
+                $item->category_id
+            )->first();
             $pdf_files = json_decode($item->file);
             $item->pdf_link = array_map(function ($file) {
                 return asset(
@@ -65,6 +74,10 @@ class BlogController extends Controller
         $data = Publication::where('slug', $slug)->firstOrFail();
 
         $pdf_files = json_decode($data->file);
+        $data->category_info = PublicCategory::where(
+            'id',
+            $data->category_id
+        )->first();
         $data->pdf_link = array_map(function ($file) {
             $a = asset(
                 sprintf(

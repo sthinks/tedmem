@@ -1,3 +1,6 @@
 .yazilar-detay-text > p {
   background: white !important;
 }
+.write-tag:hover {
+  text-decoration: underline;
+}
