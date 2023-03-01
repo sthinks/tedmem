@@ -90,6 +90,15 @@ class BlogController extends Controller
 
             return $all;
         }, $pdf_files);
+        if ($data->infografik != null) {
+            $info = json_decode($data->infografik, true);
+            $data->infografik = asset(
+                sprintf(
+                    'storage/%s',
+                    str_replace('\\', '/', $info[0]['download_link'])
+                )
+            );
+        }
 
         $data->image = url(
             sprintf('storage/%s', str_replace('\\', '/', $data->image))

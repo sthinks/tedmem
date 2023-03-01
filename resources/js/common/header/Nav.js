@@ -5,6 +5,7 @@ import axiosClient from '../../utils/axiosClient'
 const Nav = ({ close }) => {
   const [writeCategory, setWriteCategory] = useState()
   const [publicCategory, setPublicCategory] = useState()
+
   const mobilNav1 = useRef()
   const mobilNav2 = useRef()
   const mobilNav3 = useRef()
@@ -15,30 +16,6 @@ const Nav = ({ close }) => {
   useEffect(() => {
     getAllCategory()
     getAllCategory2()
-    const closeDropdown = (e) => {
-      if (
-        e.target === mobilNav1.current.children[0] ||
-        e.target === mobilNav4.current.children[0] ||
-        e.target === mobilNav5.current.children[0] ||
-        e.target === mobilNav6.current.children[0]
-      ) {
-        close()
-      } else {
-        for (let i = 0; i <= 8; i++) {
-          if (
-            e.target === mobilNav2.current.children[1].children[i].children[0]
-          ) {
-            close()
-          } else if (
-            e.target === mobilNav3.current.children[1].children[i].children[0]
-          ) {
-            close()
-          }
-        }
-      }
-    }
-    document.body.addEventListener('click', closeDropdown)
-    return () => document.body.removeEventListener('click', closeDropdown)
   }, [])
 
   const getAllCategory = async () => {
@@ -53,11 +30,11 @@ const Nav = ({ close }) => {
   }
   return (
     <ul className="mainmenu">
-      <li ref={mobilNav1}>
+      <li>
         <Link to="/kurumsal">Kurumsal </Link>
       </li>
 
-      <li ref={mobilNav2} className="has-droupdown">
+      <li className="has-droupdown">
         <Link to="#">
           Yayınlar <FiChevronDown />
         </Link>
@@ -73,11 +50,11 @@ const Nav = ({ close }) => {
         </ul>
       </li>
 
-      <li ref={mobilNav3} className="has-droupdown">
+      <li className="has-droupdown">
         <Link to="#">
           Yazılar <FiChevronDown />
         </Link>
-        <ul ref={mobilNav3} className="submenu">
+        <ul className="submenu">
           {writeCategory?.map((item, i) => (
             <li key={i}>
               <Link to={`/yazilar/${item.slug}`}>{item.name}</Link>

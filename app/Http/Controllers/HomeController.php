@@ -79,7 +79,6 @@ class HomeController extends Controller
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
         });
-
         return response()->json($data);
     }
     public function getBultens()

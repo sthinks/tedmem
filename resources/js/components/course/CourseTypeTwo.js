@@ -45,7 +45,7 @@ const CourseTwo = ({ category, data }) => {
             )}
 
             <div className="card-date">
-              <h5 className="card-title">{data.title}</h5>
+              <h5 className="card-title">{data.title.slice(0, 90)}...</h5>
               <div className="card-date-content">
                 <AiOutlineClockCircle className="card-date-icon" />
                 {formattedDate.toLocaleDateString('en-GB')}

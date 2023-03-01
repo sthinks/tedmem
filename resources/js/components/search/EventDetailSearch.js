@@ -14,7 +14,9 @@ function EventDetailSearch({ data }) {
 
   const handleQuery = (e) => {
     var writesResults = data?.filter((data) =>
-      data.title.toLowerCase().match(query),
+      data.title
+        .toLocaleUpperCase('tr-TR')
+        .match(query.toLocaleUpperCase('tr-TR')),
     )
 
     setWritesResults(writesResults)
@@ -38,7 +40,7 @@ function EventDetailSearch({ data }) {
       />
       <i className="icon-search-line pt-3 search-icon-event"></i>
       {writesResults?.length > 0 &&
-        writesResults.slice(0, 4).map((item) => (
+        writesResults.slice(0, 8).map((item) => (
           <Link
             to={
               item.category_id

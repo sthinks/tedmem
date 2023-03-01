@@ -17,12 +17,14 @@ import HeaderOne from './common/header/HeaderOne'
 import FooterOne from './common/footer/FooterOne'
 import Personnel from './components/personnels/Personnel'
 import Tagpage from './components/tagPage/Tagpage'
+import NavbarTwo from './components/navbartwo/Navbar'
 
 function App() {
   return (
     <Router>
       <ScrollToTop>
         <HeaderOne styles="header-transparent header-style-2" />
+        {/* <NavbarTwo /> */}
         <Routes>
           <Route exact path="/" element={<HomeOne />} />
 

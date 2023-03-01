@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Nav from './Nav'
+import Nav from './mobilNav'
 import Logo from '../../assets/images/bg/tedmem.png'
 import { IoIosClose } from 'react-icons/io'
 const ResponsiveMenu = ({
@@ -74,54 +74,10 @@ const ResponsiveMenu = ({
               </button>
             </div>
           </div>
-          <Nav close={onClose} />
+
+          <Nav close={onClose} show={show} />
         </div>
       </div>
-
-      {/* <div className={`edu-search-popup ${showSearch ? 'open' : ''}`}>
-        <div className="close-button">
-          <button className="close-trigger" onClick={onSearch}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <div className="inner">
-          <div className="search-form">
-            <input
-              onKeyDown={handleKeyDown}
-              onChange={(e) => {
-                setQuery(e.target.value)
-                handleQuery(e.target.value)
-              }}
-              type="text"
-              className="eduvibe-search-popup-field"
-              placeholder="Arayın..."
-            />
-            <button onClick={handleQuery} className="submit-button">
-              <i className="icon-search-line"></i>
-            </button>
-          </div>
-          <div className="container">
-            <div className="d-flex justify-content-center mt-4 flex-column">
-              {writesResults &&
-                writesResults?.map((item) => (
-                  <Link
-                    to={`/yazilar-detay/${item.slug}`}
-                    className="p-2 text-center mb-3"
-                    style={{
-                      border: '1.2px solid orange',
-                      borderRadius: '20px',
-                      backgroundColor: 'white',
-                    }}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-
-              {!writesResults && <div>Sonuç bulunamadı.</div>}
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   )
 }

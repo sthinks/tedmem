@@ -22,13 +22,13 @@ const EventDetails = () => {
   const [text, setText] = useState()
   const [loading, setLoading] = useState(true)
 
-  // const similarDataFetch = async () => {
-  //   const result = await axiosClient
-  //     .get(`/api/publics/${content?.category_id}`)
-  //     .then((res) => res.data)
-  //   console.log('ebenzer', result)
-  //   setSimilarData(result.slice(0, 3))
-  // }
+  const similarDataFetch = async () => {
+    const result = await axiosClient
+      .get(`/api/publics/${content?.category_info.slug}`)
+      .then((res) => res.data)
+    console.log('ebenzer', result)
+    setSimilarData(result.slice(0, 3))
+  }
   const getAllPublic = async () => {
     await axiosClient.get('/api/publics').then((res) => setAllData(res.data))
   }
@@ -46,9 +46,9 @@ const EventDetails = () => {
     getPublicCategory()
     getAllPublic()
   }, [])
-  // useEffect(() => {
-  //   similarDataFetch()
-  // }, [content])
+  useEffect(() => {
+    similarDataFetch()
+  }, [content])
 
   useEffect(() => {
     setLoading(true)
@@ -95,6 +95,19 @@ const EventDetails = () => {
                     __html: content?.content,
                   }}
                 />
+                {content?.infografik != null && (
+                  <div>
+                    <h3 className="d-flex justify-content-center">
+                      Özet İnfografik
+                    </h3>
+                    <iframe
+                      src={content?.infografik}
+                      height="500px"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                )}
+
                 <a href={content?.pdf_link[0][0]} target="_blank">
                   <div className="event-detail-button-pdf mb-2">
                     PDF'i indir ({content?.pdf_link[0][1]})
@@ -164,13 +177,13 @@ const EventDetails = () => {
 
                   <div className="row">
                     {/* Benzer kartlar sadece 4 adet olacak şekilde slice yapıldı. */}
-                    {/* {similarData?.map((item) => (
+                    {similarData?.map((item) => (
                       <div className="col-xl-4 mt-5 p-2">
                         <div className="event-detail-similar-posts">
                           <EditionCard data={item} />
                         </div>
                       </div>
-                    ))} */}
+                    ))}
                   </div>
                 </div>
               </div>

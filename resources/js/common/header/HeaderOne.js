@@ -7,6 +7,7 @@ import Logo from '../../assets/images/temem-logoo.png'
 import { FiSearch } from 'react-icons/fi'
 import MobilSearch from '../../components/mobil-search/MobilSearch'
 import { AiOutlineMenu } from 'react-icons/ai'
+import axiosClient from '../../utils/axiosClient'
 import './headerOne.css'
 
 const HeaderOne = ({ styles, disableSticky }) => {
@@ -20,6 +21,24 @@ const HeaderOne = ({ styles, disableSticky }) => {
   const [writesResultsNav, setWritesResults] = useState([])
   const [query, setQuery] = useState('')
   const [searchPopup, setSearchPopup] = useState(false)
+  const handlerData = async () => {
+    const publicData = await axiosClient
+      .get('/api/searchPublic')
+      .then((res) => res.data)
+    const writeData = await axiosClient
+      .get('/api/searchWrite')
+      .then((res) => res.data)
+
+    if (publicData && writeData) {
+      const article = [...publicData, ...writeData].sort(
+        (a, b) => b.created_at - a.created_at,
+      )
+      setSearchData(article)
+    }
+  }
+  useEffect(() => {
+    handlerData()
+  }, [])
 
   const MobilSearchFunction = () => {
     setMobileSearch(!mobilSearchActive)
@@ -32,7 +51,9 @@ const HeaderOne = ({ styles, disableSticky }) => {
 
   const handleQuery = (e) => {
     var writesResultsNav = allSearchData?.filter((data) =>
-      data.title.toLowerCase().includes(query.toLocaleLowerCase()),
+      data.title
+        .toLocaleUpperCase('tr-TR')
+        .includes(query.toLocaleUpperCase('tr-TR')),
     )
     setWritesResults(writesResultsNav)
     if (e === '') {
@@ -101,14 +122,14 @@ const HeaderOne = ({ styles, disableSticky }) => {
                     <FiSearch className="header-one-search-icon" />
                     <div className="header-input-result-detail">
                       {writesResultsNav?.length > 0 &&
-                        writesResultsNav.slice(0, 12).map((item) => (
+                        writesResultsNav.slice(0, 6).map((item) => (
                           <div key={item} className="banner-one-results">
                             <ul>
                               <li>
                                 <Link
                                   to={
-                                    item.category_id
-                                      ? `/yayinlar-detay/${item.slug}`
+                                    !item.category_slug
+                                      ? `/yazilar-detay/${item.slug}`
                                       : `/yayinlar-detay/${item.slug}`
                                   }
                                 >

@@ -4,7 +4,7 @@ import axiosClient from '../../utils/axiosClient'
 import { Link } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import './mobilSearch.css'
-function MobilSearch({ isActive, setIsActive }) {
+function MobilSearch({ data, isActive, setIsActive }) {
   const [writes, setWrites] = useState([])
   const [publics, setPublics] = useState([])
   const [bulten, setBulten] = useState([])
@@ -20,8 +20,10 @@ function MobilSearch({ isActive, setIsActive }) {
     }
   }
   const handleQuery = (e) => {
-    var writesResultsNav = allData?.filter((data) =>
-      data.title.toLowerCase().includes(query.toLocaleLowerCase()),
+    var writesResultsNav = data?.filter((data) =>
+      data.title
+        .toLocaleUpperCase('tr-TR')
+        .includes(query.toLocaleUpperCase('tr-TR')),
     )
     setWritesResults(writesResultsNav)
     if (e === '') {
@@ -29,26 +31,11 @@ function MobilSearch({ isActive, setIsActive }) {
     }
   }
   // Fetch search data.
-  const getData = async () => {
-    await axiosClient
-      .get(`/api/latest-bulten`)
-      .then((res) => setBulten(res.data))
-    await axiosClient
-      .get(`/api/latest-writes`)
-      .then((res) => setWrites(res.data))
-    await axiosClient
-      .get(`/api/latest-publics`)
-      .then((res) => setPublics(res.data))
-  }
 
   const JoinSearchData = () => {
     const allData = [...publics, ...writes, ...bulten]
     setAllData(allData)
   }
-
-  useEffect(() => {
-    getData()
-  }, [])
 
   useEffect(() => {
     JoinSearchData()
@@ -113,8 +100,8 @@ function MobilSearch({ isActive, setIsActive }) {
                         <Link
                           onClick={() => setIsActive(false)}
                           to={
-                            item.category_id
-                              ? `/yayinlar-detay/${item.slug}`
+                            !item.category_slug
+                              ? `/yazilar-detay/${item.slug}`
                               : `/yayinlar-detay/${item.slug}`
                           }
                         >
