@@ -4,42 +4,40 @@ import axiosClient from '../../utils/axiosClient'
 import { Link } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import './mobilSearch.css'
-function MobilSearch({ data, isActive, setIsActive }) {
-  const [writes, setWrites] = useState([])
-  const [publics, setPublics] = useState([])
-  const [bulten, setBulten] = useState([])
-  const [allData, setAllData] = useState()
+function MobilSearch({ allSearchData, isActive, setIsActive }) {
+  const [searchData, setSearchData] = useState([])
+  const [value, setValue] = useState('')
   const [query, setQuery] = useState('')
   const [writesResultsNav, setWritesResults] = useState([])
   const inputRef = useRef()
   const containerRef = useRef()
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleQuery()
-    }
-  }
-  const handleQuery = (e) => {
-    var writesResultsNav = data?.filter((data) =>
-      data.title
-        .toLocaleUpperCase('tr-TR')
-        .includes(query.toLocaleUpperCase('tr-TR')),
-    )
-    setWritesResults(writesResultsNav)
-    if (e === '') {
-      setWritesResults([])
-    }
-  }
-  // Fetch search data.
-
-  const JoinSearchData = () => {
-    const allData = [...publics, ...writes, ...bulten]
-    setAllData(allData)
-  }
-
   useEffect(() => {
-    JoinSearchData()
-  }, [publics])
+    {
+      const search = async () => {
+        await axiosClient
+          .get(`/api/search/${value}`)
+          .then(function (response) {
+            setSearchData(response.data)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+
+      if (value && !allSearchData?.length) {
+        search()
+      } else {
+        const timeoutId = setTimeout(() => {
+          if (value) {
+            search()
+          }
+        }, 1000)
+        return () => {
+          clearTimeout(timeoutId)
+        }
+      }
+    }
+  }, [value])
 
   // Empty screen click close search bar.
   useEffect(() => {
@@ -74,11 +72,8 @@ function MobilSearch({ data, isActive, setIsActive }) {
                 className="mobil-search-input"
                 placeholder="Arama yapın.."
                 style={{ zIndex: '999999' }}
-                onKeyDown={handleKeyDown}
-                onChange={(e) => {
-                  setQuery(e.target.value)
-                  handleQuery(e.target.value)
-                }}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
               />
             </div>
           </div>
@@ -92,23 +87,49 @@ function MobilSearch({ data, isActive, setIsActive }) {
               </button>
             </div>
             <div className="mobil-search-container-result">
-              {writesResultsNav?.length > 0 && (
+              {value && (
                 <div className="mobil-search-result">
                   <ul>
-                    {writesResultsNav.slice(0, 12).map((item) => (
-                      <li>
-                        <Link
-                          onClick={() => setIsActive(false)}
-                          to={
-                            !item.category_slug
-                              ? `/yazilar-detay/${item.slug}`
-                              : `/yayinlar-detay/${item.slug}`
-                          }
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
+                    {searchData?.slice(0, 12).map((item, i) => {
+                      if (item.category_slug) {
+                        return (
+                          <li>
+                            <Link
+                              onClick={() => setIsActive(false)}
+                              className="header-search-text"
+                              key={i}
+                              to={`/yayinlar-detay/${item.slug}`}
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        )
+                      } else if (item.speaker) {
+                        return (
+                          <li>
+                            <Link
+                              key={i}
+                              onClick={() => setIsActive(false)}
+                              to={`/etkinlik-detay/${item.slug}`}
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        )
+                      } else {
+                        return (
+                          <li>
+                            <Link
+                              onClick={() => setIsActive(false)}
+                              key={i}
+                              to={`/yazilar-detay/${item.slug}`}
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        )
+                      }
+                    })}
                   </ul>
                 </div>
               )}

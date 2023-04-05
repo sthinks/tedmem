@@ -45,15 +45,15 @@ const EventGrid = () => {
   const [allData, setAllData] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(6)
-  const [isLoading, setIsLoading] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
-  const scrollToTop = () => {
-    document.body.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    })
-  }
+  // const scrollToTop = () => {
+  //   document.body.scroll({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   })
+  // }
   const yearButton = [
     {
       year: new Date().getFullYear(),
@@ -70,8 +70,28 @@ const EventGrid = () => {
     {
       year: new Date().getFullYear() - 4,
     },
+    {
+      year: new Date().getFullYear() - 5,
+    },
+    {
+      year: new Date().getFullYear() - 6,
+    },
+    {
+      year: new Date().getFullYear() - 7,
+    },
+    {
+      year: new Date().getFullYear() - 8,
+    },
+    {
+      year: new Date().getFullYear() - 9,
+    },
+    {
+      year: new Date().getFullYear() - 10,
+    },
+    {
+      year: new Date().getFullYear() - 11,
+    },
   ]
-
   let { slug } = useParams()
   const slugged = slug && slugify(slug)
 
@@ -98,6 +118,7 @@ const EventGrid = () => {
     getPublics()
     setCurrentPage(1)
     setSekme([])
+    setSelectYear(0)
   }, [slugged])
   useEffect(() => {
     setCurrentPage(1)
@@ -155,7 +176,9 @@ const EventGrid = () => {
     }
   }
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title="Event Grid" />
       <Layout>
@@ -219,7 +242,7 @@ const EventGrid = () => {
 
             <div className="row justify-content-between">
               <div className="col-lg-2 mt-5">
-                <Link to={`/yayinlar`}>
+                <a href={`/yayinlar`}>
                   <div
                     className={
                       selectCat === 'Tümü'
@@ -229,9 +252,9 @@ const EventGrid = () => {
                   >
                     <div className="writes-category-list">Tümü</div>
                   </div>
-                </Link>
+                </a>
                 {publicCategory?.map((item, i) => (
-                  <Link to={`/yayinlar/${item.slug}`}>
+                  <a href={`/yayinlar/${item.slug}`}>
                     <div
                       key={i}
                       className={
@@ -243,10 +266,10 @@ const EventGrid = () => {
                     >
                       <div className="writes-category-list">{item.name}</div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
-              <div className="col-lg-9">
+              <div className="col-lg-10">
                 <div className="row">
                   {sekme.length > 0 ? (
                     allSekme?.map((item, i) =>

@@ -6,6 +6,7 @@ import AboutUsOneService from '../../components/about-us-one/AboutUsOneService'
 import AboutUsOneTeam from '../../components/about-us-one/AboutUsOneTeam'
 import FooterOne from '../../common/footer/FooterOne'
 import axiosClient from '../../utils/axiosClient'
+import Loading from '../../components/loading/Loading'
 import PageBanner from '../../components/banner/PageBanner'
 import banner from '../../assets/images/corporate/2.jpg'
 import logo from '../../assets/images/bg/tedmem.png'
@@ -26,20 +27,20 @@ const AboutUsOne = () => {
     axiosClient.get(`/api/kadromuz`).then((res) => setKadro(res.data))
   }, [])
 
-  return (
-    !loading && (
-      <>
-        <SEO title="TEDMEM |Kurumsal" />
+  return loading ? (
+    <Loading />
+  ) : (
+    <>
+      <SEO title="TEDMEM |Kurumsal" />
 
-        <PageBanner logo={logo} image={banner} />
+      <PageBanner logo={logo} image={banner} />
 
-        <AboutSeven data={content} />
+      <AboutSeven data={content} />
 
-        <AboutUsOneService data={content} />
+      <AboutUsOneService data={content} />
 
-        <AboutUsOneTeam data={kadro} />
-      </>
-    )
+      <AboutUsOneTeam data={kadro} />
+    </>
   )
 }
 

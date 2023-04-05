@@ -33,7 +33,7 @@ function App() {
 
           <Route exact path={'/iletisim'} element={<ContactMe />} />
 
-          <Route exact path={'/arama'} element={<CourseOne />} />
+          {/* <Route exact path={'/arama'} element={<CourseOne />} /> */}
 
           <Route exact path={'/etkinlikler'} element={<CourseThree />} />
           <Route exact path={'/etkinlikler/:slug'} element={<CourseThree />} />
@@ -43,7 +43,7 @@ function App() {
 
           <Route
             exact
-            path={'/course-details/:slug'}
+            path={'/etkinlik-detay/:slug'}
             element={<CourseDetails />}
           />
           <Route exact path={'/bulten'} element={<BultenPage />} />

@@ -6,6 +6,8 @@ import { IoIosClose } from 'react-icons/io'
 const ResponsiveMenu = ({
   show,
   onClose,
+  writeCat,
+  publicsCat,
   showSearch,
   onSearch,
   writes,
@@ -75,7 +77,12 @@ const ResponsiveMenu = ({
             </div>
           </div>
 
-          <Nav close={onClose} show={show} />
+          <Nav
+            close={onClose}
+            show={show}
+            writeCat={writeCat}
+            publicsCat={publicsCat}
+          />
         </div>
       </div>
     </>

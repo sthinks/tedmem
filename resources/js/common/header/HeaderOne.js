@@ -11,54 +11,79 @@ import axiosClient from '../../utils/axiosClient'
 import './headerOne.css'
 
 const HeaderOne = ({ styles, disableSticky }) => {
+  const [value, setValue] = useState('')
   const [mobilSearchActive, setMobileSearch] = useState(false)
   const [offcanvasShow, setOffcanvasShow] = useState(false)
   const [mobilNavActive, setmobilNavActive] = useState(false)
   const [allSearchData, setSearchData] = useState()
   const [writes, setWrites] = useState([])
-  const [publics, setPublics] = useState([])
-  const [bulten, setBulten] = useState([])
+  const [publicsCat, setPublicsCat] = useState([])
+  const [writeCat, setWriteCat] = useState([])
   const [writesResultsNav, setWritesResults] = useState([])
   const [query, setQuery] = useState('')
   const [searchPopup, setSearchPopup] = useState(false)
-  const handlerData = async () => {
-    const publicData = await axiosClient
-      .get('/api/searchPublic')
+
+  const navCatHandler = async () => {
+    const writeCat = await axiosClient
+      .get('/api/write-category')
       .then((res) => res.data)
-    const writeData = await axiosClient
-      .get('/api/searchWrite')
+    const publicCat = await axiosClient
+      .get('/api/public-category')
       .then((res) => res.data)
 
-    if (publicData && writeData) {
-      const article = [...publicData, ...writeData].sort(
-        (a, b) => b.created_at - a.created_at,
-      )
-      setSearchData(article)
+    if (writeCat && publicCat) {
+      setPublicsCat(publicCat)
+      setWriteCat(writeCat)
     }
   }
-  useEffect(() => {
-    handlerData()
-  }, [])
 
+  // const handlerData = async () => {
+  //   const publicData = await axiosClient
+  //     .get('/api/searchPublic')
+  //     .then((res) => res.data)
+  //   const writeData = await axiosClient
+  //     .get('/api/searchWrite')
+  //     .then((res) => res.data)
+
+  //   if (publicData && writeData) {
+  //     const article = [...publicData, ...writeData].sort(
+  //       (a, b) => b.created_at - a.created_at,
+  //     )
+  //     setSearchData(article)
+  //   }
+  // }
+  useEffect(() => {
+    {
+      const search = async () => {
+        await axiosClient
+          .get(`/api/search/${value}`)
+          .then(function (response) {
+            setSearchData(response.data)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+
+      if (value && !allSearchData?.length) {
+        search()
+      } else {
+        const timeoutId = setTimeout(() => {
+          if (value) {
+            search()
+          }
+        }, 1000)
+        return () => {
+          clearTimeout(timeoutId)
+        }
+      }
+    }
+  }, [value])
+  useEffect(() => {
+    navCatHandler()
+  }, [])
   const MobilSearchFunction = () => {
     setMobileSearch(!mobilSearchActive)
-  }
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleQuery()
-    }
-  }
-
-  const handleQuery = (e) => {
-    var writesResultsNav = allSearchData?.filter((data) =>
-      data.title
-        .toLocaleUpperCase('tr-TR')
-        .includes(query.toLocaleUpperCase('tr-TR')),
-    )
-    setWritesResults(writesResultsNav)
-    if (e === '') {
-      setWritesResults([])
-    }
   }
 
   const onCanvasHandler = () => {
@@ -74,7 +99,12 @@ const HeaderOne = ({ styles, disableSticky }) => {
   } else {
     document.body.classList.remove('search-popup-active')
   }
-
+  const inputBlur = () => {
+    setTimeout(() => {
+      setSearchData([])
+      setValue('')
+    }, 500)
+  }
   const sticky = HeaderSticky(50)
   const classes = sticky ? 'sticky' : ''
   const stickyStatus = disableSticky ? '' : ' header-sticky'
@@ -102,7 +132,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
 
             <div className="col-lg-6 col-xl-6 d-flex justify-content-end header-one-navbar">
               <nav className="mainmenu-nav">
-                <Nav />
+                <Nav publicsCat={publicsCat} writeCat={writeCat} />
               </nav>
             </div>
 
@@ -113,32 +143,49 @@ const HeaderOne = ({ styles, disableSticky }) => {
                     <input
                       className="header-one-inputbar"
                       placeholder="Arama yapın.."
-                      onKeyDown={handleKeyDown}
-                      onChange={(e) => {
-                        setQuery(e.target.value)
-                        handleQuery(e.target.value)
-                      }}
+                      onBlur={inputBlur}
+                      value={value}
+                      onChange={(e) => setValue(e.target.value)}
                     />
                     <FiSearch className="header-one-search-icon" />
                     <div className="header-input-result-detail">
-                      {writesResultsNav?.length > 0 &&
-                        writesResultsNav.slice(0, 6).map((item) => (
-                          <div key={item} className="banner-one-results">
-                            <ul>
-                              <li>
-                                <Link
-                                  to={
-                                    !item.category_slug
-                                      ? `/yazilar-detay/${item.slug}`
-                                      : `/yayinlar-detay/${item.slug}`
-                                  }
-                                >
-                                  {item.title}
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        ))}
+                      {value && (
+                        <div className="banner-one-results">
+                          <ul>
+                            {allSearchData?.slice(0, 6).map((item, i) => {
+                              if (item.category_slug) {
+                                return (
+                                  <Link
+                                    className="header-search-text"
+                                    key={i}
+                                    to={`/yayinlar-detay/${item.slug}`}
+                                  >
+                                    {item.title}
+                                  </Link>
+                                )
+                              } else if (item.speaker) {
+                                return (
+                                  <Link
+                                    key={i}
+                                    to={`/etkinlik-detay/${item.slug}`}
+                                  >
+                                    {item.title}
+                                  </Link>
+                                )
+                              } else {
+                                return (
+                                  <Link
+                                    key={i}
+                                    to={`/yazilar-detay/${item.slug}`}
+                                  >
+                                    {item.title}
+                                  </Link>
+                                )
+                              }
+                            })}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -176,11 +223,13 @@ const HeaderOne = ({ styles, disableSticky }) => {
         setIsActive={setmobilNavActive}
         mobilNavActive
         writes={writes}
+        writeCat={writeCat}
+        publicsCat={publicsCat}
       />
       <MobilSearch
         isActive={mobilSearchActive}
         setIsActive={setMobileSearch}
-        data={allSearchData}
+        allSearchData={allSearchData}
       />
     </>
   )

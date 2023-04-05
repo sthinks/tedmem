@@ -2,10 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiChevronDown } from 'react-icons/fi'
 import axiosClient from '../../utils/axiosClient'
-const Nav = ({ close }) => {
-  const [writeCategory, setWriteCategory] = useState()
-  const [publicCategory, setPublicCategory] = useState()
-
+const Nav = ({ close, writeCat, publicsCat }) => {
   const mobilNav1 = useRef()
   const mobilNav2 = useRef()
   const mobilNav3 = useRef()
@@ -13,21 +10,6 @@ const Nav = ({ close }) => {
   const mobilNav5 = useRef()
   const mobilNav6 = useRef()
 
-  useEffect(() => {
-    getAllCategory()
-    getAllCategory2()
-  }, [])
-
-  const getAllCategory = async () => {
-    await axiosClient
-      .get('/api/write-category')
-      .then((res) => setWriteCategory(res.data))
-  }
-  const getAllCategory2 = async () => {
-    await axiosClient
-      .get('/api/public-category')
-      .then((res) => setPublicCategory(res.data))
-  }
   return (
     <ul className="mainmenu">
       <li>
@@ -42,7 +24,7 @@ const Nav = ({ close }) => {
           <li>
             <Link to="/yayinlar">Tümü</Link>
           </li>
-          {publicCategory?.map((item, i) => (
+          {publicsCat?.map((item, i) => (
             <li key={i}>
               <Link to={`/yayinlar/${item.slug}`}>{item.name}</Link>
             </li>
@@ -55,7 +37,7 @@ const Nav = ({ close }) => {
           Yazılar <FiChevronDown />
         </Link>
         <ul className="submenu">
-          {writeCategory?.map((item, i) => (
+          {writeCat?.map((item, i) => (
             <li key={i}>
               <Link to={`/yazilar/${item.slug}`}>{item.name}</Link>
             </li>

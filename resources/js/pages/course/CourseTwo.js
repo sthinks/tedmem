@@ -3,10 +3,11 @@ import SEO from '../../common/SEO'
 import Layout from '../../common/Layout'
 import CourseTypeTwo from '../../components/course/CourseTypeTwo'
 import axiosClient from '../../utils/axiosClient'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import banner from '../../assets/images/writes-page-banner.jpg'
 import PageBanner from '../../components/banner/PageBanner'
 import PaginationOne from '../../components/pagination/Pagination'
+import Loading from '../../components/loading/Loading'
 import { BsNewspaper } from 'react-icons/bs'
 import {
   FaSchool,
@@ -39,6 +40,7 @@ const slugify = function (text) {
 }
 
 const CoruseTwo = () => {
+  const [loading, setLoading] = useState(true)
   const [allData, setAllData] = useState([])
   const [content, setContent] = useState([])
   const [sekme, setSekme] = useState([])
@@ -49,7 +51,7 @@ const CoruseTwo = () => {
   const [category, setCategory] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(6)
-
+  const navigate = useNavigate()
   const yearButton = [
     {
       year: new Date().getFullYear(),
@@ -100,6 +102,7 @@ const CoruseTwo = () => {
     await axiosClient
       .get(`/api/yazilar/${slug}`)
       .then((res) => setContent(res.data))
+      .then(() => setLoading(false))
   }
   useEffect(() => {
     setSelectCat(slug)
@@ -112,6 +115,7 @@ const CoruseTwo = () => {
     getWrites()
     setCurrentPage(1)
     setSekme([])
+    setSelectYear(0)
   }, [slug])
   useEffect(() => {
     setCurrentPage(1)
@@ -168,7 +172,10 @@ const CoruseTwo = () => {
       }
     }
   }
-  return (
+
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title="Yazılar" />
       <Layout>
@@ -233,7 +240,7 @@ const CoruseTwo = () => {
             <div className="row g-5 mt--10">
               <div className="col-lg-2">
                 {category?.map((item, i) => (
-                  <Link to={`/yazilar/${item.slug}`}>
+                  <a href={`/yazilar/${item.slug}`}>
                     <div
                       key={i}
                       className={
@@ -245,7 +252,7 @@ const CoruseTwo = () => {
                     >
                       <div className="writes-category-list">{item.name}</div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
 

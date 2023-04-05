@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Write;
+use App\Models\Event;
 use App\Models\Publication;
 use App\Models\Bulten;
 use TCG\Voyager\Models\Category;
@@ -104,9 +105,7 @@ class HomeController extends Controller
     }
     public function getSearchPublicData()
     {
-        $data = Publication::orderBy('publish_year', 'DESC')
-            ->take(20)
-            ->get();
+        $data = Publication::orderBy('publish_year', 'DESC')->get();
 
         $data->map(function ($item) {
             $item->image = asset(
@@ -118,9 +117,7 @@ class HomeController extends Controller
     }
     public function getSearchWriteData()
     {
-        $data = Write::latest()
-            ->take(20)
-            ->get();
+        $data = Write::latest()->get();
         $data->map(function ($item) {
             $item->category_info = Category::where(
                 'id',
@@ -131,6 +128,25 @@ class HomeController extends Controller
             );
         });
 
+        return response()->json($data);
+    }
+    public function getSearchWriteDataElastic($query)
+    {
+        $data = Write::search($query)->get();
+        return response()->json($data);
+    }
+    public function getSearchPublicDataElastic($query)
+    {
+        $data = Publication::search($query)->get();
+
+        return response()->json($data);
+    }
+    public function getSearchDataElastic($query)
+    {
+        $dataPublic = Publication::search($query)->get();
+        $dataEvent = Event::search($query)->get();
+        $dataWrite = Write::search($query)->get();
+        $data = $dataEvent->merge($dataPublic)->merge($dataWrite);
         return response()->json($data);
     }
 }

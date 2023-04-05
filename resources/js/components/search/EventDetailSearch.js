@@ -1,56 +1,71 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './eventDetailSearch.css'
+import axiosClient from '../../utils/axiosClient'
 
-function EventDetailSearch({ data }) {
-  const [writesResults, setWritesResults] = useState([])
-  const [query, setQuery] = useState('')
+function EventDetailSearch() {
+  const [value, setValue] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleQuery()
+  useEffect(() => {
+    {
+      const search = async () => {
+        await axiosClient
+          .get(`/api/searchPublic/${value}`)
+          .then(function (response) {
+            setData(response.data)
+            setLoading(false)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+
+      if (value && !data?.length) {
+        setLoading(true)
+        search()
+      } else {
+        const timeoutId = setTimeout(() => {
+          if (value) {
+            setLoading(true)
+            search()
+          }
+        }, 1000)
+        return () => {
+          clearTimeout(timeoutId)
+        }
+      }
     }
+  }, [value])
+  const inputBlur = () => {
+    setTimeout(() => {
+      setData([])
+      setValue('')
+    }, 150)
   }
-
-  const handleQuery = (e) => {
-    var writesResults = data?.filter((data) =>
-      data.title
-        .toLocaleUpperCase('tr-TR')
-        .match(query.toLocaleUpperCase('tr-TR')),
-    )
-
-    setWritesResults(writesResults)
-
-    if (e === '') {
-      setWritesResults([])
-    }
-  }
-
   return (
     <div className="input-container">
       <input
         className="bg-white mb-2 py-2 banner-one-input-details"
-        onKeyDown={handleKeyDown}
-        onChange={(e) => {
-          setQuery(e.target.value)
-          handleQuery(e.target.value)
-        }}
+        value={value}
+        onBlur={inputBlur}
+        onChange={(e) => setValue(e.target.value)}
         type="text"
         placeholder="Yazılarda Arayın..."
       />
       <i className="icon-search-line pt-3 search-icon-event"></i>
-      {writesResults?.length > 0 &&
-        writesResults.slice(0, 8).map((item) => (
-          <Link
-            to={
-              item.category_id
-                ? `/yayinlar-detay/${item.slug}`
-                : `/yayinlar-detay/${item.slug}`
-            }
-          >
-            <div className="border mb-2 input-result-detail">{item.title}</div>
-          </Link>
-        ))}
+      {value && (
+        <>
+          {data?.slice(0, 8).map((item) => (
+            <Link to={`/yayinlar-detay/${item.slug}`}>
+              <div className="border mb-2 input-result-detail">
+                {item.title}
+              </div>
+            </Link>
+          ))}
+        </>
+      )}
     </div>
   )
 }

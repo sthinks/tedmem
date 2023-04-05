@@ -89,15 +89,22 @@ brush-animation-content-detail .brush-anim-detail .brush-title-detail {
   background-color: #efefef;
 }
 .event-detail-button-pdf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border: 0px;
   width: auto;
   height: auto;
   border-radius: 3px;
-  font-size: 12px;
-  color: #6a6a6a;
+
+  background-color: #ff6a08fa;
+}
+.event-detail-button-pdf p {
+  margin: 5px;
+  font-size: 14px;
+  color: #ffffff;
   font-weight: bold;
-  padding: 5px 19px 5px 20px;
-  background-color: #efefef;
+  padding: 5px 20px 5px 20px;
 }
 .category-list-item {
   margin-top: 15px;

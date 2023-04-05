@@ -90,7 +90,23 @@ class BlogController extends Controller
 
             return $all;
         }, $pdf_files);
-        if ($data->infografik != null) {
+        // if ($data->infografik != null || !is_array($data->infografik)) {
+        //     $info = json_decode($data->infografik, true);
+        //     $data->infografik = asset(
+        //         sprintf(
+        //             'storage/%s',
+        //             str_replace('\\', '/', $info[0]['download_link'])
+        //         )
+        //     );
+        // } else {
+        //     $data->infografik = 'no data';
+        // }
+        $info = $data->infografik;
+        if ($info == '[]') {
+            $data->infografik = 'no data';
+        } elseif (is_null($info)) {
+            $data->infografik = 'no data';
+        } else {
             $info = json_decode($data->infografik, true);
             $data->infografik = asset(
                 sprintf(
@@ -99,7 +115,6 @@ class BlogController extends Controller
                 )
             );
         }
-
         $data->image = url(
             sprintf('storage/%s', str_replace('\\', '/', $data->image))
         );

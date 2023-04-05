@@ -12,7 +12,7 @@ import Loading from '../../components/loading/Loading'
 import PaginationBulten from '../../components/pagination/PaginationBulten'
 
 const BultenPage = () => {
-  const [isLoading, setIsLoading] = useState()
+  const [loading, setLoading] = useState(true)
   const [selectYear, setSelectYear] = useState(0)
   const [allData, setAllData] = useState([])
   const [allSekme, setAllSekme] = useState([])
@@ -63,7 +63,7 @@ const BultenPage = () => {
 
   const getWrites = async () => {
     await axiosClient.get(`/api/bulten`).then((res) => {
-      setAllData(res.data)
+      setAllData(res.data), setLoading(false)
     })
   }
 
@@ -118,7 +118,9 @@ const BultenPage = () => {
     }
   }
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title="Yazılar" />
       <Layout>

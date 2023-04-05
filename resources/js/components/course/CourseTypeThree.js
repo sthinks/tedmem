@@ -20,7 +20,7 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
           <span className="activity-badge">Etkinlikler</span>
           <h6
             className="activity-title"
-            onClick={() => history(`/course-details/${data.slug}`)}
+            onClick={() => history(`/etkinlik-detay/${data.slug}`)}
             style={{ cursor: 'pointer' }}
           >
             {data.title}
@@ -30,7 +30,7 @@ const CourseTypeThree = ({ data, classes, bgWhite }) => {
             {formattedDate.toLocaleDateString('en-GB')}
           </div>
           <div className="card-link-text">
-            <p onClick={() => history(`/course-details/${data.slug}`)}>
+            <p onClick={() => history(`/etkinlik-detay/${data.slug}`)}>
               Devamını Oku
             </p>
           </div>

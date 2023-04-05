@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Tedmem</title>
+        <link rel="icon" href="../js/assets/images/favicon.jpg" type="image/x-icon">
          <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">

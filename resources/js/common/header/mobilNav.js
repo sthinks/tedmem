@@ -1,11 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiChevronDown } from 'react-icons/fi'
-import axiosClient from '../../utils/axiosClient'
-const mobilNav = ({ close, show }) => {
-  const [writeCategory, setWriteCategory] = useState()
-  const [publicCategory, setPublicCategory] = useState()
 
+const mobilNav = ({ close, show, publicsCat, writeCat }) => {
   const mobilNav1 = useRef()
   const mobilNav2 = useRef()
   const mobilNav3 = useRef()
@@ -14,8 +11,6 @@ const mobilNav = ({ close, show }) => {
   const mobilNav6 = useRef()
 
   useEffect(() => {
-    getAllCategory()
-    getAllCategory2()
     const closeDropdown = (e) => {
       if (
         e.target === mobilNav1.current.children[0] ||
@@ -42,16 +37,6 @@ const mobilNav = ({ close, show }) => {
     return () => document.body.removeEventListener('click', closeDropdown)
   }, [])
 
-  const getAllCategory = async () => {
-    await axiosClient
-      .get('/api/write-category')
-      .then((res) => setWriteCategory(res.data))
-  }
-  const getAllCategory2 = async () => {
-    await axiosClient
-      .get('/api/public-category')
-      .then((res) => setPublicCategory(res.data))
-  }
   return (
     <ul className={show ? 'mainmenu' : 'd-none'}>
       <li ref={mobilNav1}>
@@ -66,7 +51,7 @@ const mobilNav = ({ close, show }) => {
           <li>
             <Link to="/yayinlar">Tümü</Link>
           </li>
-          {publicCategory?.map((item, i) => (
+          {publicsCat?.map((item, i) => (
             <li key={i}>
               <Link to={`/yayinlar/${item.slug}`}>{item.name}</Link>
             </li>
@@ -79,7 +64,7 @@ const mobilNav = ({ close, show }) => {
           Yazılar <FiChevronDown />
         </Link>
         <ul ref={mobilNav3} className="submenu">
-          {writeCategory?.map((item, i) => (
+          {writeCat?.map((item, i) => (
             <li key={i}>
               <Link to={`/yazilar/${item.slug}`}>{item.name}</Link>
             </li>

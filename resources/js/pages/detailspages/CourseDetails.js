@@ -1,32 +1,34 @@
-import React, { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import SEO from '../../common/SEO'
 import Layout from '../../common/Layout'
-import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
-import CourseData from '../../data/course/CourseData.json'
 import axiosClient from '../../utils/axiosClient'
 import ContactMeForm from '../../components/contact/ContactMeForm'
 import PageBanner from '../../components/banner/PageBanner'
 import banner from '../../assets/images/activity-banner.png'
+import Loading from '../../components/loading/Loading'
 
 const CourseDetails = () => {
+  const [loading, setLoading] = useState(true)
   const { slug } = useParams()
-  const [content, setContent] = React.useState(null)
+  const [content, setContent] = useState(null)
 
   const formattedDate = new Date(content?.date)
 
   const getDetails = async () => {
     await axiosClient
       .get(`/api/event-details/${slug}`)
-      .then((res) => setContent(res.data))
+      .then((res) => setContent(res.data), setLoading(false))
   }
 
   useEffect(() => {
     getDetails()
   }, [])
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title={`TEDMEM | ${content?.title}`} />
       <Layout>

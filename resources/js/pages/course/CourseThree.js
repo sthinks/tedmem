@@ -7,6 +7,7 @@ import axiosClient from '../../utils/axiosClient'
 import PageBanner from '../../components/banner/PageBanner'
 import banner from '../../assets/images/activity-banner.png'
 import PaginationOne from '../../components/pagination/Pagination'
+import Loading from '../../components/loading/Loading'
 import './Course.css'
 import { useParams, Link } from 'react-router-dom'
 const slugify = function (text) {
@@ -40,7 +41,7 @@ const CourseThree = () => {
   const [allData, setAllData] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(4)
-
+  const [loading, setLoading] = useState(true)
   const scrollToTop = () => {
     document.body.scroll({
       top: 0,
@@ -64,6 +65,27 @@ const CourseThree = () => {
     {
       year: new Date().getFullYear() - 4,
     },
+    {
+      year: new Date().getFullYear() - 5,
+    },
+    {
+      year: new Date().getFullYear() - 6,
+    },
+    {
+      year: new Date().getFullYear() - 7,
+    },
+    {
+      year: new Date().getFullYear() - 8,
+    },
+    {
+      year: new Date().getFullYear() - 9,
+    },
+    {
+      year: new Date().getFullYear() - 10,
+    },
+    {
+      year: new Date().getFullYear() - 11,
+    },
   ]
 
   let { slug } = useParams()
@@ -74,6 +96,7 @@ const CourseThree = () => {
       .get(slugged ? `/api/events/${slugged}` : `/api/events`)
       .then((res) => {
         setContent(res.data)
+        setLoading(false)
       })
   }
   const getEventsCategory = async () => {
@@ -90,6 +113,7 @@ const CourseThree = () => {
     getPublics()
     setCurrentPage(1)
     setSekme([])
+    setSelectYear(0)
   }, [slugged])
   useEffect(() => {
     setCurrentPage(1)
@@ -141,11 +165,13 @@ const CourseThree = () => {
       }
     }
   }
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title="Event Grid" />
       <Layout>
-        <PageBanner title="Yayınlar" image={banner} />
+        <PageBanner title="Etkinlikler" image={banner} />
         <div className="edu-elements-area edu-section-gap bg-color-white">
           <div className="container">
             <div
@@ -205,7 +231,7 @@ const CourseThree = () => {
 
             <div className="row justify-content-between">
               <div className="col-lg-2 mt-5">
-                <Link to={`/etkinlikler`}>
+                <a href={`/etkinlikler`}>
                   <div
                     className={
                       selectCat === 'Tümü'
@@ -216,9 +242,9 @@ const CourseThree = () => {
                   >
                     <div className="writes-category-list">Tümü</div>
                   </div>
-                </Link>
+                </a>
                 {publicCategory?.map((item, i) => (
-                  <Link to={`/etkinlikler/${item.slug}`}>
+                  <a href={`/etkinlikler/${item.slug}`}>
                     <div
                       key={i}
                       className={
@@ -230,7 +256,7 @@ const CourseThree = () => {
                     >
                       <div className="writes-category-list">{item.name}</div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
               <div className="col-lg-10">

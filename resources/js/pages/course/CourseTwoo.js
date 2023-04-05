@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SEO from '../../common/SEO'
 import Layout from '../../common/Layout'
-import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
 import axiosClient from '../../utils/axiosClient'
 import { useParams } from 'react-router-dom'
-import { FaFilePdf } from 'react-icons/fa'
 import banner from '../../assets/images/eventdetails.png'
 import BannerEvent from '../../components/banner-event/BannerEvent'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
+import Loading from '../../components/loading/Loading'
+import { AiOutlinePaperClip } from 'react-icons/ai'
+import { BsDownload } from 'react-icons/bs'
 import './courseTwoo.css'
 const CoruseTwoo = () => {
+  const [loading, setLoading] = useState(true)
   const { slug } = useParams()
-  const [content, setContent] = React.useState(null)
-  const formattedDate = new Date(content?.created_at)
+  const [content, setContent] = useState(null)
 
   const getWrites = async () => {
     await axiosClient.get(`/api/yazilar-detay/${slug}`).then((res) => {
-      setContent(res.data)
+      setContent(res.data), setLoading(false)
     })
   }
 
@@ -27,7 +28,9 @@ const CoruseTwoo = () => {
     getWrites()
   }, [slug])
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <SEO title={content?.title} />
       <Layout>
@@ -112,9 +115,21 @@ const CoruseTwoo = () => {
                         )}
                         {content?.pdf_link.length > 0 && (
                           <li>
-                            <a href={content?.pdf_link[0][0]} target="_blank">
+                            <a
+                              href={content?.pdf_link[0][0]}
+                              target="_blank"
+                              style={{ width: '100%' }}
+                            >
                               <div className="event-detail-button-pdf">
-                                PDF'i indir ({content?.pdf_link[0][1]})
+                                <p>PDF'i indir</p>
+                                <BsDownload
+                                  style={{
+                                    fontSize: '3rem',
+                                    color: 'white',
+                                    margin: '10px',
+                                    width: '10%',
+                                  }}
+                                />
                               </div>
                             </a>
                           </li>

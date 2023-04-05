@@ -13,44 +13,45 @@ import Reactİcon from '../../assets/images/icon/React.png'
 import Ticket from '../../assets/images/icon/Ticket.png'
 import axiosClient from '../../utils/axiosClient'
 import { BsSearch } from 'react-icons/bs'
+
 import './bannerOne.css'
 
 const BannerOne = () => {
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchLoading, setSearchLoading] = useState(false)
   const [data, setData] = useState()
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleQuery()
-    }
-  }
-  const handlerData = async () => {
-    const publicData = await axiosClient
-      .get('/api/searchPublic')
-      .then((res) => res.data)
-    const writeData = await axiosClient
-      .get('/api/searchWrite')
-      .then((res) => res.data)
+  const [value, setValue] = useState('')
 
-    if (publicData && writeData) {
-      const article = [...publicData, ...writeData].sort(
-        (a, b) => b.created_at - a.created_at,
-      )
-      setData(article)
-    }
-  }
   useEffect(() => {
-    handlerData()
-  }, [])
+    {
+      const search = async () => {
+        await axiosClient
+          .get(`/api/search/${value}`)
+          .then(function (response) {
+            setData(response.data)
+            setSearchLoading(false)
+            console.log(response.data)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value)
-  }
-
-  const filteredData = data?.filter((item) => {
-    return item.title
-      .toLocaleUpperCase('tr-TR')
-      .includes(searchTerm.toLocaleUpperCase('tr-TR'))
-  })
+      if (value && !data?.length) {
+        setSearchLoading(true)
+        search()
+      } else {
+        const timeoutId = setTimeout(() => {
+          if (value) {
+            setSearchLoading(true)
+            search()
+          }
+        }, 1000)
+        return () => {
+          clearTimeout(timeoutId)
+        }
+      }
+    }
+  }, [value])
 
   return (
     <div className="">
@@ -76,9 +77,8 @@ const BannerOne = () => {
                         <div className="d-flex position-relative">
                           <input
                             className="bg-white mb-2 py-2 banner-one-input"
-                            onKeyDown={handleKeyDown}
-                            value={searchTerm}
-                            onChange={handleSearch}
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
                             type="text"
                             placeholder="Arayın..."
                           />
@@ -88,20 +88,48 @@ const BannerOne = () => {
                           className="position-absolute bg-white"
                           style={{ zIndex: '1555', width: '100%' }}
                         >
-                          {searchTerm &&
-                            filteredData?.slice(0, 10).map((item) => (
-                              <Link
-                                to={
-                                  !item.category_slug
-                                    ? `/yazilar-detay/${item.slug}`
-                                    : `/yayinlar-detay/${item.slug}`
-                                }
-                              >
-                                <div className="border mb-2 input-result">
-                                  {item.title}
+                          {value && (
+                            <>
+                              {data && searchLoading && (
+                                <div className="write-loading-screen">
+                                  <div
+                                    class="spinner-border text-warning"
+                                    role="status"
+                                    style={{ width: '65px', height: '65px' }}
+                                  >
+                                    <span class="sr-only">Loading...</span>
+                                  </div>
                                 </div>
-                              </Link>
-                            ))}
+                              )}
+                              {data?.slice(0, 10).map((item) => {
+                                if (item.category_slug) {
+                                  return (
+                                    <Link to={`/yayinlar-detay/${item.slug}`}>
+                                      <div className="border mb-2 input-result">
+                                        {item.title}
+                                      </div>
+                                    </Link>
+                                  )
+                                } else if (item.speaker) {
+                                  return (
+                                    <Link to={`/etkinlik-detay/${item.slug}`}>
+                                      <div className="border mb-2 input-result">
+                                        {item.title}
+                                      </div>
+                                    </Link>
+                                  )
+                                } else {
+                                  return (
+                                    <Link to={`/yazilar-detay/${item.slug}`}>
+                                      <div className="border mb-2 input-result">
+                                        {item.title}
+                                      </div>
+                                    </Link>
+                                  )
+                                }
+                              })}
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -1,14 +1,11 @@
-import React from 'react'
 import SEO from '../../common/SEO'
 import Layout from '../../common/Layout'
-import BreadcrumbOne from '../../common/breadcrumb/BreadcrumbOne'
 import ContactMeForm from '../../components/contact/ContactMeForm'
-import Tel from '../../assets/images/bg/tel.png'
-import Adres from '../../assets/images/bg/adres.png'
 import PageBanner from '../../components/banner/PageBanner'
 import banner from '../../assets/images/contact-banner.png'
 import { FiMapPin, FiMail, FiPhone } from 'react-icons/fi'
 import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa'
+
 import './ContactCard.css'
 
 const ContactMe = () => {
@@ -44,9 +41,11 @@ const ContactMe = () => {
                     <h5 className="contact-information-title d-flex align-items-center">
                       <FiMail className="contact-icon" /> E-Posta
                     </h5>
-                    <div className="contact-information-text">
-                      <p>info@tedmem.org</p>
-                    </div>
+                    <a a href="mailto:info@tedmem.org">
+                      <div className="contact-information-text">
+                        <p>info@tedmem.org</p>
+                      </div>
+                    </a>
                   </div>
                   <div>
                     <h5 className="contact-information-title d-flex align-items-center">

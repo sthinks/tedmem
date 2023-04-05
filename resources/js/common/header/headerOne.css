@@ -67,12 +67,12 @@
   margin-left: -5% !important;
 }
 .header-input-result-detail {
+  border-radius: 10px;
   position: absolute;
   width: 250px;
   background-color: white;
+  margin-top: 5px;
 }
-
-
 
 .banner-one-results {
   margin-top: 5px;
@@ -80,13 +80,23 @@
 .banner-one-results > ul {
   list-style: none;
   margin-bottom: 0px !important;
+  padding: 5px 10px;
+}
+.banner-one-results > ul > a {
+  border-bottom: 1px solid black !important;
+}
+.banner-one-results > ul > a:hover {
+  list-style: none;
+  margin-bottom: 0px !important;
+  background-color: aliceblue;
+  font-weight: 600 !important;
+  padding: 0px 10px;
+  border-bottom: none !important;
 }
 ul {
   list-style: none;
 }
-.banner-one-results > ul:hover {
-  background-color: #f5f5f5;
-}
+
 ul > li {
   font-size: 14px;
 }

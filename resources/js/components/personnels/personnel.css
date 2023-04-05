@@ -27,3 +27,14 @@
 .cv-info p {
   font-size: 2rem;
 }
+.personal-linkedin {
+  background-color: #dcebf9;
+  width: 40px;
+  height: 40px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0077b5;
+}

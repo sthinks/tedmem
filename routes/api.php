@@ -153,6 +153,20 @@ Route::get('/searchPublic', [
     \App\Http\Controllers\HomeController::class,
     'getSearchPublicData',
 ]);
+
+Route::get('/searchWrite/{slug}', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchWriteDataElastic',
+]);
+
+Route::get('/searchPublic/{slug}', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchPublicDataElastic',
+]);
+Route::get('/search/{slug}', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchDataElastic',
+]);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
