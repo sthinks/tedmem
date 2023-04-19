@@ -25,7 +25,7 @@ const HomeOneAbout = ({ data }) => {
           <Slider {...settings}>
             {data?.map((item) => (
               <div className="mt-5" key={item.id}>
-                <div className="card" style={{ width: '100%' }}>
+                <div className="" style={{ width: '100%' }}>
                   <EditionCard data={item} />
                 </div>
               </div>

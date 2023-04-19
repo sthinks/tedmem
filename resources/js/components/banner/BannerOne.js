@@ -20,39 +20,28 @@ const BannerOne = () => {
   const [searchLoading, setSearchLoading] = useState(false)
   const [data, setData] = useState()
   const [value, setValue] = useState('')
-
+  const navigate = useNavigate()
   useEffect(() => {
     {
-      const search = async () => {
-        await axiosClient
-          .get(`/api/search/${value}`)
-          .then(function (response) {
-            setData(response.data)
-            setSearchLoading(false)
-            console.log(response.data)
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
-
-      if (value && !data?.length) {
-        setSearchLoading(true)
-        search()
-      } else {
-        const timeoutId = setTimeout(() => {
-          if (value) {
-            setSearchLoading(true)
-            search()
+      if (value.length > 0) {
+        const delayDebounceFn = setTimeout(async () => {
+          try {
+            const response = await axiosClient.get(`/api/search/${value}`)
+            const result = response.data
+            setData(result)
+          } catch (err) {
+            console.log(err)
           }
         }, 1000)
-        return () => {
-          clearTimeout(timeoutId)
-        }
+        return () => clearTimeout(delayDebounceFn)
       }
     }
   }, [value])
-
+  const inputClickHandler = (e) => {
+    if (e.key === 'Enter' || e.type === 'click') {
+      navigate(`search-page/${value}`)
+    }
+  }
   return (
     <div className="">
       <div className="row align-items-center">
@@ -80,9 +69,14 @@ const BannerOne = () => {
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             type="text"
+                            onKeyDown={(e) => inputClickHandler(e)}
                             placeholder="Arayın..."
                           />
-                          <BsSearch className="search-box-icon" />
+                          <BsSearch
+                            className="search-box-icon"
+                            style={{ cursor: 'pointer' }}
+                            onClick={(e) => inputClickHandler(e)}
+                          />
                         </div>
                         <div
                           className="position-absolute bg-white"

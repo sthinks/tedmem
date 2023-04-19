@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import axiosClient from '../../utils/axiosClient'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import './mobilSearch.css'
 function MobilSearch({ allSearchData, isActive, setIsActive }) {
@@ -11,30 +11,20 @@ function MobilSearch({ allSearchData, isActive, setIsActive }) {
   const [writesResultsNav, setWritesResults] = useState([])
   const inputRef = useRef()
   const containerRef = useRef()
+  const navigate = useNavigate()
   useEffect(() => {
     {
-      const search = async () => {
-        await axiosClient
-          .get(`/api/search/${value}`)
-          .then(function (response) {
-            setSearchData(response.data)
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
-
-      if (value && !allSearchData?.length) {
-        search()
-      } else {
-        const timeoutId = setTimeout(() => {
-          if (value) {
-            search()
+      if (value.length > 0) {
+        const delayDebounceFn = setTimeout(async () => {
+          try {
+            const response = await axiosClient.get(`/api/search/${value}`)
+            const result = response.data
+            setSearchData(result)
+          } catch (err) {
+            console.log(err)
           }
         }, 1000)
-        return () => {
-          clearTimeout(timeoutId)
-        }
+        return () => clearTimeout(delayDebounceFn)
       }
     }
   }, [value])
@@ -61,7 +51,12 @@ function MobilSearch({ allSearchData, isActive, setIsActive }) {
     document.body.addEventListener('click', closeDropdown)
     return () => document.body.removeEventListener('click', closeDropdown)
   }, [])
-
+  const inputClickHandler = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`search-page/${value}`)
+      setIsActive(false)
+    }
+  }
   return (
     <div className={isActive ? 'mobile-search-content' : ''}>
       {isActive && (
@@ -73,6 +68,7 @@ function MobilSearch({ allSearchData, isActive, setIsActive }) {
                 placeholder="Arama yapın.."
                 style={{ zIndex: '999999' }}
                 value={value}
+                onKeyDown={(e) => inputClickHandler(e)}
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>

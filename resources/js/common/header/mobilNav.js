@@ -12,30 +12,33 @@ const mobilNav = ({ close, show, publicsCat, writeCat }) => {
 
   useEffect(() => {
     const closeDropdown = (e) => {
-      if (
-        e.target === mobilNav1.current.children[0] ||
-        e.target === mobilNav4.current.children[0] ||
-        e.target === mobilNav5.current.children[0] ||
-        e.target === mobilNav6.current.children[0]
-      ) {
-        close()
-      } else {
-        for (let i = 0; i <= 8; i++) {
-          if (
-            e.target === mobilNav2.current.children[1].children[i].children[0]
-          ) {
-            close()
-          } else if (
-            e.target === mobilNav3.current.children[1].children[i].children[0]
-          ) {
-            close()
+      if (show) {
+        if (
+          e.target === mobilNav1.current.children[0] ||
+          e.target === mobilNav4.current.children[0] ||
+          e.target === mobilNav5.current.children[0] ||
+          e.target === mobilNav6.current.children[0]
+        ) {
+          close()
+        } else {
+          for (let i = 0; i <= 8; i++) {
+            if (
+              e.target === mobilNav2.current.children[1].children[i].children[0]
+            ) {
+              close()
+            } else if (
+              e.target === mobilNav3.current.children[1].children[i].children[0]
+            ) {
+              close()
+            }
           }
         }
       }
     }
+
     document.body.addEventListener('click', closeDropdown)
     return () => document.body.removeEventListener('click', closeDropdown)
-  }, [])
+  }, [show])
 
   return (
     <ul className={show ? 'mainmenu' : 'd-none'}>

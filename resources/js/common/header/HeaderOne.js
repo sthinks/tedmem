@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Nav from './Nav'
 import HeaderSticky from './HeaderSticky'
 import ResponsiveMenu from './ResponsiveMenu'
@@ -36,49 +36,24 @@ const HeaderOne = ({ styles, disableSticky }) => {
       setWriteCat(writeCat)
     }
   }
-
-  // const handlerData = async () => {
-  //   const publicData = await axiosClient
-  //     .get('/api/searchPublic')
-  //     .then((res) => res.data)
-  //   const writeData = await axiosClient
-  //     .get('/api/searchWrite')
-  //     .then((res) => res.data)
-
-  //   if (publicData && writeData) {
-  //     const article = [...publicData, ...writeData].sort(
-  //       (a, b) => b.created_at - a.created_at,
-  //     )
-  //     setSearchData(article)
-  //   }
-  // }
+  const navigate = useNavigate()
   useEffect(() => {
     {
-      const search = async () => {
-        await axiosClient
-          .get(`/api/search/${value}`)
-          .then(function (response) {
-            setSearchData(response.data)
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
-
-      if (value && !allSearchData?.length) {
-        search()
-      } else {
-        const timeoutId = setTimeout(() => {
-          if (value) {
-            search()
+      if (value.length > 0) {
+        const delayDebounceFn = setTimeout(async () => {
+          try {
+            const response = await axiosClient.get(`/api/search/${value}`)
+            const result = response.data
+            setSearchData(result)
+          } catch (err) {
+            console.log(err)
           }
         }, 1000)
-        return () => {
-          clearTimeout(timeoutId)
-        }
+        return () => clearTimeout(delayDebounceFn)
       }
     }
   }, [value])
+
   useEffect(() => {
     navCatHandler()
   }, [])
@@ -108,6 +83,11 @@ const HeaderOne = ({ styles, disableSticky }) => {
   const sticky = HeaderSticky(50)
   const classes = sticky ? 'sticky' : ''
   const stickyStatus = disableSticky ? '' : ' header-sticky'
+  const inputClickHandler = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`search-page/${value}`)
+    }
+  }
   return (
     <>
       <header
@@ -144,6 +124,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
                       className="header-one-inputbar"
                       placeholder="Arama yapın.."
                       onBlur={inputBlur}
+                      onKeyDown={(e) => inputClickHandler(e)}
                       value={value}
                       onChange={(e) => setValue(e.target.value)}
                     />

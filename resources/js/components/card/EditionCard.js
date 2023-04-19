@@ -35,13 +35,7 @@ function EditionCard({ data }) {
               {formattedDate.toLocaleDateString('en-GB')}
             </div>
           </div>
-          <p className="card-read-more">
-            {data?.publish_house ? (
-              <Link to={`/yayinlar-detay/${data.slug}`}>Devamını Oku</Link>
-            ) : (
-              <Link to={`/yazilar-detay/${data.slug}`}>Devamını Oku</Link>
-            )}
-          </p>
+          <p className="card-read-more">Devamını Oku</p>
         </div>
       </div>
     </Link>

@@ -24,8 +24,8 @@
   align-items: center;
   padding: 10px;
 }
-.cv-info p {
-  font-size: 2rem;
+.cv-info p span {
+  font-size: 2rem !important;
 }
 .personal-linkedin {
   background-color: #dcebf9;

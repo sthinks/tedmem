@@ -11,7 +11,7 @@ use App\Models\Bulten;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\User;
-
+use Illuminate\Pagination\Paginator;
 class HomeController extends Controller
 {
     public function getSlider()
@@ -138,14 +138,38 @@ class HomeController extends Controller
     public function getSearchPublicDataElastic($query)
     {
         $data = Publication::search($query)->get();
-
         return response()->json($data);
     }
     public function getSearchDataElastic($query)
     {
-        $dataPublic = Publication::search($query)->get();
-        $dataEvent = Event::search($query)->get();
-        $dataWrite = Write::search($query)->get();
+        $searchTerm = htmlentities($query);
+        $dataPublic = Publication::search($searchTerm)->get();
+        $dataEvent = Event::search($searchTerm)->get();
+        $dataWrite = Write::search($searchTerm)->get();
+        $data = $dataEvent->merge($dataPublic)->merge($dataWrite);
+        return response()->json($data);
+    }
+    public function getSearchDataElasticPage($query)
+    {
+        $searchTerm = htmlentities($query);
+        $dataPublic = Publication::search($searchTerm)->get();
+        $dataPublic->map(function ($item) {
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+        });
+        $dataEvent = Event::search($searchTerm)->get();
+        $dataEvent->map(function ($item) {
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+        });
+        $dataWrite = Write::search($searchTerm)->get();
+        $dataWrite->map(function ($item) {
+            $item->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $item->image))
+            );
+        });
         $data = $dataEvent->merge($dataPublic)->merge($dataWrite);
         return response()->json($data);
     }

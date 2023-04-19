@@ -167,6 +167,10 @@ Route::get('/search/{slug}', [
     \App\Http\Controllers\HomeController::class,
     'getSearchDataElastic',
 ]);
+Route::get('/search-page/{slug}', [
+    \App\Http\Controllers\HomeController::class,
+    'getSearchDataElasticPage',
+]);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

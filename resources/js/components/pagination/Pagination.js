@@ -33,7 +33,13 @@ const PaginationOne = ({
   }
   return (
     <nav aria-label="">
-      <ul className="pagination mt-5">
+      <ul
+        className={
+          window.screen.width < 768
+            ? 'pagination-scroll mt-5 overflow-auto'
+            : 'pagination mt-5'
+        }
+      >
         <li className="page-item">
           <a
             className="page-item-pagination"
@@ -45,16 +51,35 @@ const PaginationOne = ({
             <FiArrowLeft /> Geri
           </a>
         </li>
-        {pages?.map((item, index) => (
-          <li
-            className={item == currentPage ? 'page-item active' : 'page-item'}
-            key={item}
-          >
-            <a className="page-link" onClick={() => setCurrentPage(item)}>
-              {item}
-            </a>
-          </li>
-        ))}
+
+        {pages?.map((item, i) => {
+          if (
+            item === 1 ||
+            item === pages.length ||
+            (item >= currentPage - 2 && item <= currentPage + 2)
+          ) {
+            // 1, son sayfa veya 5 sayfa aralığındaki sayfaları yazdır
+            return (
+              <li
+                className={
+                  item == currentPage ? 'page-item active' : 'page-item'
+                }
+                key={i}
+              >
+                <a className="page-link" onClick={() => setCurrentPage(item)}>
+                  {item}
+                </a>
+              </li>
+            )
+          } else if (i === 2 || i === pages.length - 3) {
+            // 4. veya 12. sayfaya yaklaşıldığında '...' işareti göster
+            return (
+              <li className="page-item" key={i}>
+                <a className="page-link">...</a>
+              </li>
+            )
+          }
+        })}
         <li className="page-item">
           <a
             className="page-item-pagination"

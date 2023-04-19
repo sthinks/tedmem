@@ -18,6 +18,7 @@ import FooterOne from './common/footer/FooterOne'
 import Personnel from './components/personnels/Personnel'
 import Tagpage from './components/tagPage/Tagpage'
 import NavbarTwo from './components/navbartwo/Navbar'
+import SearchPage from './components/searchPage/SearchPage'
 
 function App() {
   return (
@@ -50,7 +51,8 @@ function App() {
           <Route exact path={'/yayinlar'} element={<EventGrid />} />
 
           <Route exact path={'/yayinlar/:slug'} element={<EventGrid />} />
-
+          <Route exact path={'/search-page'} element={<SearchPage />} />
+          <Route exact path={'/search-page/:slug'} element={<SearchPage />} />
           <Route
             exact
             path={'/yayinlar-detay/:slug'}

@@ -6,15 +6,13 @@ import axiosClient from '../../utils/axiosClient'
 import banner from '../../assets/images/eventdetails.png'
 import BannerEvent from '../../components/banner-event/BannerEvent'
 import Loading from '../../components/loading/Loading'
-import benzerYazilar from '../../assets/images/benzer-yazilar.png'
+import Pdfİcon from '../../../../public/images/pdficons.png'
 import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa'
 import './eventDetails.css'
 import EditionCard from '../../components/card/EditionCard'
 import EventDetailSearch from '../../components/search/EventDetailSearch'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
-import BrushAnim from '../../components/brush-anim-yellow/BrushYellow'
-import pdfImage from '../../assets/images/pdfcard.png'
-import { AiOutlineDownload, AiOutlinePaperClip } from 'react-icons/ai'
+
 import { BsDownload } from 'react-icons/bs'
 const EventDetails = () => {
   const { slug } = useParams()
@@ -113,12 +111,19 @@ const EventDetails = () => {
 
               {content?.pdf_link.map((item, i) => (
                 <a href={item[0]} target="_blank" key={i}>
-                  <div className="event-detail-button-pdf mb-2">
+                  <div className="event-detail-button-pdf mb-2 mt-4">
+                    <div>
+                      <img
+                        style={{ width: '40px', margin: '5px' }}
+                        src={Pdfİcon}
+                        alt="Pdf"
+                      />
+                    </div>
                     <p>PDF'i indir ({item[1]})</p>
                     <BsDownload
                       style={{
                         fontSize: '3rem',
-                        color: 'white',
+                        color: 'black',
                         margin: '10px',
                         width: '10%',
                       }}
@@ -190,8 +195,8 @@ const EventDetails = () => {
 
                 <div className="row">
                   {/* Benzer kartlar sadece 4 adet olacak şekilde slice yapıldı. */}
-                  {similarData?.map((item) => (
-                    <div className="col-xl-4 mt-5 p-2">
+                  {similarData?.map((item, i) => (
+                    <div className="col-xl-4 mt-5 p-2" key={i}>
                       <div className="event-detail-similar-posts">
                         <EditionCard data={item} />
                       </div>

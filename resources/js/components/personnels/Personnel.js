@@ -17,9 +17,7 @@ function Personnel() {
   useEffect(() => {
     getPersonnel()
   }, [])
-  useEffect(() => {
-    console.log(slug)
-  }, [slug])
+
   return loading ? (
     <Loading />
   ) : (
@@ -49,6 +47,7 @@ function Personnel() {
           </div>
         </div>
         <div className="col-lg-8">
+          <h4>{content?.name}</h4>
           <p
             className="cv-info"
             dangerouslySetInnerHTML={{ __html: content?.cv }}

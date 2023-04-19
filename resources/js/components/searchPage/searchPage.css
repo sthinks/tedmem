@@ -1,0 +1,27 @@
+.search-page-text > p {
+  margin-bottom: 0px !important;
+  font-size: 1.5rem !important;
+}
+.search-page-text > p > p {
+  margin-bottom: 0px !important;
+  font-size: 1.5rem !important;
+}
+.search-page-text > p > p > p {
+  margin-bottom: 0px !important;
+  font-size: 1.5rem !important;
+}
+.entry-content > div > * {
+  font-size: 1.5rem !important;
+}
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+  .search-page-card {
+    flex-direction: column;
+  }
+  .search-page-card > img {
+    width: 100% !important;
+  }
+  .search-page-card-text {
+    padding: 0px !important;
+    width: 100% !important;
+  }
+}

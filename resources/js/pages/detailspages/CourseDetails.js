@@ -50,15 +50,14 @@ const CourseDetails = () => {
                   {content?.tag && (
                     <div>
                       <b>Etiketler</b> :{' '}
-                      {content?.tag.map((item) => (
-                        <>
-                          <a
-                            className="write-tag"
-                            href={`/etiketler/${item.slug}`}
-                          >
-                            {item.name},
-                          </a>{' '}
-                        </>
+                      {content?.tag.map((item, i) => (
+                        <a
+                          key={i}
+                          className="write-tag"
+                          href={`/etiketler/${item.slug}`}
+                        >
+                          {item.name},
+                        </a>
                       ))}
                     </div>
                   )}
@@ -123,7 +122,7 @@ const CourseDetails = () => {
           <div
             className="modal fade"
             id="exampleModalCenter"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true"

@@ -193,9 +193,7 @@ const CoruseTwo = () => {
                 style={{ height: '45px', padding: '10px' }}
                 onChange={(e) => filteredByYear(e.target.value)}
               >
-                <option disabled selected>
-                  Yıla göre filtrele.
-                </option>
+                <option defaultValue>Yıla göre filtrele.</option>
                 <option value={0}>Tümü</option>
                 {yearButton.map((item, i) => (
                   <option value={item.year} key={i}>
@@ -204,23 +202,21 @@ const CoruseTwo = () => {
                 ))}
               </select>
               {yearButton.map((item, i) => (
-                <>
-                  <div
-                    key={i}
-                    className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                <div
+                  key={i}
+                  className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                >
+                  <button
+                    onClick={() => filteredByYear(item.year)}
+                    className={
+                      selectYear === item.year
+                        ? 'btn-lg btn-block course-button-top-active'
+                        : 'btn btn-lg btn-block course-button-top'
+                    }
                   >
-                    <button
-                      onClick={() => filteredByYear(item.year)}
-                      className={
-                        selectYear === item.year
-                          ? 'btn-lg btn-block course-button-top-active'
-                          : 'btn btn-lg btn-block course-button-top'
-                      }
-                    >
-                      {item.year}
-                    </button>
-                  </div>
-                </>
+                    {item.year}
+                  </button>
+                </div>
               ))}
               <div className="col-lg-2 col-sm-6 mb-2 year-container">
                 <a href={window.screen.width <= 991 ? '#card-content' : '#a'}>
@@ -240,9 +236,8 @@ const CoruseTwo = () => {
             <div className="row g-5 mt--10">
               <div className="col-lg-2">
                 {category?.map((item, i) => (
-                  <a href={`/yazilar/${item.slug}`}>
+                  <a href={`/yazilar/${item.slug}`} key={i}>
                     <div
-                      key={i}
                       className={
                         selectCat === item.slug
                           ? 'd-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2'
@@ -276,12 +271,8 @@ const CoruseTwo = () => {
                     )
                   ) : allData?.length > 0 ? (
                     allData?.map((item, i) => (
-                      <div className="col-lg-4">
-                        <CourseTypeTwo
-                          key={i}
-                          data={item}
-                          category={category}
-                        />
+                      <div className="col-lg-4" key={i}>
+                        <CourseTypeTwo data={item} category={category} />
                       </div>
                     ))
                   ) : (

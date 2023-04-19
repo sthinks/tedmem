@@ -15,53 +15,45 @@ const CourseTwo = ({ category, data }) => {
     }
   }
   return (
-    <>
-      <Link
-        to={
-          data?.publish_house
-            ? `/yayinlar-detay/${data.slug}`
-            : `/yazilar-detay/${data.slug}`
-        }
-      >
-        <div className="card">
-          <img
-            className="card-event-img"
-            src={data?.image}
-            alt="Card image cap"
-          />
-          <div className="card-body">
-            {data.category_info ? (
-              <div className="edition-badge">
-                <span className="edition-badge-icon">
-                  {data?.category_info.name}
-                </span>
-              </div>
-            ) : (
-              <div className="edition-badge">
-                <span className="edition-badge-icon">
-                  {catergoryHandler(data?.category_id)}
-                </span>
-              </div>
-            )}
-
-            <div className="card-date">
-              <h5 className="card-title">{data.title.slice(0, 90)}...</h5>
-              <div className="card-date-content">
-                <AiOutlineClockCircle className="card-date-icon" />
-                {formattedDate.toLocaleDateString('en-GB')}
-              </div>
+    <Link
+      to={
+        data?.publish_house
+          ? `/yayinlar-detay/${data.slug}`
+          : `/yazilar-detay/${data.slug}`
+      }
+    >
+      <div className="card">
+        <img
+          className="card-event-img"
+          src={data?.image}
+          alt="Card image cap"
+        />
+        <div className="card-body">
+          {data.category_info ? (
+            <div className="edition-badge">
+              <span className="edition-badge-icon">
+                {data?.category_info.name}
+              </span>
             </div>
-            <p className="card-read-more">
-              {data?.publish_house ? (
-                <Link to={`/yayinlar-detay/${data.slug}`}>Devamını Oku</Link>
-              ) : (
-                <Link to={`/yazilar-detay/${data.slug}`}>Devamını Oku</Link>
-              )}
-            </p>
+          ) : (
+            <div className="edition-badge">
+              <span className="edition-badge-icon">
+                {catergoryHandler(data?.category_id)}
+              </span>
+            </div>
+          )}
+
+          <div className="card-date">
+            <h5 className="card-title">{data.title.slice(0, 90)}...</h5>
+            <div className="card-date-content">
+              <AiOutlineClockCircle className="card-date-icon" />
+              {formattedDate.toLocaleDateString('en-GB')}
+            </div>
           </div>
+          <p className="card-read-more">Devamını Oku</p>
         </div>
-      </Link>
-    </>
+      </div>
+    </Link>
   )
 }
 export default CourseTwo

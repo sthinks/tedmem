@@ -137,9 +137,7 @@ const BultenPage = () => {
                 style={{ height: '45px', padding: '10px' }}
                 onChange={(e) => filteredByYear(e.target.value)}
               >
-                <option disabled selected>
-                  Yıla göre filtrele.
-                </option>
+                <option defaultValue>Yıla göre filtrele.</option>
                 <option value={0}>Tümü</option>
                 {yearButton.map((item, i) => (
                   <option value={item.year} key={i}>
@@ -149,23 +147,21 @@ const BultenPage = () => {
               </select>
 
               {yearButton.map((item, i) => (
-                <>
-                  <div
-                    key={i}
-                    className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                <div
+                  key={i}
+                  className="col-lg-2 col-sm-6 mb-2 p-1 year-container"
+                >
+                  <button
+                    onClick={() => filteredByYear(item.year)}
+                    className={
+                      selectYear === item.year
+                        ? 'btn-lg btn-block course-button-top-active'
+                        : 'btn btn-lg btn-block course-button-top'
+                    }
                   >
-                    <button
-                      onClick={() => filteredByYear(item.year)}
-                      className={
-                        selectYear === item.year
-                          ? 'btn-lg btn-block course-button-top-active'
-                          : 'btn btn-lg btn-block course-button-top'
-                      }
-                    >
-                      {item.year}
-                    </button>
-                  </div>
-                </>
+                    {item.year}
+                  </button>
+                </div>
               ))}
               <div className="col-lg-2 col-sm-6 mb-2 year-container">
                 <a href={window.screen.width <= 991 ? '#card-content' : '#a'}>

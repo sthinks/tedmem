@@ -8,6 +8,10 @@
   opacity: 1 !important;
   color: #ff7300 !important;
 }
+.slick-slide {
+  padding-right: 3px;
+  padding-left: 3px;
+}
 @media only screen and (min-width: 300px) and (max-width: 768px) {
   .slick-prev {
     display: none;

@@ -52,15 +52,14 @@ const CoruseTwoo = () => {
                   {content?.tag && (
                     <div>
                       <b>Etiketler</b> :{' '}
-                      {content?.tag.map((item) => (
-                        <>
-                          <a
-                            className="write-tag"
-                            href={`/etiketler/${item.slug}`}
-                          >
-                            {item.name},
-                          </a>{' '}
-                        </>
+                      {content?.tag.map((item, i) => (
+                        <a
+                          key={i}
+                          className="write-tag"
+                          href={`/etiketler/${item.slug}`}
+                        >
+                          {item.name},
+                        </a>
                       ))}
                     </div>
                   )}
