@@ -174,3 +174,7 @@ Route::get('/search-page/{slug}', [
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/getTweet', [
+    \App\Http\Controllers\HomeController::class,
+    'getTweet',
+]);

@@ -8,6 +8,7 @@ use App\Models\Write;
 use App\Models\Event;
 use App\Models\Publication;
 use App\Models\Bulten;
+use App\Models\Tweet;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\User;
@@ -171,6 +172,11 @@ class HomeController extends Controller
             );
         });
         $data = $dataEvent->merge($dataPublic)->merge($dataWrite);
+        return response()->json($data);
+    }
+    public function getTweet()
+    {
+        $data = Tweet::orderBy('id', 'desc')->take(3)->get();
         return response()->json($data);
     }
 }
