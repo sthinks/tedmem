@@ -78,6 +78,9 @@ class WritesController extends Controller
         $write->image = asset(
             sprintf('storage/%s', str_replace('\\', '/', $write->image))
         );
+        $write->image2 = asset(
+            sprintf('storage/%s', str_replace('\\', '/', $write->image2))
+        );
 
         $tagWrite = WriteTag::where('write_id', $write->id)->get();
         $tagData = [];

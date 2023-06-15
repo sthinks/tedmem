@@ -93,6 +93,7 @@ const EventGrid = () => {
         },
     ];
     let { slug } = useParams();
+    console.log(slug);
     const slugged = slug && slugify(slug);
 
     const getPublics = async () => {
@@ -266,7 +267,7 @@ const EventGrid = () => {
                                 <a href={`/yayinlar`}>
                                     <div
                                         className={
-                                            selectCat === "Tümü"
+                                            slug === undefined
                                                 ? "d-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2"
                                                 : "d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
                                         }
@@ -280,7 +281,7 @@ const EventGrid = () => {
                                     <a href={`/yayinlar/${item.slug}`} key={i}>
                                         <div
                                             className={
-                                                selectCat === item.name
+                                                slug === item.slug
                                                     ? "d-flex justify-content-start align-items-center my-auto banner-one-link-active mb-2"
                                                     : "d-flex justify-content-start align-items-center my-auto banner-one-link mb-2"
                                             }

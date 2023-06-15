@@ -8,6 +8,7 @@ use App\Models\Write;
 use App\Models\Event;
 use App\Models\Publication;
 use App\Models\Bulten;
+use App\Models\About;
 use App\Models\Tweet;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
@@ -176,7 +177,17 @@ class HomeController extends Controller
     }
     public function getTweet()
     {
-        $data = Tweet::orderBy('id', 'desc')->take(3)->get();
+        $data = Tweet::orderBy('order', 'asc')->take(3)->get();
+        return response()->json($data);
+    }
+    public function getCorporate()
+    {
+        $data = About::get();
+        $data = $data[0];
+        $data->goal_image = url(sprintf('storage/%s',str_replace('\\','/',$data->goal_image)));
+        $data->who_image = url(sprintf('storage/%s',str_replace('\\','/',$data->who_image)));
+        $data->mem_image = url(sprintf('storage/%s',str_replace('\\','/',$data->mem_image)));
+        $data->road_image = url(sprintf('storage/%s',str_replace('\\','/',$data->road_image)));
         return response()->json($data);
     }
 }

@@ -178,3 +178,7 @@ Route::get('/getTweet', [
     \App\Http\Controllers\HomeController::class,
     'getTweet',
 ]);
+Route::get('/get-corporate', [
+    \App\Http\Controllers\HomeController::class,
+    'getCorporate',
+]);

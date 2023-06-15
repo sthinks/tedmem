@@ -72,14 +72,25 @@ const CoruseTwoo = () => {
                                     <div className="event-widget event-widget-details mt--40 mb-3 ">
                                         <div className="widget-content">
                                             <div className="google-map">
-                                                <img
-                                                    src={content?.image}
-                                                    alt="Event Thumb"
-                                                    style={{
-                                                        marginTop: "20%",
-                                                        width: "100%",
-                                                    }}
-                                                />
+                                                {content.image2 ? (
+                                                    <img
+                                                        src={content?.image2}
+                                                        alt="Event Thumb"
+                                                        style={{
+                                                            marginTop: "20%",
+                                                            width: "100%",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        src={content?.image}
+                                                        alt="Event Thumb"
+                                                        style={{
+                                                            marginTop: "20%",
+                                                            width: "100%",
+                                                        }}
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     </div>
