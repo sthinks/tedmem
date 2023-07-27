@@ -1,4 +1,6 @@
 {
+ 
+    "proxy": "http://localhost:90", 
     "private": true,
     "scripts": {
         "dev": "npm run development",

@@ -24,7 +24,7 @@ function EditionCard({ data }) {
                 <div className="card-body">
                     <div className="edition-badge">
                         <span className="edition-badge-icon">
-                            {data?.category_info.name}
+                            {data?.category_info?.name}
                         </span>
                     </div>
 

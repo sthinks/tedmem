@@ -72,7 +72,7 @@ const CoruseTwoo = () => {
                                     <div className="event-widget event-widget-details mt--40 mb-3 ">
                                         <div className="widget-content">
                                             <div className="google-map">
-                                                {content.image2 ? (
+                                                {content.image2 != null ? (
                                                     <img
                                                         src={content?.image2}
                                                         alt="Event Thumb"
@@ -136,13 +136,12 @@ const CoruseTwoo = () => {
                                                         </span>
                                                     </li>
                                                 )}
-                                                {content?.pdf_link.length >
-                                                    0 && (
+                                                {content?.file != null && (
                                                     <li>
                                                         <a
                                                             href={
                                                                 content
-                                                                    ?.pdf_link[0][0]
+                                                                    ?.file[0][0]
                                                             }
                                                             target="_blank"
                                                             style={{

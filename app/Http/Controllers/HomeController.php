@@ -65,7 +65,7 @@ class HomeController extends Controller
     public function getLatestBulten()
     {
         $data = Bulten::orderBy('year', 'DESC')
-            ->take(4)
+            ->take(12)
             ->get();
 
         $data->map(function ($item) {

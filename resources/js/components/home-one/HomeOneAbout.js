@@ -14,7 +14,7 @@ const HomeOneAbout = ({ data }) => {
         infinite: true,
         slidesToShow: window.screen.width > 768 ? 4 : 1,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000,
         pauseOnHover: true,
     };

@@ -60,27 +60,44 @@ class WritesController extends Controller
             return response()->json(['message' => 'not found'], 404);
         }
         $write->category = Category::where('id', $write->id)->first();
-
+        
         $pdf_files = json_decode($write->file);
-        $write->pdf_link = array_map(function ($file) {
-            $a = asset(
-                sprintf(
-                    'storage/%s',
-                    str_replace('\\', '/', $file->download_link)
-                )
+        $write->file = $pdf_files;
+       
+        if(count($pdf_files) != 0)
+        {
+            
+            $write->file = array_map(function ($file) {
+                $a = asset(
+                    sprintf(
+                        'storage/%s',
+                        str_replace('\\', '/', $file->download_link)
+                    )
+                );
+                $b = str_replace('\\', '/', $file->original_name);
+                $all = [$a, $b];
+
+                return $all;
+            }, $write->file);
+        }else{
+            $write->file = null;
+        }
+        
+
+        if($write->image != null)
+        {
+            $write->image = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $write->image))
             );
-            $b = str_replace('\\', '/', $file->original_name);
-            $all = [$a, $b];
+        }
 
-            return $all;
-        }, $pdf_files);
-
-        $write->image = asset(
-            sprintf('storage/%s', str_replace('\\', '/', $write->image))
-        );
-        $write->image2 = asset(
-            sprintf('storage/%s', str_replace('\\', '/', $write->image2))
-        );
+        if($write->image2 != null)
+        {
+            $write->image2 = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $write->image2))
+            );
+        }
+        
 
         $tagWrite = WriteTag::where('write_id', $write->id)->get();
         $tagData = [];

@@ -12,18 +12,18 @@ class CategoryController extends Controller
     //Yayınlar
     public function getPublicCategory()
     {
-        $data = PublicCategory::all();
+        $data = PublicCategory::orderBy('order','ASC')->get();
         return response()->json($data);
     }
     //Etkinlikler
     public function getEventCategory()
     {
-        $data = EventsCategory::all();
+        $data = EventsCategory::orderBy('order','ASC')->get();
         return response()->json($data);
     }
     public function getWriteCategory()
     {
-        $data = Categories::all();
+        $data = Categories::orderBy('order','ASC')->get();
         return response()->json($data);
     }
 }

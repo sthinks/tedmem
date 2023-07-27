@@ -9,25 +9,25 @@ const AboutSeven = ({ data }) => {
 
     const corporateList = [
         {
-            title: "Amacımız",
+            title: [data.first_title],
             slug: "about_goal",
             image: [data.goal_image],
             content: [data.goal],
         },
         {
-            title: "Biz Kimiz",
+            title: [data.second_title],
             slug: "about_who",
             image: [data.who_image],
             content: [data.who],
         },
         {
-            title: "Mem Nedir ?",
+            title: [data.thirt_title],
             slug: "excerpt",
             image: [data.mem_image],
             content: [data.mem],
         },
         {
-            title: "Yola Çıkarken",
+            title: [data.fourth],
             slug: "about_yol",
             image: [data.road_image],
             content: [data.road],
