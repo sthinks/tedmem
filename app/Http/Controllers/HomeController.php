@@ -10,6 +10,7 @@ use App\Models\Publication;
 use App\Models\Bulten;
 use App\Models\About;
 use App\Models\Tweet;
+use App\Models\PublicCategory;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\User;
@@ -46,7 +47,7 @@ class HomeController extends Controller
     }
     public function getLatestPublics()
     {
-        $data = Publication::orderBy('publish_year', 'DESC')
+        $data = Publication::orderBy('created_at', 'DESC')
             ->take(4)
             ->get();
 
@@ -54,7 +55,7 @@ class HomeController extends Controller
             $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
             );
-            $item->category_info = Category::where(
+            $item->category_info = PublicCategory::where(
                 'id',
                 $item->category_id
             )->first();
@@ -190,4 +191,5 @@ class HomeController extends Controller
         $data->road_image = url(sprintf('storage/%s',str_replace('\\','/',$data->road_image)));
         return response()->json($data);
     }
+    
 }

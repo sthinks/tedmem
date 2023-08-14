@@ -229,6 +229,12 @@
   .footer-card-content {
     top: -12rem;
   }
+  .footer-icon{
+    margin-left: 0px !important;
+  }
+  .footer-map-icon{
+    font-size: 3rem !important;
+  }
 }
 @media screen and (max-width: 450px) {
   .footer-card-picture {

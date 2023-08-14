@@ -96,6 +96,12 @@ const CoruseTwo = () => {
         const result = await axiosClient
             .get("/api/write-category")
             .then((res) => res.data);
+        const allWrite = {
+            id: 11,
+            name: "Tümü",
+            slug: "tümü",
+        };
+        result.unshift(allWrite);
         setCategory(result);
     };
     const getWrites = async () => {
@@ -105,7 +111,11 @@ const CoruseTwo = () => {
             .then(() => setLoading(false));
     };
     useEffect(() => {
-        setSelectCat(slug);
+        if (slug === undefined) {
+            setSelectCat("tümü");
+        } else {
+            setSelectCat(slug);
+        }
     }, [content]);
     useEffect(() => {
         getCategories();
@@ -251,7 +261,14 @@ const CoruseTwo = () => {
                         <div className="row g-5 mt--10">
                             <div className="col-lg-2">
                                 {category?.map((item, i) => (
-                                    <a href={`/yazilar/${item.slug}`} key={i}>
+                                    <a
+                                        href={
+                                            item.id === 11
+                                                ? `/yazilar`
+                                                : `/yazilar/${item.slug}`
+                                        }
+                                        key={i}
+                                    >
                                         <div
                                             className={
                                                 selectCat === item.slug

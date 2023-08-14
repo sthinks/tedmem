@@ -14,7 +14,7 @@ class BlogController extends Controller
     //Yayınlar
     public function getPublics()
     {
-        $data = Publication::all();
+        $data = Publication::orderBy("created_at",'DESC')->get();
         $data->map(function ($item) {
             $item->category_info = PublicCategory::where(
                 'id',

@@ -6,9 +6,11 @@ import Layout from "../../common/Layout";
 import axiosClient from "../../utils/axiosClient";
 import ContactMeForm from "../../components/contact/ContactMeForm";
 import PageBanner from "../../components/banner/PageBanner";
+import { BsDownload } from "react-icons/bs";
 import banner from "../../assets/images/activity-banner.png";
 import Loading from "../../components/loading/Loading";
 import { CiAlarmOn } from "react-icons/ci";
+import ReactPlayer from "react-player";
 
 const CourseDetails = () => {
     const [loading, setLoading] = useState(true);
@@ -48,6 +50,40 @@ const CourseDetails = () => {
                                             __html: content?.content,
                                         }}
                                     />
+                                    {content?.video_url != null && (
+                                        <div>
+                                            <ReactPlayer
+                                                width="100%"
+                                                height="300px"
+                                                controls={true}
+                                                url={`${content?.video_url}`}
+                                            />
+                                        </div>
+                                    )}
+                                    {content?.pdf.length > 0 && (
+                                        <a
+                                            href={content?.pdf[0][0]}
+                                            target="_blank"
+                                        >
+                                            <div
+                                                className="event-detail-button-pdf"
+                                                style={{
+                                                    marginTop: "10px",
+                                                    marginBottom: "10px",
+                                                }}
+                                            >
+                                                <p>PDF'i indir</p>
+                                                <BsDownload
+                                                    style={{
+                                                        fontSize: "2rem",
+                                                        color: "black",
+                                                        margin: "10px",
+                                                        width: "10%",
+                                                    }}
+                                                />
+                                            </div>
+                                        </a>
+                                    )}
                                     {content?.tag && (
                                         <div>
                                             <b>Etiketler</b> :{" "}

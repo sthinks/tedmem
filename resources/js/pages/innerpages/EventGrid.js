@@ -93,7 +93,7 @@ const EventGrid = () => {
         },
     ];
     let { slug } = useParams();
-    console.log(slug);
+
     const slugged = slug && slugify(slug);
 
     const getPublics = async () => {
@@ -179,6 +179,7 @@ const EventGrid = () => {
             setSekme([]);
         } else {
             const result = content.filter((item) => item.publish_year == year);
+            console.log(result);
             if (result.length === 0) {
                 const nullData = [
                     {

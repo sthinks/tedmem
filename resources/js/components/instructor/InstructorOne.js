@@ -36,7 +36,7 @@ const InstructorOne = ({ data }) => {
                             <a
                                 className="twitter"
                                 target="_blank"
-                                href={data?.email}
+                                href={`mailto:${data?.mail}`}
                             >
                                 <FiMail className="icon-Twitter" />
                             </a>

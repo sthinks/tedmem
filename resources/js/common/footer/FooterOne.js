@@ -6,9 +6,8 @@ import { BsInstagram } from "react-icons/bs";
 import "./Footer.css";
 import footerCard from "../../assets/images/footer-card.png";
 import { RiFacebookFill, RiTwitterFill, RiLinkedinFill } from "react-icons/ri";
-import { useState } from "react";
-import { useEffect } from "react";
-
+import { CiMap, CiPhone, CiMail } from "react-icons/ci";
+import { ImPrinter } from "react-icons/im";
 const FooterOne = () => {
     const navigate = useNavigate();
 
@@ -198,7 +197,18 @@ const FooterOne = () => {
                                                     <a
                                                         href="https://goo.gl/maps/6wQzRBHG49oGaAY7A"
                                                         target="_blank"
+                                                        className="d-flex justify-content-center align-items-center footer-icon"
+                                                        style={{
+                                                            marginLeft: "-35px",
+                                                        }}
                                                     >
+                                                        <CiMap
+                                                            className="mr-2 footer-map-icon"
+                                                            style={{
+                                                                fontSize:
+                                                                    "5rem",
+                                                            }}
+                                                        />
                                                         Kocatepe Mah. Kızılırmak
                                                         Cad. No: 8, 06420
                                                         Kocatepe, Çankaya /
@@ -206,12 +216,38 @@ const FooterOne = () => {
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="tel:(0312) 939 50 20">
+                                                    <a
+                                                        href="tel:(0312) 939 50 20"
+                                                        className="d-flex justify-content-center align-items-center footer-icon"
+                                                        style={{
+                                                            marginLeft: "-35px",
+                                                        }}
+                                                    >
+                                                        <CiPhone
+                                                            className="mr-2"
+                                                            style={{
+                                                                fontSize:
+                                                                    "3rem",
+                                                            }}
+                                                        />
                                                         (0312) 939 50 20
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="tel:(0312) 417 53 65">
+                                                    <a
+                                                        href="tel:(0312) 417 53 65"
+                                                        className="d-flex justify-content-center align-items-center footer-icon"
+                                                        style={{
+                                                            marginLeft: "-35px",
+                                                        }}
+                                                    >
+                                                        <ImPrinter
+                                                            className="mr-2"
+                                                            style={{
+                                                                fontSize:
+                                                                    "3rem",
+                                                            }}
+                                                        />
                                                         (0312) 417 53 65
                                                     </a>
                                                 </li>
@@ -219,7 +255,18 @@ const FooterOne = () => {
                                                     <a
                                                         target="_blank"
                                                         href="mailto:yourmailaddress@example.com"
+                                                        className="d-flex justify-content-center align-items-center footer-icon"
+                                                        style={{
+                                                            marginLeft: "-35px",
+                                                        }}
                                                     >
+                                                        <CiMail
+                                                            className="mr-2"
+                                                            style={{
+                                                                fontSize:
+                                                                    "3rem",
+                                                            }}
+                                                        />
                                                         info@tedmem.org
                                                     </a>
                                                 </li>

@@ -372,3 +372,10 @@
     margin-bottom: 10px;
   }
 }
+.banner-now-right-container2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   margin-top: 50px;
+  margin-bottom: 50px;
+}

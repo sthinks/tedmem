@@ -22,6 +22,7 @@
 }
 .contact-information-icon {
   margin: 10px 0px 15px 30px;
+  flex-wrap: wrap;
 }
 .social-media-icon-card {
   width: 50px;

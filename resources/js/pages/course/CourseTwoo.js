@@ -7,8 +7,8 @@ import banner from "../../assets/images/eventdetails.png";
 import BannerEvent from "../../components/banner-event/BannerEvent";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import Loading from "../../components/loading/Loading";
-import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsDownload } from "react-icons/bs";
+import ReactPlayer from "react-player";
 import "./courseTwoo.css";
 const CoruseTwoo = () => {
     const [loading, setLoading] = useState(true);
@@ -51,6 +51,19 @@ const CoruseTwoo = () => {
                                             __html: content?.content,
                                         }}
                                     ></div>
+                                    {content?.video_url != null && (
+                                        <div
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        >
+                                            <ReactPlayer
+                                                url={`${content?.video_url}`}
+                                            />
+                                        </div>
+                                    )}
+
                                     {content?.tag && (
                                         <div>
                                             <b>Etiketler</b> :{" "}

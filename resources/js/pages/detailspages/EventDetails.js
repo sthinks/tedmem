@@ -12,7 +12,7 @@ import "./eventDetails.css";
 import EditionCard from "../../components/card/EditionCard";
 import EventDetailSearch from "../../components/search/EventDetailSearch";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
-
+import ReactPlayer from "react-player";
 import { BsDownload } from "react-icons/bs";
 const EventDetails = () => {
     const { slug } = useParams();
@@ -99,6 +99,19 @@ const EventDetails = () => {
                                     __html: content?.content,
                                 }}
                             />
+                            {content?.video_url != null && (
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                    }}
+                                >
+                                    <ReactPlayer
+                                        url={`${content?.video_url}`}
+                                    />
+                                </div>
+                            )}
+
                             {content?.infografik !== "no data" && (
                                 <div>
                                     <h3 className="d-flex justify-content-center">

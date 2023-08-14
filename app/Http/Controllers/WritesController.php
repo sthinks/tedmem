@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Write;
+use App\Models\Event;
+use App\Models\Publication;
+use App\Models\Bulten;
 use TCG\Voyager\Models\Category;
 use App\Models\WriteTag;
 use App\Models\Tag;
@@ -12,7 +15,7 @@ class WritesController extends Controller
 {
     public function getAllWrites()
     {
-        $data = Write::all();
+        $data = Write::orderBy('created_at','DESC')->get();
         $data->map(function ($item) {
             $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))
@@ -27,23 +30,80 @@ class WritesController extends Controller
     public function getHomeWrite()
     {
         $data = Write::where('homepage', 1)->first();
-        $data->image = asset(
+        $data2 = Publication::where('homepage',1)->first();
+        $data3 = Event::where('homepage',1)->first();
+        $data4 = Bulten::where('homepage',1)->first();
+
+       
+        if($data->image)
+        {
+            $data->image = asset(
             sprintf('storage/%s', str_replace('\\', '/', $data->image))
+            );
+        }
+        if($data->image2)
+        {
+            $data->image2 = asset(
+                sprintf('storage/%s', str_replace('\\', '/', $data->image2))
+            );
+        }
+        if($data2 != null)
+        {
+            if($data2->image)
+            {
+                $data2->image = asset(
+                    sprintf('storage/%s', str_replace('\\', '/', $data2->image))
+                );
+            }
+        }
+        
+        if($data3 != null)
+        {
+            if($data3->image)
+            {
+                $data3->image = asset(
+                    sprintf('storage/%s', str_replace('\\', '/', $data3->image))
+                );
+            }
+        }
+        if($data4 != null)
+        {
+            if($data4->image)
+            {
+                $data4->image = asset(
+                    sprintf('storage/%s', str_replace('\\', '/', $data4->image))
+                );
+            }
+        }
+        
+       
+       
+        $combinedData = array(
+            'write' => $data,
+            'publication' => $data2,
+            'event' => $data3,
+            'bulten' => $data4
         );
-        $data->image2 = asset(
-            sprintf('storage/%s', str_replace('\\', '/', $data->image2))
-        );
-        return response()->json($data);
+        return response()->json($combinedData);
     }
     public function getWrites(string $slug)
     {
-        $category = Category::where('slug', $slug)->first();
-        if (!$category) {
+        
+       
+        $category = Category::where('slug', $slug)->orderBy('created_at','DESC')->first();
+        if (!$category && $slug != 'undefined') {
             return response()->json(['msg' => 'Kategori bulunamadı', 404]);
         }
-        $data = Write::where('category_id', $category->id)
-            ->orderBy('year', 'DESC')
+        if($slug == 'undefined')
+        {
+            $data = Write::orderBy('created_at', 'DESC')->get();
+           
+        }else{
+            $data = Write::where('category_id', $category->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
+        }
+        
         $data->map(function ($item) {
             $item->image = asset(
                 sprintf('storage/%s', str_replace('\\', '/', $item->image))

@@ -14,7 +14,7 @@
 .card-event-img {
   border-radius: 4px 4px 0px 0px;
   width: auto;
-  height: 250px;
+  height: 350px;
   object-fit: cover;
 }
 .card-read-more {
@@ -106,7 +106,7 @@
     font-size: 11px;
   }
   .card-event-img {
-    height: 190px;
+    height: 230px;
   }
   .event-button {
     font-size: 11px;

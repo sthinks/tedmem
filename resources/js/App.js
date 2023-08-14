@@ -55,6 +55,7 @@ function App() {
                         path={"/yazilar/:slug"}
                         element={<CourseTwo />}
                     />
+                    <Route exact path={"/yazilar"} element={<CourseTwo />} />
 
                     <Route
                         exact

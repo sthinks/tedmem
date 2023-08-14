@@ -19,6 +19,8 @@ const HeaderOne = ({ styles, disableSticky }) => {
     const [writes, setWrites] = useState([]);
     const [publicsCat, setPublicsCat] = useState([]);
     const [writeCat, setWriteCat] = useState([]);
+    const [eventCat, setEventCat] = useState([]);
+
     const [writesResultsNav, setWritesResults] = useState([]);
     const [query, setQuery] = useState("");
     const [searchPopup, setSearchPopup] = useState(false);
@@ -30,10 +32,14 @@ const HeaderOne = ({ styles, disableSticky }) => {
         const publicCat = await axiosClient
             .get("/api/public-category")
             .then((res) => res.data);
+        const eventCat = await axiosClient
+            .get("/api/event-category")
+            .then((res) => res.data);
 
-        if (writeCat && publicCat) {
+        if (writeCat && publicCat && eventCat) {
             setPublicsCat(publicCat);
             setWriteCat(writeCat);
+            setEventCat(eventCat);
         }
     };
     const navigate = useNavigate();
@@ -121,6 +127,7 @@ const HeaderOne = ({ styles, disableSticky }) => {
                                 <Nav
                                     publicsCat={publicsCat}
                                     writeCat={writeCat}
+                                    eventCat={eventCat}
                                 />
                             </nav>
                         </div>
